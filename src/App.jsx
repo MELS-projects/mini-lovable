@@ -3227,6 +3227,9 @@ The generated app is stored in src/App.jsx.
               value={prompt}
               onChange={(event) => setPrompt(event.target.value)}
             />
+            <div style={{ color: '#94a3b8', fontSize: '11px', lineHeight: 1.35, marginTop: '6px' }}>
+              Tip: Start with a simple idea, like “a premium website for a business consultant”.
+            </div>
           </div>
         </div>
 
