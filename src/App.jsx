@@ -2865,6 +2865,9 @@ The generated app is stored in src/App.jsx.
               <div style={{ color: '#93c5fd', fontSize: '11px', fontWeight: 600 }}>
                 v52.16 · GitHub baseline verified
               </div>
+              <div style={{ color: '#94a3b8', fontSize: '10px', fontWeight: 600, marginTop: '2px' }}>
+                GitHub baseline verified · Bolt preview synced
+              </div>
             </div>
 
             <div style={compactInfoCardStyle}>
