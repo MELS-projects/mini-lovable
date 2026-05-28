@@ -2,7 +2,22 @@
 
 Hermes is planned as a workflow coordinator for Mini-Lovable.
 
-Hermes should not replace ChatGPT, Codex, GitHub, or Bolt.
+Hermes is not installed yet.
+
+The repository is prepared for Hermes, but Hermes should only be introduced after the manual GitHub, Bolt, Codex, and ChatGPT workflow has been proven reliable.
+
+## Current status
+
+Manual workflow test:
+Completed with workflow note.
+
+Result:
+The documentation-only test sprint proved that Codex can produce useful documentation updates, but Codex used the wrong local workspace instead of the actual GitHub repository.
+
+Workflow issue to fix before Hermes:
+Future Codex tasks must be run against the correct GitHub repo or a verified local clone of:
+
+MELS-projects / mini-lovable
 
 ## Roles
 
@@ -16,6 +31,7 @@ Codex:
 - developer
 - implements narrow code changes
 - returns changed files, summary, tests, and risks
+- must work in the correct repository context
 
 Hermes:
 - workflow coordinator
@@ -34,6 +50,11 @@ GitHub:
 - source of truth
 - version history
 - approved baseline storage
+
+DeepSeek:
+- optional low-cost model connection
+- can be evaluated later
+- should not be treated as the default coding agent until quality and reliability are validated
 
 ## Safe Hermes access
 
@@ -61,7 +82,7 @@ Not allowed without explicit approval:
 2. Hermes reads project docs.
 3. Hermes prepares a Codex-ready sprint brief.
 4. Human owner sends or approves the Codex task.
-5. Codex implements the change.
+5. Codex implements the change in the correct GitHub repo or verified local clone.
 6. Hermes packages changed files, summary, test status, and risks.
 7. ChatGPT performs QA.
 8. Human owner tests in Bolt.
@@ -78,6 +99,7 @@ Read:
 - docs/QA_CHECKLIST.md
 - docs/GROUND_ZERO.md
 - docs/SPRINT_LOG.md
+- docs/HERMES_WORKFLOW.md
 
 Task:
 Create a proposed next sprint brief.
