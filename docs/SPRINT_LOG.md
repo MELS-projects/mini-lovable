@@ -135,3 +135,32 @@ Bolt sync status/toast should be treated as lower-trust than the actual GitHub r
 
 Next planned step:
 Continue with the next small product improvement sprint using GitHub as source of truth.
+
+### Add starter prompt helper note
+
+Status:
+Approved
+
+Summary:
+A small helper note was added under the main prompt textarea to make it easier for non-programmers to start with a simple idea.
+
+Changed file:
+- src/App.jsx
+
+Exact UI text added:
+Tip: Start with a simple idea, like “a premium website for a business consultant”.
+
+Confirmed:
+- Codex worked in the correct repository.
+- Only src/App.jsx was changed during the implementation sprint.
+- ChatGPT QA approved the change.
+- Commit was pushed to GitHub.
+- Bolt preview/code contained the new helper text.
+- No generation, DeepSeek, roadmap, reviewer, export, preview, or validator logic was changed.
+- No new version number was created.
+
+Commit:
+090992e Add starter prompt helper note
+
+Next planned step:
+Continue with the next small Kodmaskin-controlled Mini-Lovable product improvement sprint.
