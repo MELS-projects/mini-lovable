@@ -52,3 +52,33 @@ Changed/confirmed files:
 
 Next planned step:
 Prepare Hermes workflow documentation and prompt templates.
+
+### Documentation test sprint - workflow validation
+
+Status:
+Approved with workflow note
+
+Summary:
+Codex created documentation updates for CURRENT_STATE.md, SPRINT_LOG.md, and HERMES_WORKFLOW.md to reflect the confirmed setup.
+
+Important notes:
+- Documentation content was useful and mostly correct.
+- Codex worked in the wrong local workspace instead of the actual GitHub repository.
+- Therefore, the content was manually reviewed before being accepted.
+- No app code was changed.
+- No product version number was created.
+
+Changed/confirmed files:
+- docs/CURRENT_STATE.md
+- docs/SPRINT_LOG.md
+- docs/HERMES_WORKFLOW.md
+
+QA decision:
+APPROVE WITH FIX
+
+Required workflow fix:
+Future Codex tasks must be run against the correct GitHub repo or a verified local clone of:
+MELS-projects / mini-lovable
+
+Next planned step:
+Run the next test sprint only after confirming Codex is working in the correct repo context.
