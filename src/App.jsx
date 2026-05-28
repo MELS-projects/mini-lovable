@@ -2863,7 +2863,7 @@ The generated app is stored in src/App.jsx.
             <div style={{ ...compactInfoCardStyle, backgroundColor: 'transparent', border: 'none', padding: 0 }}>
               <h1 className="title" style={{ marginBottom: '3px', fontSize: '26px' }}>Mini-Lovable</h1>
               <div style={{ color: '#93c5fd', fontSize: '11px', fontWeight: 600 }}>
-                v52.16 · contact validator order fix
+                v52.16 · GitHub baseline verified
               </div>
             </div>
 
