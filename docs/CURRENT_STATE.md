@@ -1,36 +1,49 @@
-# Current State
+# Current Project State
 
-Current baseline:
-v52.16 contact validator order fix
+This document captures the confirmed working setup for Mini-Lovable.
 
-Main environment:
-Bolt is currently used to reconstruct the latest working project from the saved App.jsx file.
+## Current baseline
 
-Target environment:
-Lovable Pro should become the main build and preview environment after the GitHub baseline is secured.
+Version:
+v52.16 GitHub-import working baseline
 
-Source of truth:
-GitHub repository: mini-lovable
+Status:
+Approved working baseline after GitHub import into Bolt.
 
-Target workflow:
-- Lovable Pro = main build/preview environment
-- GitHub = version history and source of truth
-- ChatGPT = roadmap and QA
-- Codex = code fixes when needed
-- Hermes = wait for now
+## Source of Truth
 
-Current setup status:
-- GitHub repository created
-- ROADMAP.md created
-- Latest saved app file is App_v52_16_contact_validator_order_fix
-- Bolt reconstruction is not yet confirmed
-- Lovable import is not yet started
+- GitHub is the source of truth for the project.
+- Changes should be reviewed against the repository state before they are treated as accepted.
+- Documentation-only changes should stay separate from app code changes.
 
-Important constraints:
-- User-facing Mini-Lovable UI should stay in English
-- Do not add auth/login
-- Do not add database
-- Do not add payments
-- Do not add backend workflows
-- Do not add deployment features yet
-- Keep the workflow simple
+## Build and Preview
+
+- Bolt is the build and preview environment.
+- Bolt is where the app should be tested visually and functionally before a change is considered ready.
+
+## Roles
+
+- ChatGPT is used for roadmap, QA, and project lead work.
+- Codex is used as developer when implementation help is needed.
+- Codex should not act as product owner.
+- Hermes is planned as workflow coordinator later.
+
+## Model and API Notes
+
+- DeepSeek API is connected and can be evaluated later because it is low cost.
+- DeepSeek should be treated as an optional model connection to evaluate, not as the default coding agent.
+- Model choice should remain open until quality, reliability, and workflow fit have been reviewed.
+
+## Hermes Status
+
+- Hermes is not installed yet.
+- The repository is prepared for Hermes.
+- Hermes should not be introduced into the active workflow until the manual GitHub, Bolt, Codex, and ChatGPT process has worked at least once.
+
+## Current Workflow
+
+1. GitHub holds the source of truth.
+2. ChatGPT defines roadmap, QA expectations, and project direction.
+3. Codex makes implementation or documentation changes when needed.
+4. Bolt builds and previews the project.
+5. ChatGPT reviews the result before the workflow is expanded or automated.
