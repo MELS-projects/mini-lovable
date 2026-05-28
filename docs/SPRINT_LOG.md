@@ -82,3 +82,34 @@ MELS-projects / mini-lovable
 
 Next planned step:
 Run the next test sprint only after confirming Codex is working in the correct repo context.
+
+### Manual workflow test - GitHub baseline label
+
+Status:
+Approved
+
+Summary:
+A minimal one-line UI label change was made in src/App.jsx to confirm that Codex can safely work in the correct repository, ChatGPT can QA the change, GitHub can receive the commit, and Bolt can sync and preview the updated version.
+
+Changed file:
+- src/App.jsx
+
+Exact visible change:
+- From: v52.16 · contact validator order fix
+- To: v52.16 · GitHub baseline verified
+
+Confirmed workflow:
+- Codex worked in the correct repo: MELS-projects / mini-lovable
+- Codex changed only src/App.jsx
+- ChatGPT QA approved the change
+- Commit was pushed to GitHub
+- Bolt detected external changes
+- Bolt updated the codebase
+- Bolt preview loaded successfully
+- GitHub status showed synced
+
+Important note:
+This did not create v52.17. It remains v52.16 GitHub baseline verified.
+
+Next planned step:
+Use this confirmed workflow for the next small product improvement sprint before installing Hermes.
