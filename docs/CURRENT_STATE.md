@@ -21,6 +21,13 @@ Approved working baseline after GitHub import into Bolt.
 - Bolt is the build and preview environment.
 - Bolt is where the app should be tested visually and functionally before a change is considered ready.
 
+## Bolt/GitHub Sync Note
+
+- GitHub remains the source of truth.
+- Bolt URL import successfully loaded the latest GitHub version.
+- Bolt may still show "Error while syncing with GitHub" even when the imported code and preview are correct.
+- If normal Bolt sync fails, use URL import or manual GitHub-to-Bolt copy as fallback.
+
 ## Roles
 
 - ChatGPT is used for roadmap, QA, and project lead work.

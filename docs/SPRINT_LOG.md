@@ -113,3 +113,25 @@ This did not create v52.17. It remains v52.16 GitHub baseline verified.
 
 Next planned step:
 Use this confirmed workflow for the next small product improvement sprint before installing Hermes.
+
+### Bolt URL import fallback confirmation
+
+Status:
+Approved with workflow note
+
+Summary:
+After GitHub sync errors in Bolt, the project was imported again using the GitHub repository URL. The new Bolt import loaded the latest code and previewed the correct baseline/status note, even though Bolt still displayed a sync error toast.
+
+Confirmed:
+- GitHub still points to MELS-projects / mini-lovable.
+- The GitHub icon in Bolt opens the correct repository.
+- Bolt URL import loaded the latest App.jsx.
+- Preview showed:
+  v52.16 · GitHub baseline verified
+  GitHub baseline verified · Bolt preview synced
+
+Workflow note:
+Bolt sync status/toast should be treated as lower-trust than the actual GitHub repo and visible preview. If Bolt sync fails, use URL import or manual GitHub-to-Bolt copy as fallback.
+
+Next planned step:
+Continue with the next small product improvement sprint using GitHub as source of truth.
