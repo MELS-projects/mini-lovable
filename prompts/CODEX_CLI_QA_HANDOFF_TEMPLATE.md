@@ -50,6 +50,7 @@ After work:
 
 * Status:
 * Working tree changed: yes / no
+* Working tree remained unchanged: yes / no
 * If changed, list exactly which files changed.
 
 ### 6. Files read
