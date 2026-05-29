@@ -71,6 +71,57 @@ Before/after working-tree verification should be standard in future handoff pack
 
 Next focus remains Kodmaskin workflow improvement, not Mini-Lovable UI polish.
 
+### Working-Tree Verification Template Update
+
+Status:
+Approved
+
+#### Summary
+
+The working-tree verification template update improved the Codex CLI handoff pack template for Kodmaskin Oskar.
+
+The template now requires Codex to report working-tree status before and after work, making future handoffs easier to QA and reducing the risk of unnoticed file changes.
+
+This was a Kodmaskin workflow-template sprint, not Mini-Lovable UI work.
+
+#### Git history
+
+- Commit: 784d0f6 Add working-tree verification to handoff template
+
+#### Changed files
+
+- prompts/CODEX_CLI_HANDOFF_PACK_TEMPLATE.md
+
+#### Workflow result
+
+The handoff pack template now requires:
+
+- Working-tree verification before work starts.
+- Working-tree verification after work is completed.
+- Read-only tests to confirm that no files changed.
+- Write or implementation tests to confirm that only allowed files changed.
+- Unexpected modified files before work to be treated as a stop condition unless ChatGPT explicitly approved them.
+
+#### Safety checks
+
+- No app code was changed.
+- No docs were changed during implementation.
+- No package files were changed.
+- No .env or secrets were accessed.
+- No Hermes/OpenClaw installation was performed.
+- No new version or baseline was created.
+- Mini-Lovable UI track remains paused.
+
+#### QA result
+
+ChatGPT QA result: Approved for documentation.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+Next focus remains Kodmaskin workflow improvement, with stronger handoff quality and safer before/after repo-state verification.
+
 ### Codex CLI Handoff Pack Template Sprint
 
 Status:
