@@ -24,6 +24,51 @@ Notes:
 
 ## Sprint history
 
+### Codex CLI Read-Only Repo Context Test
+
+Status:
+Approved
+
+Summary:
+The first Codex CLI read-only repo context test was completed successfully for Kodmaskin Oskar using the Mini-Lovable repository.
+
+This was a Kodmaskin / Codex CLI checkpoint, not a Mini-Lovable product change.
+
+Test environment:
+
+* Codex CLI version: codex-cli 0.135.0
+* Model: gpt-5.4-mini medium
+* Sandbox: read-only
+* Approval mode: untrusted
+* Local repository path: C:\Users\ThomasOlsson\Documents\Projects\mini-lovable
+* Branch: main
+* Remote: https://github.com/MELS-projects/mini-lovable.git
+
+Test result:
+Codex CLI confirmed the correct repository context.
+
+Final verdict from Codex:
+CORRECT REPO
+
+The working tree was clean before and after the test.
+
+Safety checks:
+
+* No files were changed.
+* No app code was changed.
+* No package files were changed.
+* No prompt files were changed.
+* No .env or secrets were accessed.
+* No commit or push was made by Codex.
+* No new version or baseline was created.
+* Hermes/OpenClaw remains WAIT.
+
+Workflow significance:
+This confirms that Codex CLI can be used as the first safer orchestration path for Kodmaskin Oskar in read-only mode before granting any workspace-write permissions.
+
+Next safe step:
+Continue with controlled Codex CLI tests before considering workspace-write access or any Hermes/OpenClaw installation.
+
 ### v52.16 - GitHub import working baseline
 
 Status:
