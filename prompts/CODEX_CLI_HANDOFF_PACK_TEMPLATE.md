@@ -88,12 +88,15 @@ Codex must not edit:
 ### 9. Required actions
 
 1. Verify repo context if needed.
-2. Inspect only relevant files.
-3. Make only the requested change if this is an implementation sprint.
-4. Preserve existing behavior unless intentionally changed.
-5. Run allowed checks only.
-6. Report uncertainty instead of guessing.
-7. Stop if the task requires broader access than allowed.
+2. Capture the working tree status before starting work.
+3. Inspect only relevant files.
+4. If unexpected modified files are already present before work starts, stop and report them unless ChatGPT explicitly approved them.
+5. Make only the requested change if this is an implementation sprint.
+6. Preserve existing behavior unless intentionally changed.
+7. Run allowed checks only.
+8. Capture the working tree status after completing work.
+9. Report uncertainty instead of guessing.
+10. Stop if the task requires broader access than allowed.
 
 ### 10. Expected Codex output
 
@@ -104,10 +107,12 @@ Return:
 3. Exact changes made
 4. Files inspected
 5. Commands run
-6. What was tested or checked
-7. Git status summary
-8. Risks
-9. Whether this is ready for ChatGPT QA
+6. Working tree status before work
+7. Working tree status after work
+8. What was tested or checked
+9. Git status summary
+10. Risks
+11. Whether this is ready for ChatGPT QA
 
 ### 11. QA package format
 
@@ -119,6 +124,10 @@ QA package:
 - Changed files:
 - Forbidden files touched:
 - Summary of changes:
+- Working tree before:
+- Working tree after:
+- Read-only tests changed no files:
+- Implementation/write tests changed only allowed files:
 - Test/check result:
 - Risk notes:
 - Commit message if approved:
@@ -143,16 +152,20 @@ Include exact test steps.
 
 For documentation/template changes:
 1. Run git status.
-2. Confirm only allowed files changed.
-3. Review markdown for formatting and duplication.
-4. Confirm no app code changed.
+2. Confirm working tree status before work and after work are both reported.
+3. Confirm only allowed files changed.
+4. Confirm read-only tests changed no files.
+5. Review markdown for formatting and duplication.
+6. Confirm no app code changed.
 
 For app/UI changes:
 1. Run git status.
-2. Confirm only allowed files changed.
-3. Run allowed build/check command if available.
-4. Push only after ChatGPT QA approval.
-5. Verify in Bolt after push.
+2. Confirm working tree status before work and after work are both reported.
+3. Confirm only allowed files changed.
+4. Confirm implementation/write tests changed only allowed files.
+5. Run allowed build/check command if available.
+6. Push only after ChatGPT QA approval.
+7. Verify in Bolt after push.
 
 ### 14. Stop conditions
 
@@ -161,6 +174,7 @@ Stop if:
 - Wrong repo.
 - Wrong branch or unclear branch.
 - Wrong remote.
+- Unexpected modified files are present before work starts and were not explicitly approved by ChatGPT.
 - Unexpected files are modified.
 - A forbidden file must be changed.
 - Secrets or .env access is needed.
@@ -188,5 +202,9 @@ Use one:
 - No package or dependency changes unless explicitly allowed.
 - No commit or push by Codex unless explicitly approved.
 - No Hermes/OpenClaw installation.
+- Report working tree status before and after work in every QA package.
+- Confirm read-only tests changed no files.
+- Confirm implementation/write tests changed only allowed files.
+- Stop if unexpected modified files are present before work starts unless ChatGPT explicitly approved them.
 - Keep the workflow aligned to ChatGPT -> Oskar -> Codex -> GitHub -> Bolt -> QA.
 - Keep the template practical and copy/paste-ready.
