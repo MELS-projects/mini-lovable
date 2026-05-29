@@ -24,6 +24,58 @@ Notes:
 
 ## Sprint history
 
+### Unchanged Working-Tree Field Template Update
+
+Status:
+Approved
+
+#### Summary
+
+The unchanged working-tree field update improved the Codex CLI QA handoff template for Kodmaskin Oskar.
+
+The template now includes an explicit yes/no field that makes it easier for ChatGPT QA to confirm whether the working tree remained unchanged after a sprint.
+
+This was a Kodmaskin workflow-template sprint, not Mini-Lovable UI work.
+
+#### Git history
+
+- Commit: 9bb5d96 Add unchanged working-tree field to QA handoff template
+
+#### Changed files
+
+- prompts/CODEX_CLI_QA_HANDOFF_TEMPLATE.md
+
+#### Template update
+
+The following field was added:
+
+Working tree remained unchanged: yes / no
+
+The field was added under:
+
+Working tree verification → After work
+
+#### Workflow result
+
+The QA handoff template now makes before/after working-tree review more explicit and easier to scan during ChatGPT QA.
+
+#### Safety checks
+
+- No app code was changed.
+- No docs were changed during implementation.
+- No package files were changed.
+- No other prompt files were changed.
+- No .env or secrets were accessed.
+- No Hermes/OpenClaw installation was performed.
+- No new version or baseline was created.
+- Mini-Lovable UI track remains paused.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+Next focus remains Kodmaskin workflow improvement, especially reducing ambiguity in Codex → ChatGPT QA handoffs.
+
 ### Codex CLI QA Handoff Template Read-Only Test
 
 Status:
