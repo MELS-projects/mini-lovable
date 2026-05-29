@@ -3230,6 +3230,32 @@ The generated app is stored in src/App.jsx.
             <div style={{ color: '#94a3b8', fontSize: '11px', lineHeight: 1.35, marginTop: '6px' }}>
               Tip: Start with a simple idea, like “a premium website for a business consultant”.
             </div>
+            <div
+              style={{
+                display: 'flex',
+                gap: '6px',
+                flexWrap: 'wrap',
+                marginTop: '7px'
+              }}
+            >
+              {['Premium consultant website', 'Local service business', 'Product landing page'].map((exampleIdea) => (
+                <span
+                  key={exampleIdea}
+                  style={{
+                    border: '1px solid #334155',
+                    borderRadius: '999px',
+                    padding: '4px 8px',
+                    color: '#cbd5e1',
+                    backgroundColor: '#111827',
+                    fontSize: '10px',
+                    fontWeight: 700,
+                    lineHeight: 1.2
+                  }}
+                >
+                  {exampleIdea}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
