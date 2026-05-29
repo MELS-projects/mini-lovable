@@ -309,3 +309,44 @@ This sprint continued the safe Kodmaskin Oskar workflow by using Mini-Lovable as
 
 Next planned step:
 Continue with the next small Kodmaskin-controlled Mini-Lovable product improvement sprint.
+
+### Add Inline Generation Recovery Path Sprint
+
+Status:
+Approved
+
+Summary:
+The Add inline generation recovery path sprint improved the generation/contact-form warning recovery flow.
+
+The previous alert-only warning path still made the app feel like a dead-end. This sprint added a clearer inline recovery/status path so the user can continue after the warning instead of feeling stuck.
+
+Git history:
+
+* Commit: 4e1bf2a Add inline generation recovery path
+
+Bolt test result:
+Bolt preview was verified.
+
+The Build / Improve Step flow generated a website successfully after the fix.
+
+The previous dead-end after the contact-form / generation warning appears to be resolved.
+
+Safety checks:
+
+* No roadmap CTA was reintroduced.
+* The text Build selected roadmap step was not reintroduced.
+* Contact-form validation was not intentionally bypassed.
+* Validation safety gates should remain intact.
+* No DeepSeek API configuration was changed.
+* No model/provider logic was changed.
+* No export, reviewer, or preview logic was intentionally changed.
+* No new version or baseline was created.
+
+QA result:
+ChatGPT QA result: APPROVED FOR DOCUMENTATION
+
+Notes:
+This sprint is a meaningful workflow improvement because it fixed the blocking user experience before attempting any new Planner to Build CTA or roadmap continuation feature.
+
+Next safe step:
+Continue with small, Bolt-testable Mini-Lovable improvements only after this recovery flow remains stable.
