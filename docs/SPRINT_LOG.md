@@ -237,6 +237,43 @@ Commit:
 Next planned step:
 Continue with the next small Kodmaskin-controlled Mini-Lovable product improvement sprint.
 
+### Selected Roadmap Step CTA Sprint
+
+Status:
+STOPPED AND REVERTED
+
+Summary:
+The Add selected roadmap step CTA sprint added a CTA after the roadmap output with the text: Build selected roadmap step.
+
+The sprint was implemented and pushed, but it did not pass QA after Bolt testing.
+
+Git history:
+- Implemented commit: 5b66f94 Add selected roadmap step CTA
+- Revert commit: 269fb09 Revert "Add selected roadmap step CTA"
+
+Bolt test result:
+Bolt preview confirmed that the CTA was visible and clickable.
+
+However, clicking the CTA caused the app to get stuck after a contact-form / generation warning modal.
+
+QA decision:
+ChatGPT QA decision: STOP
+
+The CTA must not be counted as an approved baseline.
+
+Current interpretation:
+The issue appears to be in the existing generation / contact-form validation flow, not necessarily in the CTA rendering itself.
+
+The CTA rendered correctly and could be clicked, but the continuation flow did not complete safely.
+
+Safety decision:
+The sprint was reverted.
+
+No new Mini-Lovable baseline should be created from this sprint.
+
+Next safe step:
+Run a read-only bug analysis sprint on the generation / contact-form warning flow before attempting another CTA, build-flow improvement, or Planner to Build enhancement.
+
 ### Output Expectation Note Sprint
 
 Status:
