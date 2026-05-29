@@ -24,6 +24,47 @@ Notes:
 
 ## Sprint history
 
+### Make Example Idea Chips Clickable Sprint
+
+Status:
+Approved
+
+Summary:
+The Make example idea chips clickable sprint improved the Mini-Lovable onboarding flow by making the existing example idea chips interactive.
+
+Clicking an example chip now fills the main prompt field with a starter idea, helping non-programmers begin faster without needing to write from scratch.
+
+Git history:
+
+* Commit: 728a12c Make example idea chips clickable
+
+Bolt test result:
+Bolt preview was verified.
+
+Clicking each example chip filled the prompt field correctly.
+
+Clicking a chip did not auto-start generation.
+
+The user can still edit the prompt manually after selecting a chip.
+
+Safety checks:
+
+* No generation was started automatically by chip clicks.
+* No DeepSeek API configuration was changed.
+* No model/provider logic was changed.
+* No new generation logic was added.
+* No roadmap, reviewer, export, preview, or validation logic was intentionally changed.
+* No new version or baseline was created.
+
+QA result:
+ChatGPT QA result: APPROVED FOR DOCUMENTATION
+
+Notes:
+This was the final Mini-Lovable UI sprint before returning focus to the Kodmaskin Oskar workflow.
+
+Next focus:
+Kodmaskin workflow, not additional Mini-Lovable UI polish.
+
 ### Codex CLI One-File Workspace-Write UI Test
 
 Status:
