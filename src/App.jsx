@@ -3261,9 +3261,24 @@ The generated app is stored in src/App.jsx.
                 marginTop: '7px'
               }}
             >
-              {['Premium consultant website', 'Local service business', 'Product landing page'].map((exampleIdea) => (
-                <span
-                  key={exampleIdea}
+              {[
+                {
+                  label: 'Premium consultant website',
+                  prompt: 'Create a premium website for an exclusive business consultant.'
+                },
+                {
+                  label: 'Local service business',
+                  prompt: 'Create a polished website for a local service business.'
+                },
+                {
+                  label: 'Product landing page',
+                  prompt: 'Create a modern landing page for a new product.'
+                }
+              ].map(({ label, prompt: chipPrompt }) => (
+                <button
+                  key={label}
+                  type="button"
+                  onClick={() => setPrompt(chipPrompt)}
                   style={{
                     border: '1px solid #334155',
                     borderRadius: '999px',
@@ -3272,11 +3287,13 @@ The generated app is stored in src/App.jsx.
                     backgroundColor: '#111827',
                     fontSize: '10px',
                     fontWeight: 700,
-                    lineHeight: 1.2
+                    lineHeight: 1.2,
+                    cursor: 'pointer',
+                    appearance: 'none'
                   }}
                 >
-                  {exampleIdea}
-                </span>
+                  {label}
+                </button>
               ))}
             </div>
           </div>
