@@ -1859,6 +1859,11 @@ Do not include code.`
     const stepToBuild = String(selectedRoadmapStep || '').trim();
     const currentRoadmap = String(roadmap || '').trim();
     const hasExistingApp = hasRealGeneratedApp(generatedCode);
+    const returnToRoadmapWithWarning = (statusMessage, alertMessage = statusMessage) => {
+      setStatus(statusMessage);
+      setActiveView('roadmap');
+      alert(alertMessage);
+    };
 
     if (!apiKey) {
       setStatus('Error: API key is required for selected step');
@@ -2022,9 +2027,10 @@ ${hasExistingApp
       const responseText = await response.text();
 
       if (!response.ok) {
-        setStatus(`Error: DeepSeek returned ${response.status}`);
-        setActiveView('roadmap');
-        alert(`DeepSeek returned error ${response.status}. Previous code was kept.`);
+        returnToRoadmapWithWarning(
+          `Build paused: DeepSeek returned ${response.status}. Previous code was kept. Review the warning and try Build / Improve Step again.`,
+          `DeepSeek returned error ${response.status}. Previous code was kept.\n\nBuild paused. Review the warning and try Build / Improve Step again.`
+        );
         return;
       }
 
@@ -2122,14 +2128,16 @@ ${hasExistingApp
             }
 
             const repairedFullProblemMessage = formatValidationProblems(repairedValidationProblems);
-            setStatus(repairedFullProblemMessage);
-            setActiveView('roadmap');
-            alert(`${repairedFullProblemMessage}\n\nContact form repair was attempted, but previous code was kept so the preview does not break.`);
+            returnToRoadmapWithWarning(
+              `${repairedFullProblemMessage} Build paused. Previous code was kept. Review the warning and try Build / Improve Step again.`,
+              `${repairedFullProblemMessage}\n\nContact form repair was attempted, but previous code was kept so the preview does not break.\n\nBuild paused. Review the warning and try Build / Improve Step again.`
+            );
             return;
           } catch (error) {
-            setStatus('Contact form repair failed');
-            setActiveView('roadmap');
-            alert(`Contact form repair failed: ${error.message}`);
+            returnToRoadmapWithWarning(
+              'Build paused: contact form repair failed. Previous code was kept. Review the warning and try Build / Improve Step again.',
+              `Contact form repair failed: ${error.message}\n\nBuild paused. Previous code was kept. Review the warning and try Build / Improve Step again.`
+            );
             return;
           }
         }
@@ -2138,18 +2146,14 @@ ${hasExistingApp
           if (codeProblem && codeProblem.includes('missing export default function App')) {
             const missingExportMessage =
               'DeepSeek returned text or partial code instead of a complete App.jsx. You are still on Roadmap. Try Build / Improve Step again, or use Generate / Update for the first version.';
-            setStatus(missingExportMessage);
-            setActiveView('roadmap');
-            alert(missingExportMessage);
+            returnToRoadmapWithWarning(missingExportMessage, missingExportMessage);
             return;
           }
 
           if (visualProblem && visualProblem.includes('too many emoji icons')) {
             const emojiMessage =
               'DeepSeek returned a design with too many emojis for Premium/Luxury mode. Try Build / Improve Step again, or switch Quality level to Standard.';
-            setStatus(emojiMessage);
-            setActiveView('roadmap');
-            alert(emojiMessage);
+            returnToRoadmapWithWarning(emojiMessage, emojiMessage);
             return;
           }
 
@@ -2160,32 +2164,30 @@ ${hasExistingApp
           ) {
             const imageProblemMessage =
               'DeepSeek returned a design without a strong image-led/editorial premium section. Try Build / Improve Step again, or switch Quality level to Standard.';
-            setStatus(imageProblemMessage);
-            setActiveView('roadmap');
-            alert(imageProblemMessage);
+            returnToRoadmapWithWarning(imageProblemMessage, imageProblemMessage);
             return;
           }
 
           if (depthProblem && depthProblem.includes('This became a one-page site. Multi-page requires activePage and setActivePage.')) {
             const multiPageModeMessage =
               'DeepSeek returned a one-page design even though multi-page mode is selected. You are still on Roadmap. Try Build / Improve Step again, or switch Website depth to Long landing page.';
-            setStatus(multiPageModeMessage);
-            setActiveView('roadmap');
-            alert(multiPageModeMessage);
+            returnToRoadmapWithWarning(multiPageModeMessage, multiPageModeMessage);
             return;
           }
 
           if (validationProblems.length === 1 && contactConfirmationProblem) {
-            setStatus(contactConfirmationProblem);
-            setActiveView('roadmap');
-            alert(`${contactConfirmationProblem} Previous code was kept so the preview does not break.`);
+            returnToRoadmapWithWarning(
+              `${contactConfirmationProblem} Build paused. Previous code was kept. Review the warning and try Build / Improve Step again.`,
+              `${contactConfirmationProblem} Previous code was kept so the preview does not break.\n\nBuild paused. Review the warning and try Build / Improve Step again.`
+            );
             return;
           }
 
           const problem = fullProblemMessage;
-          setStatus(problem);
-          setActiveView('roadmap');
-          alert(`${problem} Previous code was kept so the preview does not break.`);
+          returnToRoadmapWithWarning(
+            `${problem} Build paused. Previous code was kept. Review the warning and try Build / Improve Step again.`,
+            `${problem} Previous code was kept so the preview does not break.\n\nBuild paused. Review the warning and try Build / Improve Step again.`
+          );
           return;
         }
 
@@ -2207,14 +2209,16 @@ ${hasExistingApp
           }
         ]);
       } else {
-        setStatus('Error: Invalid DeepSeek response');
-        setActiveView('roadmap');
-        alert('DeepSeek response did not contain valid code. Previous code was kept.');
+        returnToRoadmapWithWarning(
+          'Build paused: DeepSeek response did not contain valid code. Previous code was kept. Review the warning and try Build / Improve Step again.',
+          'DeepSeek response did not contain valid code. Previous code was kept.\n\nBuild paused. Review the warning and try Build / Improve Step again.'
+        );
       }
     } catch (error) {
-      setStatus('Error: Network or app problem');
-      setActiveView('roadmap');
-      alert(`Network or app error: ${error.message}`);
+      returnToRoadmapWithWarning(
+        'Build paused: network or app problem. Review the warning and try Build / Improve Step again.',
+        `Network or app error: ${error.message}\n\nBuild paused. Review the warning and try Build / Improve Step again.`
+      );
     } finally {
       setIsBuildingStep(false);
     }
