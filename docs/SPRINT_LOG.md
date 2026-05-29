@@ -24,6 +24,46 @@ Notes:
 
 ## Sprint history
 
+### Codex CLI Handoff-Only Test
+
+Status:
+Approved
+
+Summary:
+The Codex CLI handoff-only test was completed successfully for Kodmaskin Oskar using the Mini-Lovable repository.
+
+Codex CLI prepared a next-sprint handoff package without editing files. This confirms that Codex CLI can support workflow coordination tasks before being granted workspace-write permissions.
+
+This was a Kodmaskin / Codex CLI workflow checkpoint, not a Mini-Lovable product change.
+
+Test environment:
+- Model: gpt-5.4-mini medium
+- Sandbox: read-only
+- Approval mode: untrusted
+- Local repository path: C:\Users\ThomasOlsson\Documents\Projects\mini-lovable
+- Branch: main
+- Remote: https://github.com/MELS-projects/mini-lovable.git
+
+Test result:
+Codex CLI prepared a handoff-only sprint package and returned:
+READY FOR CHATGPT QA
+
+Safety checks:
+- No files were changed.
+- No app code was changed.
+- No package files were changed.
+- No prompt files were changed.
+- No .env or secrets were accessed.
+- No commit or push was made by Codex.
+- No new version or baseline was created.
+- Hermes/OpenClaw remains WAIT.
+
+Workflow significance:
+This confirms that Codex CLI can help reduce manual coordination by preparing sprint handoff material while staying read-only.
+
+Next safe step:
+Continue with controlled Codex CLI read-only or documentation-only tests before considering workspace-write access.
+
 ### Codex CLI Read-Only Repo Context Test
 
 Status:
