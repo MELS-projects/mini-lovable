@@ -24,6 +24,47 @@ Notes:
 
 ## Sprint history
 
+### Codex CLI Handoff Pack Template Sprint
+
+Status:
+Approved
+
+#### Summary
+
+The Codex CLI handoff pack template sprint created a reusable workflow template for Kodmaskin Oskar.
+
+The template standardizes how Oskar/Codex prepares sprint handoffs, QA packages, risk summaries, allowed files, forbidden files, stop conditions, test plans, and suggested commit messages.
+
+This was a Kodmaskin workflow sprint, not a Mini-Lovable UI or product change.
+
+#### Git history
+
+- Commit: e4b2b65 Create Codex CLI handoff pack template
+
+#### Changed files
+
+- prompts/CODEX_CLI_HANDOFF_PACK_TEMPLATE.md
+
+#### Safety checks
+
+- No app code was changed.
+- No docs were changed during implementation.
+- No package files were changed.
+- No .env or secrets were accessed.
+- No Hermes/OpenClaw installation was performed.
+- No new version or baseline was created.
+- Mini-Lovable UI track remains paused.
+
+#### Workflow result
+
+The new template supports the ChatGPT → Oskar → Codex → GitHub → Bolt → QA workflow by making future handoffs more consistent and easier to review.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+Next focus remains Kodmaskin workflow improvement, not additional Mini-Lovable UI polish.
+
 ### Make Example Idea Chips Clickable Sprint
 
 Status:
