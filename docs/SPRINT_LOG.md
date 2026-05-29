@@ -236,3 +236,39 @@ Commit:
 
 Next planned step:
 Continue with the next small Kodmaskin-controlled Mini-Lovable product improvement sprint.
+
+### Output Expectation Note Sprint
+
+Status:
+Approved
+
+Summary:
+The Output Expectation Note sprint added a small visual helper note above the main idea/prompt input.
+
+The note helps non-programmers understand what Mini-Lovable will generate before they start.
+
+Implemented UI text:
+Mini-Lovable will turn your idea into a first premium website draft you can preview and improve.
+
+Changed file:
+- src/App.jsx
+
+Confirmed:
+- The change was implemented in src/App.jsx.
+- The commit was pushed to GitHub:
+  89929bd Add output expectation note
+- GitHub remains the source of truth.
+- Bolt preview was verified.
+- The note is visual-only.
+- No generation, DeepSeek, roadmap, reviewer, export, preview, or validator logic was changed.
+- No Hermes/OpenClaw installation was performed.
+- No new version number was created.
+
+QA result:
+Approved after GitHub push and Bolt preview verification.
+
+Notes:
+This sprint continued the safe Kodmaskin Oskar workflow by using Mini-Lovable as the first test project. The change was intentionally small, low-risk, and limited to a visual onboarding improvement.
+
+Next planned step:
+Continue with the next small Kodmaskin-controlled Mini-Lovable product improvement sprint.
