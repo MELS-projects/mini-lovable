@@ -24,6 +24,39 @@ Notes:
 
 ## Sprint history
 
+### Codex CLI Documentation-Only Write Test
+
+Status:
+Approved for ChatGPT QA
+
+Summary:
+The Codex CLI documentation-only write test was completed as the next controlled access step for Kodmaskin Oskar.
+
+This test follows the approved progression:
+- Read-only repo context test
+- Handoff-only test
+- Documentation-only write test
+
+This was a workflow checkpoint, not a Mini-Lovable product change.
+
+Allowed scope:
+- docs/SPRINT_LOG.md only
+
+Safety checks:
+- No app code should be changed.
+- No package files should be changed.
+- No prompt files should be changed.
+- No .env or secrets should be accessed.
+- No commit or push should be made by Codex.
+- No new version or baseline should be created.
+- Hermes/OpenClaw remains WAIT.
+
+Workflow significance:
+This confirms that Codex CLI can perform a narrow documentation-only write task after passing read-only and handoff-only tests.
+
+Next safe step:
+After ChatGPT QA and human push, continue with controlled Codex CLI documentation-only or one-file low-risk UI tests before considering broader workspace-write permissions.
+
 ### Codex CLI Handoff-Only Test
 
 Status:
