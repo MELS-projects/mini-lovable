@@ -24,6 +24,45 @@ Notes:
 
 ## Sprint history
 
+### Codex CLI One-File Workspace-Write UI Test
+
+Status:
+Approved
+
+Summary:
+The Codex CLI one-file workspace-write UI test was completed successfully.
+
+Codex CLI changed only src/App.jsx and added a small owner-facing UI note near the existing baseline/status area.
+
+Exact UI text added:
+Codex CLI workspace-write verified
+
+Git history:
+- Commit: b2a527b Add Codex CLI workspace-write status note
+
+Bolt test result:
+Bolt was re-imported from GitHub and preview verified that the text is visible.
+
+This was a Kodmaskin / Codex CLI workflow checkpoint, not a Mini-Lovable product version change.
+
+Safety checks:
+- Only src/App.jsx was changed in the implementation sprint.
+- No app logic was changed.
+- No generation logic was changed.
+- No DeepSeek logic was changed.
+- No roadmap, reviewer, export, preview, or validator behavior was changed.
+- No package files were changed.
+- No docs or prompts were changed during the implementation sprint.
+- No .env or secrets were accessed.
+- No new version or baseline was created.
+- Hermes/OpenClaw remains WAIT.
+
+Workflow significance:
+This confirms that Codex CLI can perform a narrow one-file workspace-write task after passing read-only, handoff-only, and documentation-only write tests.
+
+Next safe step:
+Continue with small controlled Codex CLI tasks only. Do not expand to broad workspace-write, commit automation, PR automation, or Hermes/OpenClaw installation yet.
+
 ### Codex CLI Documentation-Only Write Test
 
 Status:
