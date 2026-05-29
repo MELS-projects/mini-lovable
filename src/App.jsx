@@ -3737,35 +3737,6 @@ The generated app is stored in src/App.jsx.
               >
                 {roadmap}
               </pre>
-
-              <div style={{ marginTop: '14px', display: 'flex', justifyContent: 'flex-end' }}>
-                <button
-                  onClick={handleBuildSelectedStep}
-                  disabled={isBuildingStep || isPlanning || !hasUsableRoadmap}
-                  style={{
-                    backgroundColor:
-                      isBuildingStep || isPlanning || !hasUsableRoadmap ? '#4b5563' : '#16a34a',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '7px',
-                    padding: '10px 14px',
-                    minHeight: '36px',
-                    fontSize: '12px',
-                    fontWeight: 700,
-                    cursor: isBuildingStep || isPlanning || !hasUsableRoadmap ? 'not-allowed' : 'pointer',
-                    opacity: isBuildingStep || isPlanning || !hasUsableRoadmap ? 0.8 : 1,
-                    whiteSpace: 'nowrap'
-                  }}
-                >
-                  {isBuildingStep
-                    ? 'Building...'
-                    : isPlanning
-                      ? 'Wait for roadmap...'
-                      : !hasUsableRoadmap
-                        ? 'Create roadmap first'
-                        : 'Build selected roadmap step'}
-                </button>
-              </div>
             </div>
           </div>
         ) : activeView === 'review' ? (
