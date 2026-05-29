@@ -34,6 +34,7 @@ export default function App() {
   const [isReviewing, setIsReviewing] = useState(false);
   const standardTestPrompt = 'Create a premium website for an exclusive business development consultant';
   const [isGenerating, setIsGenerating] = useState(false);
+  const [buildRecoveryMessage, setBuildRecoveryMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const [copied, setCopied] = useState(false);
   const [suggestedPromptCopied, setSuggestedPromptCopied] = useState(false);
@@ -1859,8 +1860,13 @@ Do not include code.`
     const stepToBuild = String(selectedRoadmapStep || '').trim();
     const currentRoadmap = String(roadmap || '').trim();
     const hasExistingApp = hasRealGeneratedApp(generatedCode);
-    const returnToRoadmapWithWarning = (statusMessage, alertMessage = statusMessage) => {
+    const returnToRoadmapWithWarning = (
+      statusMessage,
+      alertMessage = statusMessage,
+      recoveryMessage = 'Build paused. Review the warning, fix the generated code if needed, then try Build / Improve Step again.'
+    ) => {
       setStatus(statusMessage);
+      setBuildRecoveryMessage(recoveryMessage);
       setActiveView('roadmap');
       alert(alertMessage);
     };
@@ -1884,6 +1890,7 @@ Do not include code.`
     }
 
     setIsBuildingStep(true);
+    setBuildRecoveryMessage('');
     setStatus(`Building step ${stepToBuild}... Stay on Roadmap while Mini-Lovable works.`);
     setActiveView('roadmap');
 
@@ -2065,6 +2072,7 @@ ${hasExistingApp
           saveCurrentVersion();
 
           setGeneratedCode(aiResponseCode);
+          setBuildRecoveryMessage('');
           setStatus(`Built first version from step ${stepToBuild}. Visual quality should be improved next.`);
           setActiveView('preview');
 
@@ -2109,6 +2117,7 @@ ${hasExistingApp
               saveCurrentVersion();
 
               setGeneratedCode(repairedCode);
+              setBuildRecoveryMessage('');
               setStatus(`Built/improved step ${stepToBuild} after contact form repair. Check Preview.`);
               setActiveView('preview');
 
@@ -2130,13 +2139,15 @@ ${hasExistingApp
             const repairedFullProblemMessage = formatValidationProblems(repairedValidationProblems);
             returnToRoadmapWithWarning(
               `${repairedFullProblemMessage} Build paused. Previous code was kept. Review the warning and try Build / Improve Step again.`,
-              `${repairedFullProblemMessage}\n\nContact form repair was attempted, but previous code was kept so the preview does not break.\n\nBuild paused. Review the warning and try Build / Improve Step again.`
+              `${repairedFullProblemMessage}\n\nContact form repair was attempted, but previous code was kept so the preview does not break.\n\nBuild paused. Review the warning and try Build / Improve Step again.`,
+              'The contact form needs a manual fix before generation can continue. Review the warning, adjust the form, then try Build / Improve Step again.'
             );
             return;
           } catch (error) {
             returnToRoadmapWithWarning(
               'Build paused: contact form repair failed. Previous code was kept. Review the warning and try Build / Improve Step again.',
-              `Contact form repair failed: ${error.message}\n\nBuild paused. Previous code was kept. Review the warning and try Build / Improve Step again.`
+              `Contact form repair failed: ${error.message}\n\nBuild paused. Previous code was kept. Review the warning and try Build / Improve Step again.`,
+              'The contact form needs a manual fix before generation can continue. Review the warning, adjust the form, then try Build / Improve Step again.'
             );
             return;
           }
@@ -2178,7 +2189,8 @@ ${hasExistingApp
           if (validationProblems.length === 1 && contactConfirmationProblem) {
             returnToRoadmapWithWarning(
               `${contactConfirmationProblem} Build paused. Previous code was kept. Review the warning and try Build / Improve Step again.`,
-              `${contactConfirmationProblem} Previous code was kept so the preview does not break.\n\nBuild paused. Review the warning and try Build / Improve Step again.`
+              `${contactConfirmationProblem} Previous code was kept so the preview does not break.\n\nBuild paused. Review the warning and try Build / Improve Step again.`,
+              'The contact form needs a manual fix before generation can continue. Review the warning, adjust the form, then try Build / Improve Step again.'
             );
             return;
           }
@@ -2194,6 +2206,7 @@ ${hasExistingApp
         saveCurrentVersion();
 
         setGeneratedCode(aiResponseCode);
+        setBuildRecoveryMessage('');
         setStatus(`Built/improved step ${stepToBuild}. Check Preview.`);
         setActiveView('preview');
 
@@ -3728,6 +3741,28 @@ The generated app is stored in src/App.jsx.
                         : 'Build / Improve Step'}
                 </button>
               </div>
+
+              {buildRecoveryMessage ? (
+                <div
+                  role="status"
+                  aria-live="polite"
+                  style={{
+                    marginTop: '12px',
+                    border: '1px solid #7c3aed',
+                    backgroundColor: '#141022',
+                    color: '#e9d5ff',
+                    borderRadius: '10px',
+                    padding: '12px 14px',
+                    fontSize: '12px',
+                    lineHeight: 1.45
+                  }}
+                >
+                  <div style={{ fontWeight: 700, marginBottom: '4px', color: '#f5d0fe' }}>
+                    Build paused
+                  </div>
+                  <div>{buildRecoveryMessage}</div>
+                </div>
+              ) : null}
 
               <pre
                 style={{
