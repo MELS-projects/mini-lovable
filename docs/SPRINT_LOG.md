@@ -203,3 +203,36 @@ Read-only access -> Documentation write access -> Limited code write access -> C
 
 Next recommended action:
 Continue with small documentation or handoff-only sprints before granting any broader agent permissions.
+
+### Add example idea chips
+
+Status:
+Approved
+
+Summary:
+Three small visual example idea chips were added under the main prompt helper note to help non-programmers understand what kind of prompt they can write.
+
+Changed file:
+- src/App.jsx
+
+Exact UI text added:
+- Premium consultant website
+- Local service business
+- Product landing page
+
+Confirmed:
+- Codex worked in the correct repository.
+- Only src/App.jsx was changed during the implementation sprint.
+- The chips are visual-only span elements.
+- No click behavior was added.
+- ChatGPT QA approved the change.
+- Commit was pushed to GitHub.
+- Bolt preview showed the chips under the prompt helper note.
+- No generation, DeepSeek, roadmap, reviewer, export, preview, or validator logic was changed.
+- No new version number was created.
+
+Commit:
+108983b Add example idea chips
+
+Next planned step:
+Continue with the next small Kodmaskin-controlled Mini-Lovable product improvement sprint.
