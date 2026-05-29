@@ -164,3 +164,42 @@ Commit:
 
 Next planned step:
 Continue with the next small Kodmaskin-controlled Mini-Lovable product improvement sprint.
+
+### Kodmaskin Learning Checkpoint - 2026-05-28
+
+Status:
+Documented learning checkpoint
+
+Summary:
+Kodmaskin Oskar has completed another safe learning step through the Mini-Lovable workflow.
+
+Mini-Lovable remains the first validation project and training ground. Kodmaskin Oskar remains the main project. The goal is still to build a reusable coding machine that can later support SaaS products, prototypes, automation tools, websites, webshops, and fullstack apps.
+
+Confirmed learnings:
+- Codex read-only repo context test passed.
+- Codex can work in the correct Mini-Lovable repository:
+  C:\Users\ThomasOlsson\Documents\Projects\mini-lovable
+- GitHub remains the source of truth.
+- Bolt preview can be unreliable, but the right-side Bolt project currently works.
+- The starter prompt helper note sprint was approved, pushed, previewed, and documented.
+- Git identity was fixed to the GitHub no-reply email:
+  288360395+MELS-projects@users.noreply.github.com
+- Hermes/OpenClaw remains WAIT.
+- Codex CLI / Codex Cloud is the safer first orchestration path.
+- Mini-Lovable is the first test project, not the final goal.
+- Kodmaskin Oskar is the main project.
+
+Current workflow state:
+The current proven workflow remains:
+ChatGPT -> Codex -> GitHub -> Bolt -> ChatGPT QA
+
+PowerShell is still acceptable as a temporary manual Git bridge when needed.
+
+Safety position:
+No Hermes/OpenClaw installation has been approved.
+
+The next autonomy step should continue to follow this order:
+Read-only access -> Documentation write access -> Limited code write access -> Commit access -> Pull request access
+
+Next recommended action:
+Continue with small documentation or handoff-only sprints before granting any broader agent permissions.
