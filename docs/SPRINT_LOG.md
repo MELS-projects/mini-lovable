@@ -24,6 +24,62 @@ Notes:
 
 ## Sprint history
 
+### Codex CLI QA Handoff Template Sprint
+
+Status:
+Approved
+
+#### Summary
+
+The Codex CLI QA handoff template sprint created a reusable template for returning Codex output to ChatGPT QA.
+
+The template standardizes how Codex reports completed work, changed files, files read, commands run, before/after working-tree status, test/check results, risks, stop conditions, and suggested commit messages.
+
+This was a Kodmaskin workflow-template sprint, not Mini-Lovable UI work.
+
+#### Git history
+
+* Commit: b2e7ff2 Create Codex CLI QA handoff template
+
+#### Changed files
+
+* prompts/CODEX_CLI_QA_HANDOFF_TEMPLATE.md
+
+#### Workflow result
+
+The new QA handoff template makes Codex output easier for ChatGPT to review.
+
+The template includes:
+
+* Before/after working-tree verification.
+* Files read.
+* Commands run.
+* Changed files.
+* Forbidden files touched.
+* Test/check results.
+* Risk summary.
+* Stop conditions.
+* Suggested commit message if approved.
+* Final Codex verdict.
+
+#### Safety checks
+
+* ChatGPT remains the QA gate.
+* Codex must not approve its own work.
+* No app code was changed.
+* No docs were changed during implementation.
+* No package files were changed.
+* No .env or secrets were accessed.
+* No Hermes/OpenClaw installation was performed.
+* No new version or baseline was created.
+* Mini-Lovable UI track remains paused.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+Next focus remains Kodmaskin workflow improvement, especially reducing manual copy/paste between Oskar, Codex, and ChatGPT QA.
+
 ### Codex CLI Handoff Pack Read-Only Test
 
 Status:
