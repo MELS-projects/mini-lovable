@@ -3214,6 +3214,9 @@ The generated app is stored in src/App.jsx.
             <label htmlFor="prompt">
               Prompt ({chatHistory.filter((message) => message.role === 'user').length} changes in memory)
             </label>
+            <div style={{ color: '#cbd5e1', fontSize: '11px', lineHeight: 1.35, marginBottom: '6px' }}>
+              Mini-Lovable will turn your idea into a first premium website draft you can preview and improve.
+            </div>
             <textarea
               id="prompt"
               className="textarea-field"
