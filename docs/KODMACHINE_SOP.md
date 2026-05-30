@@ -255,6 +255,81 @@ Correct local path:
 
 C:\Users\ThomasOlsson\Documents\Projects\mini-lovable
 
+### Roadmap Dashboard Update Rule
+
+The Kodmaskin roadmap dashboard is a GitHub Pages based status view.
+
+Live dashboard URL:
+https://mels-projects.github.io/mini-lovable/dashboard/
+
+Dashboard files:
+
+- dashboard/index.html
+- dashboard/roadmap-status.json
+
+GitHub remains the source of truth. The dashboard is a visual status layer only.
+
+The dashboard is not automatically updated from commits yet. After relevant approved Kodmaskin or Mini-Lovable sprint changes, ChatGPT must decide whether dashboard/roadmap-status.json should be updated.
+
+Dashboard updates should usually be handled as a separate sprint from app/code changes.
+
+#### Responsibility
+
+ChatGPT is responsible for deciding whether a dashboard update is needed after relevant approved sprint changes.
+
+Codex/Oskar may update dashboard/roadmap-status.json only after ChatGPT approves a specific dashboard update sprint.
+
+ChatGPT QA must review the dashboard JSON change before commit/push.
+
+Thomas performs commit/push through PowerShell/Git unless the workflow changes later.
+
+After push, GitHub Pages updates the live dashboard.
+
+#### When dashboard update is needed
+
+Consider updating dashboard/roadmap-status.json when a sprint affects:
+
+- roadmap position
+- current phase
+- sprint status
+- next sprint
+- major workflow status
+- Hermes/OpenClaw status
+- Codex/Oskar workflow maturity
+- dashboard-relevant milestones
+
+#### When dashboard update should be skipped
+
+Skip dashboard updates when a sprint does not affect:
+
+- roadmap position
+- phase
+- sprint status
+- next sprint
+- major workflow status
+
+Small documentation-only entries, typo fixes, minor notes, and implementation details should not automatically trigger a dashboard update.
+
+#### Dashboard update workflow
+
+1. ChatGPT decides whether a dashboard update is needed.
+2. If needed, ChatGPT creates a narrow dashboard update sprint.
+3. Allowed file should normally be:
+   - dashboard/roadmap-status.json
+4. Codex/Oskar updates only the approved dashboard file.
+5. ChatGPT QA reviews the JSON change.
+6. Thomas commits and pushes through PowerShell/Git after approval.
+7. GitHub Pages updates the live dashboard after push.
+8. If the dashboard view needs layout changes, that should be a separate sprint for dashboard/index.html.
+
+#### Safety rules
+
+- Do not update dashboard files inside unrelated app/code sprints unless explicitly approved.
+- Do not treat the dashboard as source of truth.
+- Do not use GitHub API yet.
+- Do not add backend, database, dependencies, or automation without a separate approved sprint.
+- Do not create a new product version or baseline from a dashboard-only update.
+
 ## 12. Bolt rules
 
 Bolt is used for preview and visual testing.
