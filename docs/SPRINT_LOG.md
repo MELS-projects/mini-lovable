@@ -24,6 +24,86 @@ Notes:
 
 ## Sprint history
 
+### Reviewer/Quality-Score Clarity Sprint
+
+Status:
+STOPPED AND REVERTED
+
+#### Summary
+
+The reviewer/quality-score clarity sprint was stopped and reverted after Bolt-preview testing showed that the result was not acceptable.
+
+The sprint attempted to improve reviewer and quality-score clarity in the Mini-Lovable app, but Bolt testing showed a critical generation regression before the reviewer/quality-score flow could be meaningfully tested.
+
+This was a Mini-Lovable implementation sprint that was reverted after QA.
+
+#### Git history
+
+* Implementation commit: 4dd2422 Improve reviewer quality score clarity
+* Revert commit: d650122 Revert "Improve reviewer quality score clarity"
+
+#### Changed files
+
+* src/App.jsx
+
+#### Bolt test result
+
+Bolt-preview/test did not approve the sprint.
+
+Critical observed issue:
+
+* App could not generate a website at all during Bolt test.
+
+Additional observed issues:
+
+* Generation was blocked by rejection/contact-form/design-safety behavior.
+* Reviewer/quality-score test could not be meaningfully completed.
+* Reviewer guide visibility was secondary because generation itself was broken.
+
+#### QA decision
+
+STOP / REVERT
+
+The sprint was reverted.
+
+#### Current restored state
+
+* Revert was completed and pushed.
+* Working tree returned clean.
+* Safe state was restored.
+* No broken reviewer/quality-score clarity implementation remains approved.
+
+#### Lesson
+
+Next reviewer/quality-score work should not restart as a medium implementation sprint immediately.
+
+A safer next step is one of:
+
+* stabilize or verify the generation/recovery baseline first, or
+* run a read-only/debugging sprint for reviewer/quality-score flow before proposing another implementation.
+
+#### Safety checks
+
+* No dashboard files were changed.
+* No package files were changed.
+* No prompt files were changed.
+* No .env or secrets were accessed.
+* No Hermes/OpenClaw installation was performed.
+* No VM setup was performed.
+* Export/copy/save track remains paused.
+* Dashboard UI track remains paused.
+* Roadmap estimation JSON-model remains accepted.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+VM setup remains WAIT.
+
+GitHub remains source of truth.
+
+ChatGPT remains project lead and QA gate.
+
 ### Export/Copy/Save Read-Only Debugging Sprint
 
 Status:
