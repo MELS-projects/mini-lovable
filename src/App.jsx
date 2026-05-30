@@ -175,11 +175,11 @@ export default function App() {
       Standard:
         'Create a clean, practical, modern result. Keep it simple, usable, responsive, and visually pleasant without overcomplicating the layout.',
       Premium:
-        'Create a premium result with a strong hero, realistic imagery or image-like panels, refined typography, confident whitespace, clear CTAs, trust elements, and a polished agency-level visual system.',
+        'Create a premium result with a strong hero, at least one real public image URL preferably from Unsplash, realistic imagery or image-like panels, refined typography, confident whitespace, clear CTAs, trust elements, validator-detectable image code such as img, backgroundImage, image, photo, visual, figure, or editorial, and a polished agency-level visual system.',
       Luxury:
-        'Create a luxury editorial result with cinematic composition, large image-led sections, refined typography, asymmetry, restrained color, strong brand story, premium whitespace, fewer but stronger sections, curated image choices, and an exclusive high-end feeling.',
+        'Create a luxury editorial result with cinematic composition, at least one real public image URL preferably from Unsplash, large image-led sections, refined typography, asymmetry, restrained color, strong brand story, premium whitespace, fewer but stronger sections, curated image choices, validator-detectable image code such as img, backgroundImage, image, photo, visual, figure, or editorial, and an exclusive high-end feeling.',
       Enterprise:
-        'Create an enterprise-grade premium result with executive-level credibility, strong information hierarchy, mature visual language, context-correct imagery, trust elements, scalable business structure, polished dashboards or sections where relevant, and serious professional design.'
+        'Create an enterprise-grade premium result with executive-level credibility, strong information hierarchy, mature visual language, context-correct imagery, at least one real public image URL preferably from Unsplash, trust elements, scalable business structure, polished dashboards or sections where relevant, validator-detectable image code such as img, backgroundImage, image, photo, visual, figure, or editorial, and serious professional design.'
     };
 
     return instructions[qualityLevel] || instructions.Premium;
@@ -293,6 +293,7 @@ Do not print this checklist.`;
 - Use inline styles only.
 - Do not use external libraries.
 - For Premium, Luxury, and Enterprise landing pages, include realistic image-led or editorial visual sections unless the user asks for no images.
+- For Premium, Luxury, and Enterprise outputs, include at least one real public image URL, preferably a stable Unsplash URL, plus validator-detectable image-related code such as img, backgroundImage, image, photo, visual, figure, or editorial.
 - Do not use emoji icons as the main visual language for Premium, Luxury, or Enterprise.
 - Avoid lorem ipsum, coming soon, under construction, and empty placeholder pages.
 - If creating a consultant website, make it feel like a high-end advisory brand.
@@ -311,6 +312,7 @@ Improve internally if:
 - The first screen is only a plain gradient, centered text, and buttons.
 - The hero is mostly empty vertical space.
 - The page lacks a strong image-led editorial section.
+- The page lacks a real public image URL or validator-detectable image-related code.
 - The page lacks proof.
 - The page feels like a basic three-column template.
 - The page uses emoji icons as the main design system.
@@ -530,7 +532,7 @@ const handleContactSubmit = (event) => {
     if (repeatedGridSignals > 4 && selectedQuality === 'luxury') score -= 1;
 
     if (imageUrlMatches.length < 1) {
-      return 'Generated design was rejected: Premium/Luxury/Enterprise pages need at least one realistic image-led or editorial section.';
+      return 'Generated design was rejected: Premium/Luxury/Enterprise pages need at least one real public image URL and a realistic image-led or editorial section with image-related code such as img, backgroundImage, photo, visual, figure, or editorial.';
     }
 
     if (score < 7) {
@@ -1693,7 +1695,7 @@ For Premium, Luxury, and Enterprise outputs, never return a design below the sav
             visualProblem.includes('realistic image-led or editorial section')
           ) {
             const imageProblemMessage =
-              'DeepSeek returned a design without a strong image-led/editorial premium section. Try Build Selected Step again, or switch Quality level to Standard.';
+              'DeepSeek returned a design without a strong image-led/editorial premium section. Add one real public image URL (preferably Unsplash) and image-related code such as img, backgroundImage, photo, visual, figure, or editorial, then try Build Selected Step again or switch Quality level to Standard.';
             setStatus(imageProblemMessage);
             setActiveView('roadmap');
             alert(imageProblemMessage);
@@ -2174,7 +2176,7 @@ ${hasExistingApp
             visualProblem.includes('realistic image-led or editorial section')
           ) {
             const imageProblemMessage =
-              'DeepSeek returned a design without a strong image-led/editorial premium section. Try Build / Improve Step again, or switch Quality level to Standard.';
+              'DeepSeek returned a design without a strong image-led/editorial premium section. Add one real public image URL (preferably Unsplash) and image-related code such as img, backgroundImage, photo, visual, figure, or editorial, then try Build / Improve Step again or switch Quality level to Standard.';
             returnToRoadmapWithWarning(imageProblemMessage, imageProblemMessage);
             return;
           }
