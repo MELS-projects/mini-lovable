@@ -24,6 +24,104 @@ Notes:
 
 ## Sprint history
 
+### Generation/Recovery Baseline Read-Only Debugging Sprint
+
+Status:
+Approved
+
+#### Summary
+
+The generation/recovery baseline read-only debugging sprint was completed and approved.
+
+The sprint mapped the current generation/recovery flow and confirmed that the main blocker is the generation/recovery baseline, not reviewer, export/copy/save, or dashboard UI work.
+
+This was a read-only debugging sprint. No files were changed.
+
+#### Debugging result
+
+The read-only check confirmed:
+
+* Generation handler flow was mapped.
+* DeepSeek/API path was mapped at code level only.
+* No .env files, secrets, or API keys were accessed.
+* Rejection/design-safety checks were mapped.
+* Contact-form safety checks were mapped.
+* Recovery path was mapped.
+* generatedCode update timing was mapped.
+* previewHtml update timing was mapped.
+* Recurring test prompt was assessed.
+* No safety bypass was recommended.
+
+#### Key finding
+
+The main blocker is the generation/recovery baseline.
+
+Reviewer, export/copy/save, and dashboard UI work are downstream features and should remain paused until generation/recovery is stable enough to test reliably.
+
+#### Likely blocking cause
+
+The likely blocking cause is safety-check-related / generated-output-related.
+
+The main pressure points appear to be:
+
+* contact-form copy
+* premium/design validators
+* generated output that triggers safety or quality gates
+
+The recurring Swedish test prompt is probably not the root cause.
+
+#### State update behavior
+
+Safety checks run before generated output is committed.
+
+Failed safety checks can preserve prior code or leave the preview empty/not usable depending on the failure path.
+
+This explains why later feature testing can become unreliable when generation/recovery is unstable.
+
+#### Decision
+
+Implementation should remain paused.
+
+Do not restart reviewer, export/copy/save, dashboard UI, or other downstream implementation work until the generation/recovery baseline has been tested and stabilized.
+
+#### Recommended next action
+
+Plan a controlled Bolt generation baseline test procedure.
+
+Bolt should be used as a controlled test engine right now, not as a feature builder.
+
+The next test should focus on whether the app can reliably generate a website from the recurring baseline prompt without triggering avoidable rejection/contact-form/design-safety failures.
+
+#### Paused tracks
+
+* Export/copy/save track remains paused.
+* Dashboard UI track remains paused.
+* Reviewer/quality-score implementation track remains paused.
+
+#### Safety checks
+
+* No files were changed during the read-only debugging sprint.
+* No app code was changed.
+* No dashboard files were changed.
+* No package files were changed.
+* No prompt files were changed.
+* No .env or secrets were accessed.
+* No Hermes/OpenClaw installation was performed.
+* No VM setup was performed.
+* No safety bypass was recommended.
+
+#### Notes
+
+Roadmap estimation JSON-model remains accepted.
+
+Hermes/OpenClaw remains WAIT.
+
+VM setup remains WAIT.
+
+GitHub remains source of truth.
+
+ChatGPT remains project lead and QA gate.
+
 ### Reviewer/Quality-Score Clarity Sprint
 
 Status:
