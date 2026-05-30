@@ -24,6 +24,97 @@ Notes:
 
 ## Sprint history
 
+### Export/Copy/Save Read-Only Debugging Sprint
+
+Status:
+Approved
+
+#### Summary
+
+The export/copy/save read-only debugging sprint was completed after the previous export/copy/save workflow clarity sprint was stopped and reverted.
+
+The debugging sprint confirmed that the export/copy/save area is not isolated and should not be restarted as a medium implementation sprint immediately.
+
+This was a read-only analysis sprint. No files were changed during the debugging sprint.
+
+#### Background
+
+The previous export/copy/save workflow clarity sprint was stopped and reverted.
+
+* Failed implementation commit: 7d5c3e2 Improve export copy save workflow clarity
+* Revert commit: 6acbf59 Revert "Improve export copy save workflow clarity"
+* Documentation commit: 6acea3e Document reverted export copy save sprint
+
+Final QA-loop after the revert was approved.
+
+Safe state was restored before the read-only debugging sprint.
+
+#### Debugging result
+
+The read-only debugging sprint mapped the current export/copy/save flow and confirmed that it is tightly coupled to several central app states and flows.
+
+The area depends on:
+
+* generatedCode
+* previewHtml
+* checkpoint
+* versionHistory
+* roadmap
+* activeView
+* selectedRoadmapStep
+* recovery state
+* warning state
+* copied states
+* roadmapCopied
+* suggestedPromptCopied
+* status
+
+The sprint also confirmed that an empty state exists.
+
+#### Contact-form and recovery interaction
+
+Contact-form warning/recovery can still block or affect export/copy/save testing.
+
+The previous export/copy/save sprint likely failed because the area is not isolated. It touched central UI/status text in a flow that is entangled with generation, preview rendering, recovery, and checkpoint/export actions.
+
+#### Decision
+
+Pause the export/copy/save track for now.
+
+Do not restart export/copy/save immediately as another medium implementation sprint.
+
+A label-only sprint is technically possible only with very strict scope, but it is deferred for now.
+
+#### Recommended next direction
+
+The next safer medium implementation direction is reviewer/quality-score clarity, or another non-export medium sprint.
+
+#### Safety checks
+
+* No files were changed during the read-only debugging sprint.
+* No app code was changed.
+* No dashboard files were changed.
+* No package files were changed.
+* No prompt files were changed.
+* No .env or secrets were accessed.
+* No Hermes/OpenClaw installation was performed.
+* No VM setup was performed.
+* Safe state remains restored.
+
+#### Notes
+
+Dashboard UI track remains paused.
+
+Roadmap estimation JSON-model remains accepted.
+
+Hermes/OpenClaw remains WAIT.
+
+VM setup remains WAIT.
+
+GitHub remains source of truth.
+
+ChatGPT remains project lead and QA gate.
+
 ### Simple Live Roadmap Dashboard Sprint
 
 Status:
