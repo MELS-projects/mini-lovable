@@ -2856,6 +2856,13 @@ The generated app is stored in src/App.jsx.
     String(roadmap || '').trim() &&
     String(roadmap || '').trim() !== emptyRoadmapText &&
     String(roadmap || '').trim() !== 'Creating roadmap...';
+  const normalizedSelectedRoadmapStep = String(selectedRoadmapStep || '').trim();
+  const selectedRoadmapStepLabel = normalizedSelectedRoadmapStep || 'No step selected';
+  const roadmapStepReadinessMessage = !hasUsableRoadmap
+    ? 'Create roadmap first.'
+    : normalizedSelectedRoadmapStep
+      ? 'Ready to build this step.'
+      : 'Select a roadmap step first.';
 
   return (
     <div className="app-container">
@@ -3731,6 +3738,27 @@ The generated app is stored in src/App.jsx.
                     }}
                   >
                     Tip: Step 1 creates the first complete version. Later steps improve selected parts.
+                  </div>
+                  <div
+                    role="status"
+                    aria-live="polite"
+                    style={{
+                      marginTop: '10px',
+                      padding: '10px 12px',
+                      borderRadius: '8px',
+                      border: '1px solid #334155',
+                      backgroundColor: '#0f172a',
+                      color: '#cbd5e1',
+                      fontSize: '11px',
+                      lineHeight: 1.45
+                    }}
+                  >
+                    <div style={{ fontWeight: 700, color: '#e2e8f0', marginBottom: '3px' }}>
+                      Selected roadmap step: {selectedRoadmapStepLabel}
+                    </div>
+                    <div>
+                      {roadmapStepReadinessMessage}
+                    </div>
                   </div>
                 </div>
 
