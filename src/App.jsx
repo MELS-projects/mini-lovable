@@ -2435,7 +2435,7 @@ Current Mini-Lovable settings:
     try {
       await navigator.clipboard.writeText(roadmapText);
       setRoadmapCopied(true);
-      setStatus('Roadmap copied');
+      setStatus('Copied to clipboard. Roadmap ready to reuse.');
 
       setTimeout(() => {
         setRoadmapCopied(false);
@@ -2456,7 +2456,7 @@ Current Mini-Lovable settings:
     }
 
     setRoadmapCopied(false);
-    setStatus('Roadmap cleared');
+    setStatus('Roadmap cleared. Start a new roadmap draft when ready.');
     setActiveView('roadmap');
   };
 
@@ -2502,7 +2502,7 @@ Current Mini-Lovable settings:
 
   const handleSaveCheckpoint = () => {
     if (!shouldSaveVersion(generatedCode)) {
-      setStatus('No valid app to checkpoint');
+      setStatus('Nothing to save yet — generate a website first.');
       return;
     }
 
@@ -2521,7 +2521,7 @@ Current Mini-Lovable settings:
       savedAt: new Date().toLocaleTimeString()
     });
 
-    setStatus('Checkpoint saved - safe restore point created');
+    setStatus('Checkpoint saved. Safe restore point created.');
   };
 
   const handleRestoreCheckpoint = () => {
@@ -2541,7 +2541,7 @@ Current Mini-Lovable settings:
     setWebsiteDepth(checkpoint.websiteDepth || 'Long landing page');
     setEditSection(checkpoint.editSection || 'Whole app');
     setProjectName(checkpoint.projectName || 'GeneratedApp');
-    setStatus('Checkpoint restored');
+    setStatus('Checkpoint restored. Draft ready to continue.');
     setActiveView('preview');
   };
 
@@ -2549,7 +2549,7 @@ Current Mini-Lovable settings:
     try {
       await navigator.clipboard.writeText(ensureReactImport(generatedCode));
       setCopied(true);
-      setStatus('Generated app code copied');
+      setStatus('Copied to clipboard. Your draft is ready to copy or export.');
 
       setTimeout(() => {
         setCopied(false);
@@ -2563,12 +2563,12 @@ Current Mini-Lovable settings:
   const handleDownloadCode = () => {
     const appCode = ensureReactImport(generatedCode);
     downloadFile(getExportFilename('App', 'jsx'), appCode, 'text/javascript');
-    setStatus('Generated App.jsx downloaded');
+    setStatus('Export ready. Generated App.jsx downloaded.');
   };
 
   const handleDownloadPreviewHtml = () => {
     downloadFile(getExportFilename('Preview', 'html'), previewHtml, 'text/html');
-    setStatus('Generated app preview HTML downloaded');
+    setStatus('Export ready. Generated preview HTML downloaded.');
   };
 
   const loadHtml2Canvas = () => {
@@ -2692,10 +2692,10 @@ Current Mini-Lovable settings:
       link.click();
 
       document.body.removeChild(frame);
-      setStatus('Generated app full-page PNG downloaded');
+      setStatus('Export ready. Generated preview PNG downloaded.');
     } catch (error) {
       handleDownloadPreviewHtml();
-      setStatus('Could not create PNG, downloaded preview HTML instead');
+      setStatus('Could not create PNG. Downloaded preview HTML instead.');
       alert('Could not create the full-page PNG in this browser. I downloaded the preview as an HTML file instead.');
     }
   };
@@ -2766,7 +2766,7 @@ The generated app is stored in src/App.jsx.
       { name: 'generated-app/src/main.jsx', content: mainJsx }
     ]);
 
-    setStatus('Generated app project ZIP downloaded');
+    setStatus('Export ready. Generated app project ZIP downloaded.');
   };
 
   const compactControlGridStyle = {
@@ -3386,7 +3386,7 @@ The generated app is stored in src/App.jsx.
                 backgroundColor: checkpoint ? '#64748b' : '#0ea5e9'
               }}
             >
-              {checkpoint ? 'Checkpoint saved' : 'Save checkpoint'}
+              {checkpoint ? 'Checkpoint saved' : 'Save draft checkpoint'}
             </button>
 
             <button
@@ -3511,6 +3511,11 @@ The generated app is stored in src/App.jsx.
             <span style={{ color: '#bfdbfe', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
               Generated App actions
             </span>
+            <span style={{ color: '#93c5fd', fontSize: '11px', fontWeight: 600, lineHeight: 1.35, flexBasis: '100%' }}>
+              {shouldSaveVersion(generatedCode)
+                ? 'Your draft is ready to copy or export.'
+                : 'Nothing to export yet — generate a website first.'}
+            </span>
             <button
               onClick={handleCopyCode}
               style={{
@@ -3518,28 +3523,28 @@ The generated app is stored in src/App.jsx.
                 backgroundColor: copied ? '#16a34a' : generatedAppActionButtonStyle.backgroundColor
               }}
             >
-              {copied ? 'Copied!' : 'Copy App Code'}
+              {copied ? 'Copied to clipboard' : 'Copy website code'}
             </button>
 
             <button
               onClick={handleDownloadCode}
               style={generatedAppActionButtonStyle}
             >
-              Download Generated App.jsx
+              Save App.jsx
             </button>
 
             <button
               onClick={handleDownloadZip}
               style={generatedAppActionButtonStyle}
             >
-              Export Generated ZIP
+              Export ready ZIP
             </button>
 
             <button
               onClick={handleDownloadPreviewImage}
               style={generatedAppActionButtonStyle}
             >
-              Download Generated PNG
+              Save preview PNG
             </button>
 
             <button
@@ -3547,7 +3552,7 @@ The generated app is stored in src/App.jsx.
               style={generatedAppActionButtonStyle}
               title="Download the generated app preview as an HTML backup file"
             >
-              Download Generated HTML
+              Save preview HTML
             </button>
 
             <label
