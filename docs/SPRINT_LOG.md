@@ -251,6 +251,78 @@ Dashboard track is closed.
 
 Next safe follow-up is a separate read-only VM preparation checklist sprint, or continued Codex CLI workflow improvement before any Hermes installation.
 
+### VM Preparation Checklist Sprint
+
+Status:
+Approved
+
+#### Summary
+
+The VM Preparation Checklist sprint created a dedicated checklist for preparing a future local VM sandbox before any Hermes Agent read-only test.
+
+The checklist defines what must be prepared, verified, forbidden, and approved before VM setup or Hermes installation.
+
+This was a Kodmaskin workflow/security documentation sprint, not Mini-Lovable UI work.
+
+#### Git history
+
+* Commit: cf469cf Create VM preparation checklist
+
+#### Changed files
+
+* docs/VM_PREPARATION_CHECKLIST.md
+
+#### Checklist result
+
+The new checklist documents:
+
+* Current decision: Hermes WAIT, OpenClaw WAIT / not first, Codex CLI CONTINUE.
+* Local VM as the planned first serious Hermes test environment.
+* Direct local Windows installation rejected as the first step.
+* No Hermes/OpenClaw installation approved.
+* No VM setup approved yet.
+* First Hermes test must be read-only only.
+* Required decisions before VM setup.
+* VM software options to evaluate.
+* Host checks.
+* Guest OS decision.
+* Network/access policy.
+* Allowed and forbidden paths.
+* Secrets/API-key policy.
+* GitHub access rules.
+* First Hermes read-only test outline.
+* Stop conditions.
+* Rollback/delete plan.
+* Approval checklist before VM setup.
+* Approval checklist before Hermes install.
+* Definition of Ready.
+
+#### Safety checks
+
+* No app code was changed.
+* No dashboard files were changed.
+* No package files were changed.
+* No prompt files were changed.
+* No .env or secrets were accessed.
+* No Hermes/OpenClaw installation was performed.
+* No VM setup was performed.
+* No new version or baseline was created.
+* Working tree was clean after push.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+OpenClaw remains WAIT / not first.
+
+Codex CLI remains CONTINUE.
+
+GitHub remains source of truth.
+
+ChatGPT remains project lead and QA gate.
+
+Any future VM setup must be done one step at a time after explicit ChatGPT QA and human approval.
+
 ### Roadmap Dashboard Status Update
 
 Status:
