@@ -740,6 +740,81 @@ GitHub remains source of truth.
 
 ChatGPT remains project lead and QA gate.
 
+### Export/Copy/Save Workflow Clarity Sprint
+
+Status:
+STOPPED AND REVERTED
+
+#### Summary
+
+The export/copy/save workflow clarity sprint was stopped and reverted after Bolt-preview testing showed that the result was not acceptable.
+
+The sprint attempted to improve user-facing export/copy/save workflow clarity in the Mini-Lovable app, but the implementation caused flow instability and could not be approved.
+
+This was a Mini-Lovable implementation sprint that was reverted after QA.
+
+#### Git history
+
+- Implementation commit: 7d5c3e2 Improve export copy save workflow clarity
+- Revert commit: 6acbf59 Revert "Improve export copy save workflow clarity"
+
+#### Changed files
+
+- src/App.jsx
+
+#### Bolt test result
+
+Bolt-preview/test did not approve the sprint.
+
+Observed issues:
+
+- Generation/recovery behavior did not work as expected.
+- Export/copy/save test could not be completed.
+- Preview became empty or not usable after the attempt.
+- Contact-form warning/recovery flow reappeared and blocked the flow.
+
+#### QA decision
+
+STOP / REVERT
+
+The sprint was reverted.
+
+#### Current restored state
+
+- Revert was completed and pushed.
+- Working tree returned clean.
+- Safe state was restored.
+- No broken export/copy/save implementation remains approved.
+
+#### Lesson
+
+Next export/copy/save work should not restart as a medium implementation sprint immediately.
+
+A safer next step is one of:
+
+- a read-only/debugging sprint to understand the current export/copy/save flow, or
+- a very small targeted label-only sprint that does not touch generation, recovery, or preview behavior.
+
+#### Safety checks
+
+- No dashboard files were changed.
+- No package files were changed.
+- No prompt files were changed.
+- No .env or secrets were accessed.
+- No Hermes/OpenClaw installation was performed.
+- No VM setup was performed.
+- Dashboard UI track remains paused.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+VM setup remains WAIT.
+
+GitHub remains source of truth.
+
+ChatGPT remains project lead and QA gate.
+
 ### Dashboard UI Rendering Attempts
 
 Status:
