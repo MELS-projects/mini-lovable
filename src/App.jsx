@@ -294,6 +294,9 @@ Do not print this checklist.`;
 - Do not use external libraries.
 - For Premium, Luxury, and Enterprise landing pages, include realistic image-led or editorial visual sections unless the user asks for no images.
 - For Premium, Luxury, and Enterprise outputs, include at least one real public image URL, preferably a stable Unsplash URL, plus validator-detectable image-related code such as img, backgroundImage, image, photo, visual, figure, or editorial.
+- For contact forms, place the success message as a clearly visible inline banner inside the contact form area, directly above the submit button, and keep the honest local-only wording that says the preview recorded the enquiry locally and no email was sent.
+- Do not use href="#" for social links. If real URLs are not available, omit the social links or render them as non-clickable labels.
+- Avoid fake names, fake client companies, unverifiable metrics, fake phone numbers, and fake emails unless they are clearly marked as illustrative/demo content.
 - Do not use emoji icons as the main visual language for Premium, Luxury, or Enterprise.
 - Avoid lorem ipsum, coming soon, under construction, and empty placeholder pages.
 - If creating a consultant website, make it feel like a high-end advisory brand.
@@ -343,6 +346,7 @@ Use this test prompt as calibration: "Create a premium website for an exclusive 
 - The success banner must appear directly above the submit button or at the top of the form panel.
 - The success banner must be controlled by local state such as submitStatus, formStatus, successMessage, or submitted.
 - The banner text must be honest, for example: "Thank you. This demo preview has recorded your enquiry locally. No email was sent."
+- The success banner should be rendered as a clearly visible inline banner inside the form area, directly above the submit button, not hidden in a separate section.
 - Avoid wording that implies real delivery: "I will respond within 24 hours", "We have received your email", "Your message has been sent" unless real backend integration exists.
 - A valid preview contact form should preferably keep name/email/message fields visible, show missing-field errors near the form, show success banner near the submit button, and not claim real email delivery.
 - The confirmation must be visible without the user needing to scroll manually.
@@ -399,16 +403,17 @@ const handleContactSubmit = (event) => {
 )}
 
 5. Place the success banner inside the <form>, directly above the submit button.
-6. Keep the form fields visible after submit.
-7. Do not replace the whole form with only a thank-you block.
-8. Do not use only submitted ? (...) : (...) to replace the whole form.
-9. Do not use vague variable names such as submitted only, unless contactSuccessMessage also exists.
-10. The generated code must include the literal string contactSuccessMessage.
-11. Do not say the message was sent.
-12. Do not promise a real response.
-13. Do not use backend words unless backend integration exists.
-14. Inputs and textarea must stay controlled and remain editable after submit.
-15. This pattern should pass the contact form confirmation validator.`;
+6. Make the success banner clearly visible with honest local-only wording: the preview recorded the enquiry locally and no email was sent.
+7. Keep the form fields visible after submit.
+8. Do not replace the whole form with only a thank-you block.
+9. Do not use only submitted ? (...) : (...) to replace the whole form.
+10. Do not use vague variable names such as submitted only, unless contactSuccessMessage also exists.
+11. The generated code must include the literal string contactSuccessMessage.
+12. Do not say the message was sent.
+13. Do not promise a real response.
+14. Do not use backend words unless backend integration exists.
+15. Inputs and textarea must stay controlled and remain editable after submit.
+16. This pattern should pass the contact form confirmation validator.`;
   };
 
   const getReactRuntimeSafetyInstruction = () => {
