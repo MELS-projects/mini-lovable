@@ -175,6 +175,82 @@ Hermes/OpenClaw remains WAIT.
 
 Next safe follow-up is to update dashboard roadmap-status.json only through a separate approved dashboard-status sprint when roadmap state changes.
 
+### Hermes Sandbox Plan Sprint
+
+Status:
+Approved
+
+#### Summary
+
+The Hermes Sandbox Plan sprint documented the approved safety direction for any future Hermes Agent test.
+
+The plan confirms that Hermes/OpenClaw discovery is complete, but installation is not approved.
+
+Current decision:
+
+* Hermes: WAIT.
+* OpenClaw: WAIT / not first.
+* Codex CLI: CONTINUE.
+
+This was a Kodmaskin workflow/security planning sprint, not Mini-Lovable UI work.
+
+#### Recommended first test environment
+
+The recommended first serious Hermes test environment is:
+
+Local VM
+
+Direct local Windows installation is rejected as the first step because Hermes Agent appears too powerful for direct access to the main Windows environment.
+
+#### First Hermes test rule
+
+The first Hermes test must be read-only only.
+
+The first test may inspect approved repo context and prepare a workflow handoff, but must not edit files, create files, delete files, install packages, access secrets, commit, push, deploy, or access host private folders.
+
+#### Key sandbox rules
+
+* No host private folders.
+* No production secrets.
+* No real .env file.
+* No GitHub write token.
+* No broad machine access.
+* No commit, push, or deploy.
+* No Hermes/OpenClaw installation is approved yet.
+* ChatGPT remains the QA gate.
+* GitHub remains the source of truth.
+
+#### Rollback/delete plan
+
+If a future sandbox test is approved and later needs rollback:
+
+1. Stop the Hermes process.
+2. Revoke the test API key.
+3. Delete ~/.hermes inside the VM.
+4. Delete the sandbox repo clone.
+5. Reset or delete the VM.
+6. Confirm no host Windows folders were mounted.
+7. Confirm GitHub remains unchanged.
+
+#### Safety checks
+
+* No app code was changed.
+* No dashboard files were changed.
+* No package files were changed.
+* No prompt files were changed.
+* No .env or secrets were accessed.
+* No Hermes/OpenClaw installation was performed.
+* No VM setup was performed.
+* No new version or baseline was created.
+
+#### Notes
+
+Mini-Lovable remains the validation and training project, not the final goal.
+
+Dashboard track is closed.
+
+Next safe follow-up is a separate read-only VM preparation checklist sprint, or continued Codex CLI workflow improvement before any Hermes installation.
+
 ### Roadmap Dashboard Status Update
 
 Status:
