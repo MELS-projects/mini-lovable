@@ -1,13 +1,37 @@
 {
   "title": "Kodmaskin Oskar Roadmap",
-  "currentPhaseId": "phase-2",
+  "currentPhaseId": "phase-3",
   "currentSprintId": "first-medium-implementation-roadmap-build-readiness",
-  "summary": "Building a safer ChatGPT -> Oskar -> Codex -> GitHub -> Bolt -> QA workflow before Hermes/OpenClaw. Latest completed milestone: first medium implementation sprint. Bolt result: PASS WITH NOTE. Next safe action: continue medium implementation sprint planning or document/verify dashboard status update.",
+  "summary": "Building a safer ChatGPT -> Oskar -> Codex -> GitHub -> Bolt -> QA workflow before Hermes/OpenClaw. Latest completed milestone: first medium implementation sprint. Bolt result: PASS WITH NOTE. The project is now in Phase 3: Medium implementation capability. Next safe action: continue medium implementation sprint planning or document/verify dashboard status update.",
+  "overallProgress": {
+    "completedSprints": 21,
+    "estimatedRemainingSprints": {
+      "min": 11,
+      "max": 18
+    },
+    "confidence": "medium",
+    "notes": "Phase 1 is complete. Phase 2 is mostly complete. Phase 3 has started with the first medium implementation sprint. Estimates are approximate ranges, not exact predictions."
+  },
+  "hermesReadiness": {
+    "status": "WAIT",
+    "vmSetup": "WAIT",
+    "recommendedFirstSeriousTestEnvironment": "Local VM",
+    "firstHermesTestRule": "Read-only only",
+    "notes": "Hermes/OpenClaw discovery is complete, but installation is not approved. VM setup remains WAIT."
+  },
   "phases": [
     {
       "id": "phase-1",
-      "label": "Fas 1",
+      "label": "Phase 1 - Foundation workflow",
       "status": "completed",
+      "estimatedSprintsTotal": 10,
+      "completedSprints": 10,
+      "remainingSprintsEstimate": 0,
+      "confidence": "high",
+      "currentMarker": false,
+      "nextGate": "Phase 2 workflow stabilization",
+      "blockers": [],
+      "notes": "Foundation workflow is complete and stable.",
       "sprints": [
         {
           "id": "github-source-of-truth",
@@ -63,8 +87,21 @@
     },
     {
       "id": "phase-2",
-      "label": "Fas 2",
-      "status": "current",
+      "label": "Phase 2 - Process stabilization",
+      "status": "mostly-complete",
+      "estimatedSprintsTotal": 12,
+      "completedSprints": 11,
+      "remainingSprintsEstimate": {
+        "min": 1,
+        "max": 3
+      },
+      "confidence": "medium-high",
+      "currentMarker": false,
+      "nextGate": "Phase 3 medium implementation capability",
+      "blockers": [
+        "Phase 3 rollout still needs repeated controlled medium implementation confirmation"
+      ],
+      "notes": "Process stabilization is nearly complete. The dashboard and QA loop are in place, and the medium implementation sprint demonstrated controlled code change and Bolt verification.",
       "sprints": [
         {
           "id": "qa-handoff-read-only-test",
@@ -104,14 +141,27 @@
         {
           "id": "first-medium-implementation-roadmap-build-readiness",
           "label": "First medium implementation sprint - roadmap build readiness",
-          "status": "current"
+          "status": "completed"
         }
       ]
     },
     {
       "id": "phase-3",
-      "label": "Fas 3",
-      "status": "planned",
+      "label": "Phase 3 - Medium implementation capability",
+      "status": "current",
+      "estimatedSprintsTotal": 8,
+      "completedSprints": 1,
+      "remainingSprintsEstimate": {
+        "min": 7,
+        "max": 10
+      },
+      "confidence": "medium",
+      "currentMarker": true,
+      "nextGate": "Repeated controlled medium implementation capability",
+      "blockers": [
+        "Need more medium implementation sprints before considering broader workflow automation"
+      ],
+      "notes": "Phase 3 has started with one successful medium implementation sprint. This is the latest completed milestone and the current workflow position.",
       "sprints": [
         {
           "id": "codex-read-only-start-command",
@@ -157,8 +207,21 @@
     },
     {
       "id": "phase-4",
-      "label": "Fas 4",
+      "label": "Phase 4 - Semi-automated Codex/Oskar workflow",
       "status": "planned",
+      "estimatedSprintsTotal": 10,
+      "completedSprints": 0,
+      "remainingSprintsEstimate": {
+        "min": 9,
+        "max": 12
+      },
+      "confidence": "low",
+      "currentMarker": false,
+      "nextGate": "VM/Hermes sandbox preparation",
+      "blockers": [
+        "Requires repeated stable medium implementation capability first"
+      ],
+      "notes": "This phase is future-looking and depends on higher workflow stability.",
       "sprints": [
         {
           "id": "hermes-discovery-sprint",
@@ -214,8 +277,22 @@
     },
     {
       "id": "phase-5",
-      "label": "Fas 5",
+      "label": "Phase 5 - VM/Hermes sandbox",
       "status": "planned",
+      "estimatedSprintsTotal": 14,
+      "completedSprints": 0,
+      "remainingSprintsEstimate": {
+        "min": 12,
+        "max": 16
+      },
+      "confidence": "low",
+      "currentMarker": false,
+      "nextGate": "Oskar Core + specialist-agent model",
+      "blockers": [
+        "Hermes/OpenClaw remains WAIT",
+        "VM setup remains WAIT"
+      ],
+      "notes": "Sandbox work is not started yet and must remain gated behind explicit approval.",
       "sprints": [
         {
           "id": "agent-creates-sprint-proposal",
@@ -285,6 +362,36 @@
         {
           "id": "rollback-documentation",
           "label": "Rollback documentation",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "phase-6",
+      "label": "Phase 6 - Oskar Core + specialist-agent model",
+      "status": "planned",
+      "estimatedSprintsTotal": 12,
+      "completedSprints": 0,
+      "remainingSprintsEstimate": {
+        "min": 12,
+        "max": 20
+      },
+      "confidence": "very-low",
+      "currentMarker": false,
+      "nextGate": "N/A",
+      "blockers": [
+        "Depends on the successful completion of VM/Hermes sandbox work"
+      ],
+      "notes": "This is a long-range target and should not be treated as active planning yet.",
+      "sprints": [
+        {
+          "id": "oskar-core-workflow",
+          "label": "Oskar Core workflow",
+          "status": "planned"
+        },
+        {
+          "id": "specialist-agent-model",
+          "label": "Specialist-agent model",
           "status": "planned"
         }
       ]
