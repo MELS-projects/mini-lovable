@@ -24,6 +24,67 @@ Notes:
 
 ## Sprint history
 
+### Roadmap Dashboard Update Rule SOP Change
+
+Status:
+Approved
+
+#### Summary
+
+The Roadmap Dashboard Update Rule SOP change documented how Kodmaskin Oskar should decide, approve, update, and verify roadmap dashboard status changes.
+
+This was a Kodmaskin workflow documentation sprint, not Mini-Lovable UI work.
+
+#### Git history
+
+- Commit: de3f0b5 Document roadmap dashboard update rule
+
+#### Changed files
+
+- docs/KODMACHINE_SOP.md
+
+#### SOP update
+
+The SOP now documents the Roadmap Dashboard Update Rule.
+
+The rule documents:
+
+- Dashboard URL: https://mels-projects.github.io/mini-lovable/dashboard/
+- dashboard/index.html as the dashboard view.
+- dashboard/roadmap-status.json as the dashboard data source.
+- GitHub as source of truth.
+- The dashboard as a visual status layer only.
+- The dashboard is not automatically updated from commits yet.
+- ChatGPT decides whether a dashboard update is needed after relevant approved sprints.
+- Codex/Oskar updates dashboard/roadmap-status.json only after a ChatGPT-approved dashboard sprint.
+- ChatGPT QA reviews dashboard JSON before commit/push.
+- Thomas commits and pushes through PowerShell/Git unless the workflow changes later.
+- GitHub Pages updates the live dashboard after push.
+- Dashboard update skip rules.
+
+#### Safety checks
+
+- No app code was changed.
+- No dashboard files were changed.
+- No package files were changed.
+- No prompt files were changed.
+- No .env or secrets were accessed.
+- No Hermes/OpenClaw installation was performed.
+- No new version or baseline was created.
+- Mini-Lovable UI track remains paused.
+
+#### Workflow result
+
+The workflow now includes a clear rule that ChatGPT must decide whether dashboard/roadmap-status.json should be updated after relevant Kodmaskin or Mini-Lovable sprint changes.
+
+Dashboard updates should normally be handled as separate approved dashboard update sprints.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+Next focus remains Kodmaskin workflow improvement and keeping the roadmap dashboard aligned with approved workflow milestones.
+
 ### Kodmaskin SOP Sprint
 
 Status:
