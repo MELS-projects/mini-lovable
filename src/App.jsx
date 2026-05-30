@@ -1863,7 +1863,7 @@ Do not include code.`
     const returnToRoadmapWithWarning = (
       statusMessage,
       alertMessage = statusMessage,
-      recoveryMessage = 'Build paused. Review the warning, fix the generated code if needed, then try Build / Improve Step again.'
+      recoveryMessage = 'Build paused for safety. This is not a crash. Review the warning, adjust the contact form copy so it clearly says the form is demo/local-only and does not imply real delivery, then try Build / Improve Step again.'
     ) => {
       setStatus(statusMessage);
       setBuildRecoveryMessage(recoveryMessage);
@@ -2035,8 +2035,8 @@ ${hasExistingApp
 
       if (!response.ok) {
         returnToRoadmapWithWarning(
-          `Build paused: DeepSeek returned ${response.status}. Previous code was kept. Review the warning and try Build / Improve Step again.`,
-          `DeepSeek returned error ${response.status}. Previous code was kept.\n\nBuild paused. Review the warning and try Build / Improve Step again.`
+          `Build paused for safety: DeepSeek returned ${response.status}. This is not a crash. Previous code was kept. Review the warning and try Build / Improve Step again.`,
+          `DeepSeek returned error ${response.status}. Previous code was kept.\n\nBuild paused for safety. This is not a crash. Review the warning and try Build / Improve Step again.`
         );
         return;
       }
@@ -2138,16 +2138,16 @@ ${hasExistingApp
 
             const repairedFullProblemMessage = formatValidationProblems(repairedValidationProblems);
             returnToRoadmapWithWarning(
-              `${repairedFullProblemMessage} Build paused. Previous code was kept. Review the warning and try Build / Improve Step again.`,
-              `${repairedFullProblemMessage}\n\nContact form repair was attempted, but previous code was kept so the preview does not break.\n\nBuild paused. Review the warning and try Build / Improve Step again.`,
-              'The contact form needs a manual fix before generation can continue. Review the warning, adjust the form, then try Build / Improve Step again.'
+              `${repairedFullProblemMessage} Build paused for safety. This is not a crash. Previous code was kept. Review the warning, adjust the contact form copy, and try Build / Improve Step again.`,
+              `${repairedFullProblemMessage}\n\nContact form repair was attempted, but previous code was kept so the preview does not break.\n\nBuild paused for safety. This is not a crash. Review the warning, adjust the contact form copy, and try Build / Improve Step again.`,
+              'Build paused for safety. The generated contact form may imply real message delivery. Mini-Lovable does not add backend form handling automatically. Adjust the form copy so it clearly says the form is demo/local-only and then try Build / Improve Step again.'
             );
             return;
           } catch (error) {
             returnToRoadmapWithWarning(
-              'Build paused: contact form repair failed. Previous code was kept. Review the warning and try Build / Improve Step again.',
-              `Contact form repair failed: ${error.message}\n\nBuild paused. Previous code was kept. Review the warning and try Build / Improve Step again.`,
-              'The contact form needs a manual fix before generation can continue. Review the warning, adjust the form, then try Build / Improve Step again.'
+              'Build paused for safety: contact form repair failed. This is not a crash. Previous code was kept. Review the warning, adjust the contact form copy, and try Build / Improve Step again.',
+              `Contact form repair failed: ${error.message}\n\nBuild paused for safety. This is not a crash. Previous code was kept. Review the warning, adjust the contact form copy, and try Build / Improve Step again.`,
+              'Build paused for safety. The generated contact form may imply real message delivery. Mini-Lovable does not add backend form handling automatically. Adjust the form copy so it clearly says the form is demo/local-only and then try Build / Improve Step again.'
             );
             return;
           }
@@ -2188,17 +2188,17 @@ ${hasExistingApp
 
           if (validationProblems.length === 1 && contactConfirmationProblem) {
             returnToRoadmapWithWarning(
-              `${contactConfirmationProblem} Build paused. Previous code was kept. Review the warning and try Build / Improve Step again.`,
-              `${contactConfirmationProblem} Previous code was kept so the preview does not break.\n\nBuild paused. Review the warning and try Build / Improve Step again.`,
-              'The contact form needs a manual fix before generation can continue. Review the warning, adjust the form, then try Build / Improve Step again.'
+              `${contactConfirmationProblem} Build paused for safety. This is not a crash. Previous code was kept. Review the warning, adjust the contact form copy, and try Build / Improve Step again.`,
+              `${contactConfirmationProblem} Previous code was kept so the preview does not break.\n\nBuild paused for safety. This is not a crash. Review the warning, adjust the contact form copy, and try Build / Improve Step again.`,
+              'Build paused for safety. The generated contact form may imply real message delivery. Mini-Lovable does not add backend form handling automatically. Adjust the form copy so it clearly says the form is demo/local-only and then try Build / Improve Step again.'
             );
             return;
           }
 
           const problem = fullProblemMessage;
           returnToRoadmapWithWarning(
-            `${problem} Build paused. Previous code was kept. Review the warning and try Build / Improve Step again.`,
-            `${problem} Previous code was kept so the preview does not break.\n\nBuild paused. Review the warning and try Build / Improve Step again.`
+            `${problem} Build paused for safety. This is not a crash. Previous code was kept. Review the warning and try Build / Improve Step again.`,
+            `${problem} Previous code was kept so the preview does not break.\n\nBuild paused for safety. This is not a crash. Review the warning and try Build / Improve Step again.`
           );
           return;
         }
@@ -2223,14 +2223,14 @@ ${hasExistingApp
         ]);
       } else {
         returnToRoadmapWithWarning(
-          'Build paused: DeepSeek response did not contain valid code. Previous code was kept. Review the warning and try Build / Improve Step again.',
-          'DeepSeek response did not contain valid code. Previous code was kept.\n\nBuild paused. Review the warning and try Build / Improve Step again.'
+          'Build paused for safety: DeepSeek response did not contain valid code. This is not a crash. Previous code was kept. Review the warning and try Build / Improve Step again.',
+          'DeepSeek response did not contain valid code. Previous code was kept.\n\nBuild paused for safety. This is not a crash. Review the warning and try Build / Improve Step again.'
         );
       }
     } catch (error) {
       returnToRoadmapWithWarning(
-        'Build paused: network or app problem. Review the warning and try Build / Improve Step again.',
-        `Network or app error: ${error.message}\n\nBuild paused. Review the warning and try Build / Improve Step again.`
+        'Build paused for safety: network or app problem. This is not a crash. Review the warning and try Build / Improve Step again.',
+        `Network or app error: ${error.message}\n\nBuild paused for safety. This is not a crash. Review the warning and try Build / Improve Step again.`
       );
     } finally {
       setIsBuildingStep(false);
