@@ -108,6 +108,73 @@ Next safe follow-up is either:
 * verify dashboard runtime through an HTTP/static server preview, or
 * update dashboard documentation/status only after ChatGPT QA approves a narrow sprint.
 
+### Dashboard Runtime Verification Sprint
+
+Status:
+Approved
+
+#### Summary
+
+The dashboard runtime verification sprint confirmed that the simple live roadmap dashboard works through a local HTTP/static preview.
+
+The dashboard was opened at:
+
+http://localhost:8080/
+
+The runtime caveat for local HTTP preview is now resolved.
+
+This was a Kodmaskin dashboard verification sprint, not Mini-Lovable UI work.
+
+#### Verification method
+
+The dashboard was served locally using a PowerShell/.NET HttpListener static server.
+
+No Python was used.
+
+No dependency installation was used.
+
+#### Runtime result
+
+The dashboard loaded successfully.
+
+The verification confirmed:
+
+* No JSON-load error was visible.
+* Status showed: Live from JSON.
+* Current phase showed: Fas 2.
+* Current sprint showed: Final QA-loop check.
+* Phase line and sprint dots appeared.
+* The "You are here" marker appeared.
+* Fas 3 planned items appeared.
+
+#### Changed files
+
+No repo files were changed during verification.
+
+#### Safety checks
+
+* No app code was changed.
+* No dashboard files were changed.
+* No package files were changed.
+* No prompt files were changed.
+* No .env or secrets were accessed.
+* No Hermes/OpenClaw installation was performed.
+* No dependency installation was performed.
+* No new version or baseline was created.
+* Mini-Lovable UI track remains paused.
+
+#### Workflow result
+
+The dashboard runtime fetch from roadmap-status.json is verified through local HTTP/static preview.
+
+GitHub remains source of truth.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+Next safe follow-up is to update dashboard roadmap-status.json only through a separate approved dashboard-status sprint when roadmap state changes.
+
 ### Roadmap Dashboard Status Update
 
 Status:
