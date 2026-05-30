@@ -185,6 +185,50 @@ export default function App() {
     return instructions[qualityLevel] || instructions.Premium;
   };
 
+  const getReviewScoreOutOfTen = (text) => {
+    const match = String(text || '').match(/Quality score:\s*(\d{1,2})\/10/i);
+    if (!match) return null;
+
+    const score = Number(match[1]);
+    return Number.isFinite(score) ? score : null;
+  };
+
+  const getReviewScoreGuide = (scoreOutOfTen) => {
+    const scorePercent = scoreOutOfTen === null ? null : scoreOutOfTen * 10;
+
+    if (scorePercent === null) {
+      return 'Run App Review to see the score guide.';
+    }
+
+    if (scorePercent >= 80) {
+      return '80–100: Strong draft — polish details.';
+    }
+
+    if (scorePercent >= 60) {
+      return '60–79: Good start — improve weak sections.';
+    }
+
+    return 'Below 60: Needs work — fix the main issues before exporting.';
+  };
+
+  const getReviewNextAction = (scoreOutOfTen) => {
+    const scorePercent = scoreOutOfTen === null ? null : scoreOutOfTen * 10;
+
+    if (scorePercent === null) {
+      return 'The reviewer is a guide, not a final approval.';
+    }
+
+    if (scorePercent >= 80) {
+      return 'Start with small polish items, then run Improve Step again only if needed.';
+    }
+
+    if (scorePercent >= 60) {
+      return 'Start with the highest-impact issue first, then run Improve Step again.';
+    }
+
+    return 'Fix the main issue first, then run Improve Step again before exporting.';
+  };
+
   const getPageFeelingInstruction = () => {
     const instructions = {
       'Safe and professional':
@@ -3903,6 +3947,47 @@ The generated app is stored in src/App.jsx.
                 >
                   {suggestedPromptCopied ? 'Loaded!' : 'Copy Suggested Prompt'}
                 </button>
+              </div>
+              <div
+                style={{
+                  border: '1px solid #1f2937',
+                  backgroundColor: '#0f172a',
+                  borderRadius: '10px',
+                  padding: '14px',
+                  marginBottom: '14px'
+                }}
+              >
+                <div
+                  style={{
+                    color: '#93c5fd',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    marginBottom: '8px'
+                  }}
+                >
+                  Quality score guide
+                </div>
+                <div style={{ color: '#f8fafc', fontSize: '14px', fontWeight: 700, marginBottom: '6px' }}>
+                  {(() => {
+                    const reviewScoreOutOfTen = getReviewScoreOutOfTen(reviewText);
+                    if (reviewScoreOutOfTen === null) {
+                      return 'The reviewer is a guide, not a final approval.';
+                    }
+
+                    return `Current score: ${reviewScoreOutOfTen}/10 (${reviewScoreOutOfTen * 10}/100)`;
+                  })()}
+                </div>
+                <div style={{ color: '#d1d5db', fontSize: '13px', marginBottom: '8px' }}>
+                  {getReviewScoreGuide(getReviewScoreOutOfTen(reviewText))}
+                </div>
+                <div style={{ color: '#e5e7eb', fontSize: '13px', fontWeight: 600, marginBottom: '4px' }}>
+                  Start with the highest-impact issue first, then run Improve Step again.
+                </div>
+                <div style={{ color: '#cbd5e1', fontSize: '13px' }}>
+                  {getReviewNextAction(getReviewScoreOutOfTen(reviewText))}
+                </div>
               </div>
               <pre
                 style={{
