@@ -235,6 +235,32 @@ Check:
 * dashboard runtime preview status is known
 * dashboard updates were done only through approved sprint
 
+### Dashboard update decision
+
+After every relevant sprint, check whether `dashboard/roadmap-status.json` needs to be updated.
+
+A dashboard update is relevant when the sprint changes:
+
+* current workflow phase
+* current sprint marker
+* completed/planned sprint status
+* project status shown on the dashboard
+* Hermes/OpenClaw status
+* Codex workflow status
+* dashboard-related runtime/test status
+
+If the project status changed, the dashboard update should happen after the Final QA-loop through a separate narrow approved dashboard-status sprint.
+
+If no dashboard update is needed, explicitly state why.
+
+Do not let the recommended next safe action be `Hold / wait` when the dashboard is stale.
+
+Use one of these outcomes:
+
+* Dashboard update needed: yes — start a narrow approved dashboard-status sprint.
+* Dashboard update needed: no — state why.
+* Dashboard status unclear — run a read-only dashboard-status check first.
+
 If dashboard is not relevant, write:
 
 ```text
@@ -318,6 +344,16 @@ If not clean, stop and identify remaining files.
 ## 17. Next safe action decision
 
 End each final QA-loop with one recommended next safe action.
+
+Before choosing the next safe action, check whether `dashboard/roadmap-status.json` is stale.
+
+If the dashboard is stale, the recommended next safe action should normally be:
+
+```text
+Update dashboard status through approved sprint
+```
+
+Do not choose `Hold / wait` when the dashboard needs an update.
 
 Use one:
 
