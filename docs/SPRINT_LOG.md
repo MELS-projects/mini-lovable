@@ -576,6 +576,94 @@ GitHub remains source of truth.
 
 ChatGPT remains project lead and QA gate.
 
+### Contact-Form Warning Recovery Guidance Sprint
+
+Status:
+Approved with note
+
+#### Summary
+
+The contact-form warning recovery guidance sprint improved the Mini-Lovable build recovery flow around contact-form safety warnings.
+
+The sprint made the warning/recovery path clearer while preserving the existing safety validation.
+
+This was a controlled Mini-Lovable medium implementation sprint.
+
+#### Git history
+
+* Commit: 383cdfc Improve contact-form warning recovery guidance
+
+#### Changed files
+
+* src/App.jsx
+
+#### Implementation result
+
+The sprint improved user-facing warning/recovery guidance for the contact-form safety flow.
+
+Validation behavior remains intact.
+
+Safety validation was not bypassed.
+
+No DeepSeek/API/model/provider logic was changed.
+
+No new generation logic was added.
+
+#### Bolt test result
+
+Bolt preview/test result:
+
+APPROVE WITH NOTE
+
+Confirmed in Bolt:
+
+* App loads.
+* Roadmap/build flow works.
+* Build / Improve Step starts.
+* Contact-form safety warning triggers.
+* Recovery path is visible.
+* No blank preview occurred.
+* No runtime error occurred.
+* Safety validation was not bypassed.
+
+#### Note
+
+One popup still showed older wording:
+
+“Build paused. Review the warning and try Build / Improve Step again.”
+
+This is not blocking for this sprint because the safety flow works and the recovery path is visible.
+
+A later optional polish sprint may update the remaining older popup wording if needed.
+
+#### Safety checks
+
+* No dashboard files were changed.
+* No package files were changed.
+* No prompt files were changed.
+* No .env or secrets were accessed.
+* No Hermes/OpenClaw installation was performed.
+* No VM setup was performed.
+* Working tree was clean after push.
+
+#### Workflow result
+
+The sprint further proves Phase 3 medium implementation capability using Codex CLI while preserving safety gates.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+VM setup remains WAIT.
+
+Dashboard UI track remains paused after reverted attempts.
+
+Codex CLI remains the main implementation path.
+
+GitHub remains source of truth.
+
+ChatGPT remains project lead and QA gate.
+
 ### Dashboard UI Rendering Attempts
 
 Status:
