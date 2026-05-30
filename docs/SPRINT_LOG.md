@@ -576,6 +576,74 @@ GitHub remains source of truth.
 
 ChatGPT remains project lead and QA gate.
 
+### Dashboard UI Rendering Attempts
+
+Status:
+STOPPED AND REVERTED
+
+#### Summary
+
+The dashboard UI rendering attempts were stopped and reverted after they caused the dashboard to render blank.
+
+The roadmap estimation JSON model remains accepted and unchanged, but dashboard UI rendering for that model is not approved yet.
+
+This was a Kodmaskin dashboard UI recovery decision, not a Mini-Lovable app-code sprint.
+
+#### Accepted work that remains
+
+The roadmap estimation JSON model remains done and accepted.
+
+* Commit: d1963c9 Add roadmap estimation model to dashboard status
+* File: dashboard/roadmap-status.json
+
+#### Stopped and reverted work
+
+The goal was to render roadmap estimation fields in:
+
+* dashboard/index.html
+
+Two UI rendering attempts were stopped and reverted:
+
+1. A larger roadmap estimation UI rendering attempt caused a blank dashboard.
+2. A smaller Project planning snapshot-card attempt also caused a blank dashboard.
+
+Both attempts were reverted.
+
+No broken dashboard UI was committed.
+
+#### Current restored state
+
+* dashboard/index.html is restored to the last working version.
+* dashboard/roadmap-status.json still contains the accepted roadmap estimation model.
+* Current dashboard UI rendering for the estimation model is NOT approved.
+* Working tree returned clean.
+
+#### QA result
+
+Dashboard UI rendering requires better debugging/support before retry.
+
+A future retry should start with a read-only/debugging step or a smaller verified rendering test before changing dashboard/index.html again.
+
+#### Safety checks
+
+* No app code was changed.
+* No package files were changed.
+* No prompt files were changed.
+* No .env or secrets were accessed.
+* No Hermes/OpenClaw installation was performed.
+* No VM setup was performed.
+* Current safe state is restored.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+VM setup remains WAIT.
+
+GitHub remains source of truth.
+
+ChatGPT remains project lead and QA gate.
+
 ### Roadmap Dashboard Status Update
 
 Status:
