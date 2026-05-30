@@ -24,6 +24,69 @@ Notes:
 
 ## Sprint history
 
+### Premium Image-Led Generation Fixes
+
+Status:
+Approved
+
+#### Summary
+
+This sprint documented the approved premium image-led generation fixes that resolved the previous premium visual blocker in the Generate / Update flow.
+
+The goal was to make Premium, Luxury, and Enterprise generation more reliable by tightening the generation instructions and fixing the premium image-led problem matching used by the generation and build flows.
+
+#### Git history
+
+* Implementation commit: 68a09b0 Tighten premium image-led generation instructions
+* Follow-up fix commit: 1bc4388 Fix premium image-led validation matching
+
+#### Changed files
+
+* src/App.jsx
+* docs/SPRINT_LOG.md
+
+#### Bolt test result
+
+Bolt test result: APPROVE
+
+Observed result:
+
+* Generate / Update started.
+* Status showed Generating code.
+* Website was created.
+* Preview became usable.
+* Status became Success.
+* Generated website showed a premium consultant landing page.
+* Generated website included a real image-led/editorial section.
+* The previous premium image-led/editorial blocker appears resolved.
+
+#### QA decision
+
+APPROVE
+
+#### Safety checks
+
+* Contact-form safety was not weakened.
+* Premium validator condition was kept.
+* The premium validator was not removed or broadly loosened.
+* No dashboard files were changed.
+* No package files were changed.
+* No prompt files were changed.
+* No .env or secrets were accessed.
+* The Generate / Update baseline now successfully creates a usable preview.
+
+#### Notes
+
+The later status message "Error: API key and prompt are required for roadmap" came from the Roadmap flow, not the successful Generate / Update baseline test.
+
+Dashboard update was not needed because the roadmap/workflow phase did not change.
+
+This entry documents the approved fix only and does not claim a new Mini-Lovable version number or a new baseline beyond the approved change set.
+
+#### Next safe action
+
+Keep this fix in the approved history and continue with the next sprint only if there is a separate, scoped task that needs implementation or QA.
+
 ### Generation/Recovery Baseline Read-Only Debugging Sprint
 
 Status:
