@@ -24,6 +24,90 @@ Notes:
 
 ## Sprint history
 
+### Simple Live Roadmap Dashboard Sprint
+
+Status:
+Approved
+
+#### Summary
+
+The Simple Live Roadmap Dashboard sprint created the first lightweight Kodmaskin roadmap dashboard.
+
+The dashboard is a static repo-based view intended to show a simple visual phase line with sprint dots and a "You are here" marker.
+
+This was a Kodmaskin workflow/dashboard sprint, not Mini-Lovable UI work.
+
+#### Git history
+
+* Commit: a731a5e Create simple live roadmap dashboard
+
+#### Changed files
+
+* dashboard/index.html
+* dashboard/roadmap-status.json
+
+#### Dashboard result
+
+The sprint created:
+
+* A plain HTML/CSS/JS dashboard page.
+* A repo-based JSON status file.
+* A simple phase/sprint visual structure.
+* Completed, current, and planned sprint states.
+* A "You are here" marker.
+* No backend.
+* No database.
+* No GitHub API.
+* No React.
+* No package changes.
+
+#### Runtime caveat
+
+The dashboard reads status from:
+
+dashboard/roadmap-status.json
+
+Because the dashboard uses fetch("./roadmap-status.json"), runtime preview still needs HTTP/static server verification.
+
+Opening the dashboard directly with file:// may block JSON loading.
+
+Python is not installed locally, so python -m http.server could not be used for local static preview.
+
+#### Final QA-loop check
+
+A later read-only Final QA-loop check confirmed:
+
+* Correct repo.
+* Branch main.
+* Correct remote.
+* Working tree clean before and after.
+* Working tree remained unchanged: yes.
+* dashboard/index.html exists.
+* dashboard/roadmap-status.json exists.
+* Commit a731a5e exists.
+* docs/KODMACHINE_SOP.md exists.
+* SOP sprint is documented in docs/SPRINT_LOG.md.
+* The original dashboard creation sprint still needed exact sprint-log documentation.
+
+#### Safety checks
+
+* No app code was changed.
+* No package files were changed.
+* No prompt files were changed.
+* No .env or secrets were accessed.
+* No Hermes/OpenClaw installation was performed.
+* No new version or baseline was created.
+* Mini-Lovable UI track remains paused.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+Next safe follow-up is either:
+
+* verify dashboard runtime through an HTTP/static server preview, or
+* update dashboard documentation/status only after ChatGPT QA approves a narrow sprint.
+
 ### Roadmap Dashboard Status Update
 
 Status:
