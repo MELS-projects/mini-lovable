@@ -323,6 +323,89 @@ ChatGPT remains project lead and QA gate.
 
 Any future VM setup must be done one step at a time after explicit ChatGPT QA and human approval.
 
+### Codex CLI Runbook Sprint
+
+Status:
+Approved
+
+#### Summary
+
+The Codex CLI Runbook sprint created a dedicated runbook for safely using Codex CLI in the current Kodmaskin workflow.
+
+The runbook documents how Codex CLI should be used as the main implementation path while Hermes/OpenClaw remains WAIT.
+
+This was a Kodmaskin workflow documentation sprint, not Mini-Lovable UI work.
+
+#### Git history
+
+* Commit: b39ccdf Create Codex CLI runbook
+
+#### Changed files
+
+* docs/CODEX_CLI_RUNBOOK.md
+
+#### Runbook contents
+
+The new runbook documents:
+
+* When to use Codex.
+* One active Codex sprint at a time.
+* Repo context verification.
+* Working-tree before/after checks.
+* Codex modes:
+
+  * read-only mode
+  * documentation/write mode
+  * workflow/template sprint mode
+  * limited implementation mode
+* Forbidden actions.
+* Secrets and .env rules.
+* Expected Codex output.
+* Handoff back to ChatGPT QA.
+* ChatGPT QA decision model.
+* PowerShell/Git commit bridge after approval.
+* Stop conditions.
+* Definition of Ready.
+* Definition of Done.
+
+#### Workflow result
+
+Codex CLI remains the main implementation path for current routine workflow, documentation, template, and limited implementation sprints.
+
+The project will continue improving the Codex CLI workflow before any VM/Hermes setup.
+
+#### Model note
+
+Codex model was switched to:
+
+* gpt-5.4-mini low
+
+This is intended for lower-cost routine documentation and check work.
+
+#### Safety checks
+
+* No app code was changed.
+* No dashboard files were changed.
+* No package files were changed.
+* No prompt files were changed.
+* No .env or secrets were accessed.
+* No Hermes/OpenClaw installation was performed.
+* No VM setup was performed.
+* No new version or baseline was created.
+* Working tree was clean after push.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+OpenClaw remains WAIT / not first.
+
+Codex CLI remains CONTINUE.
+
+GitHub remains source of truth.
+
+ChatGPT remains project lead and QA gate.
+
 ### Roadmap Dashboard Status Update
 
 Status:
