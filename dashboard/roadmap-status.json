@@ -1,7 +1,7 @@
 {
   "title": "Kodmaskin Oskar Roadmap",
   "currentPhaseId": "phase-2",
-  "currentSprintId": "qa-template-field-test",
+  "currentSprintId": "expanded-sprint-roadmap-dashboard",
   "summary": "Building a safer ChatGPT -> Oskar -> Codex -> GitHub -> Bolt -> QA workflow before Hermes/OpenClaw.",
   "phases": [
     {
@@ -10,8 +10,33 @@
       "status": "completed",
       "sprints": [
         {
-          "id": "codex-read-only",
-          "label": "Codex read-only",
+          "id": "github-source-of-truth",
+          "label": "GitHub source of truth",
+          "status": "completed"
+        },
+        {
+          "id": "bolt-preview-verified",
+          "label": "Bolt preview verified",
+          "status": "completed"
+        },
+        {
+          "id": "codex-correct-repo-test",
+          "label": "Codex correct repo test",
+          "status": "completed"
+        },
+        {
+          "id": "codex-read-only-test",
+          "label": "Codex read-only test",
+          "status": "completed"
+        },
+        {
+          "id": "documentation-only-write-test",
+          "label": "Documentation-only write test",
+          "status": "completed"
+        },
+        {
+          "id": "one-file-ui-change-test",
+          "label": "One-file UI change test",
           "status": "completed"
         },
         {
@@ -20,8 +45,18 @@
           "status": "completed"
         },
         {
-          "id": "qa-template",
+          "id": "qa-handoff-template",
           "label": "QA handoff template",
+          "status": "completed"
+        },
+        {
+          "id": "working-tree-verification",
+          "label": "Working-tree verification",
+          "status": "completed"
+        },
+        {
+          "id": "sprint-log-discipline",
+          "label": "Sprint log discipline",
           "status": "completed"
         }
       ]
@@ -32,14 +67,39 @@
       "status": "current",
       "sprints": [
         {
-          "id": "working-tree-verification",
-          "label": "Working-tree checks",
+          "id": "qa-handoff-read-only-test",
+          "label": "QA handoff read-only test",
           "status": "completed"
         },
         {
-          "id": "qa-template-field-test",
-          "label": "QA field test",
+          "id": "unchanged-working-tree-field",
+          "label": "Add unchanged working-tree field",
+          "status": "completed"
+        },
+        {
+          "id": "kodmaskin-sop",
+          "label": "Kodmaskin SOP",
+          "status": "completed"
+        },
+        {
+          "id": "simple-live-roadmap-dashboard",
+          "label": "Simple live roadmap dashboard",
+          "status": "completed"
+        },
+        {
+          "id": "expanded-sprint-roadmap-dashboard",
+          "label": "Expanded sprint roadmap dashboard",
           "status": "current"
+        },
+        {
+          "id": "dashboard-update-rule",
+          "label": "Dashboard update rule",
+          "status": "planned"
+        },
+        {
+          "id": "final-qa-loop-check",
+          "label": "Final QA-loop check",
+          "status": "planned"
         }
       ]
     },
@@ -49,14 +109,44 @@
       "status": "planned",
       "sprints": [
         {
-          "id": "workflow-sop",
-          "label": "Workflow SOP",
+          "id": "codex-read-only-start-command",
+          "label": "Codex read-only start command",
           "status": "planned"
         },
         {
-          "id": "codex-runbook",
-          "label": "Codex runbook",
+          "id": "codex-workspace-write-start-command",
+          "label": "Codex workspace-write start command",
           "status": "planned"
+        },
+        {
+          "id": "powershell-runbook",
+          "label": "PowerShell runbook",
+          "status": "planned"
+        },
+        {
+          "id": "commit-push-checklist",
+          "label": "Commit/push checklist",
+          "status": "planned"
+        },
+        {
+          "id": "bolt-preview-checklist",
+          "label": "Bolt preview checklist",
+          "status": "planned"
+        },
+        {
+          "id": "semi-automatic-sprint-template-to-qa",
+          "label": "Semi-automatic sprint from template to QA",
+          "status": "optional"
+        },
+        {
+          "id": "dashboard-json-update-routine",
+          "label": "Dashboard JSON update routine",
+          "status": "planned"
+        },
+        {
+          "id": "optional-helper-scripts",
+          "label": "Optional helper scripts",
+          "status": "optional"
         }
       ]
     },
@@ -66,8 +156,53 @@
       "status": "planned",
       "sprints": [
         {
-          "id": "hermes-sandbox-read-only",
-          "label": "Hermes sandbox read-only",
+          "id": "hermes-discovery-sprint",
+          "label": "Hermes Discovery Sprint",
+          "status": "planned"
+        },
+        {
+          "id": "verify-official-tool-source",
+          "label": "Verify official tool/source",
+          "status": "planned"
+        },
+        {
+          "id": "security-review",
+          "label": "Security review",
+          "status": "planned"
+        },
+        {
+          "id": "choose-environment",
+          "label": "Choose environment",
+          "status": "planned"
+        },
+        {
+          "id": "create-sandbox",
+          "label": "Create sandbox",
+          "status": "planned"
+        },
+        {
+          "id": "install-only-after-approval",
+          "label": "Install only after approval",
+          "status": "skipped"
+        },
+        {
+          "id": "read-only-repo-context-test",
+          "label": "Read-only repo context test",
+          "status": "planned"
+        },
+        {
+          "id": "handoff-only-test",
+          "label": "Handoff-only test",
+          "status": "optional"
+        },
+        {
+          "id": "qa-package-test",
+          "label": "QA-package test",
+          "status": "planned"
+        },
+        {
+          "id": "documentation-phase",
+          "label": "Documentation",
           "status": "planned"
         }
       ]
@@ -78,8 +213,73 @@
       "status": "planned",
       "sprints": [
         {
-          "id": "semi-autonomous-pr-flow",
-          "label": "Semi-autonomous PR flow",
+          "id": "agent-creates-sprint-proposal",
+          "label": "Agent creates sprint proposal",
+          "status": "planned"
+        },
+        {
+          "id": "agent-creates-codex-handoff",
+          "label": "Agent creates Codex handoff",
+          "status": "planned"
+        },
+        {
+          "id": "codex-implements-on-branch",
+          "label": "Codex implements on branch",
+          "status": "planned"
+        },
+        {
+          "id": "agent-summarizes-diff-tests-risks",
+          "label": "Agent summarizes diff/tests/risks",
+          "status": "planned"
+        },
+        {
+          "id": "chatgpt-qa-review",
+          "label": "ChatGPT QA review",
+          "status": "planned"
+        },
+        {
+          "id": "agent-prepares-commit",
+          "label": "Agent prepares commit",
+          "status": "planned"
+        },
+        {
+          "id": "agent-prepares-pr",
+          "label": "Agent prepares PR",
+          "status": "planned"
+        },
+        {
+          "id": "bolt-preview-test",
+          "label": "Bolt/preview test",
+          "status": "planned"
+        },
+        {
+          "id": "pr-review-flow",
+          "label": "PR review flow",
+          "status": "planned"
+        },
+        {
+          "id": "human-approval-gate",
+          "label": "Human approval gate",
+          "status": "planned"
+        },
+        {
+          "id": "merge-routine",
+          "label": "Merge routine",
+          "status": "planned"
+        },
+        {
+          "id": "release-notes-checklist",
+          "label": "Release notes checklist",
+          "status": "optional"
+        },
+        {
+          "id": "staging-test",
+          "label": "Staging test",
+          "status": "optional"
+        },
+        {
+          "id": "rollback-documentation",
+          "label": "Rollback documentation",
           "status": "planned"
         }
       ]

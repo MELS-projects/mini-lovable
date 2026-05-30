@@ -14,6 +14,8 @@
       --completed: #1f7a4f;
       --current: #b86b00;
       --planned: #98a2ad;
+      --optional: #8264b8;
+      --skipped: #9a6a58;
       --border: #e5dfd4;
       --shadow: 0 18px 40px rgba(35, 26, 18, 0.08);
     }
@@ -177,6 +179,8 @@
     .node.completed { color: var(--completed); }
     .node.current { color: var(--current); transform: scale(1.2); }
     .node.planned { color: var(--planned); background: #fff; }
+    .node.optional { color: var(--optional); background: #fff; }
+    .node.skipped { color: var(--skipped); background: #fff; }
 
     .node.current::after {
       content: "You are here";
@@ -212,6 +216,8 @@
     .sprint-label[data-status="completed"] strong { color: var(--completed); }
     .sprint-label[data-status="current"] strong { color: var(--current); }
     .sprint-label[data-status="planned"] strong { color: var(--planned); }
+    .sprint-label[data-status="optional"] strong { color: var(--optional); }
+    .sprint-label[data-status="skipped"] strong { color: var(--skipped); }
 
     .message {
       margin: 0 28px 28px;
@@ -316,6 +322,8 @@
     function statusText(status) {
       if (status === "completed") return "Completed";
       if (status === "current") return "Current";
+      if (status === "optional") return "Optional";
+      if (status === "skipped") return "Skipped";
       return "Planned";
     }
 
