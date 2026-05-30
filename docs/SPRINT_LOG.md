@@ -24,6 +24,61 @@ Notes:
 
 ## Sprint history
 
+### Updated QA Handoff Template Field Read-Only Test
+
+Status:
+Approved
+
+#### Summary
+
+The Updated QA Handoff Template Field Read-Only Test verified that the QA handoff template now includes and uses the explicit field: Working tree remained unchanged: yes / no.
+
+This was a Kodmaskin workflow test, not Mini-Lovable UI work.
+
+#### Template used
+
+- prompts/CODEX_CLI_QA_HANDOFF_TEMPLATE.md
+
+#### Test result
+
+- Codex CLI completed the read-only test.
+- Repo context was verified.
+- Working tree before work: clean.
+- Working tree after work: clean.
+- Working tree remained unchanged: yes.
+- No files were changed.
+- No files were created.
+- No files were deleted.
+- Final verdict from Codex: READY FOR CHATGPT QA.
+
+#### Template verification result
+
+Codex confirmed that the updated template includes the explicit field:
+
+Working tree remained unchanged: yes / no
+
+Codex confirmed that the field is clear and easy for ChatGPT QA to scan.
+
+Codex confirmed that nothing material was missing.
+
+#### Safety checks
+
+- No app code was changed.
+- No package files were changed.
+- No prompt files were changed.
+- No .env or secrets were accessed.
+- No commit or push was made by Codex.
+- No new version or baseline was created.
+- Hermes/OpenClaw remains WAIT.
+
+#### Workflow result
+
+The QA handoff template is now verified for clearer before/after working-tree reporting and easier ChatGPT QA review.
+
+#### Notes
+
+Next focus remains Kodmaskin workflow improvement, not Mini-Lovable UI polish.
+
 ### Unchanged Working-Tree Field Template Update
 
 Status:
