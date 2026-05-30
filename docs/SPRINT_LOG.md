@@ -406,6 +406,81 @@ GitHub remains source of truth.
 
 ChatGPT remains project lead and QA gate.
 
+### Final QA-Loop Checklist Sprint
+
+Status:
+Approved
+
+#### Summary
+
+The Final QA-loop Checklist sprint created a dedicated checklist for running a final repo and workflow verification after important Kodmaskin sprints.
+
+The checklist helps confirm repo context, branch, remote, working-tree state, documentation status, changed files, risks, commit/push status, and the next safe action before moving to the next sprint.
+
+This was a Kodmaskin workflow documentation sprint, not Mini-Lovable UI work.
+
+#### Git history
+
+* Commit: c09cf39 Create final QA-loop checklist
+
+#### Changed files
+
+* docs/FINAL_QA_LOOP_CHECKLIST.md
+
+#### Checklist contents
+
+The new checklist documents:
+
+* Repo context verification.
+* Branch check.
+* Remote/origin check.
+* Working-tree checks.
+* Latest commits check.
+* Changed files review.
+* Forbidden files review.
+* Documentation status check.
+* Dashboard/roadmap-status check when relevant.
+* Test/check results review.
+* Risk review.
+* Commit/push confirmation.
+* Post-push clean working tree check.
+* Next safe action decision.
+* Stop conditions.
+
+#### QA gate rule
+
+The checklist states that Codex must not write APPROVE as the final decision.
+
+Only ChatGPT gives QA approval.
+
+#### Workflow result
+
+The checklist strengthens the current ChatGPT → Oskar → Codex → GitHub → QA workflow by making the final review step more repeatable before the next sprint starts.
+
+#### Safety checks
+
+* No app code was changed.
+* No dashboard files were changed.
+* No package files were changed.
+* No prompt files were changed.
+* No .env or secrets were accessed.
+* No Hermes/OpenClaw installation was performed.
+* No VM setup was performed.
+* No new version or baseline was created.
+* Working tree was clean after push.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+OpenClaw remains WAIT / not first.
+
+Codex CLI remains CONTINUE.
+
+GitHub remains source of truth.
+
+ChatGPT remains project lead and QA gate.
+
 ### Roadmap Dashboard Status Update
 
 Status:
