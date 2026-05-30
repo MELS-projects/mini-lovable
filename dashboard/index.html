@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kodmaskin Oskar Roadmap</title>
+  <style>
+    :root {
+      --bg: #f6f3ec;
+      --panel: #fffaf2;
+      --text: #1f2328;
+      --muted: #66707a;
+      --line: #d6d0c7;
+      --completed: #1f7a4f;
+      --current: #b86b00;
+      --planned: #98a2ad;
+      --border: #e5dfd4;
+      --shadow: 0 18px 40px rgba(35, 26, 18, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(184, 107, 0, 0.08), transparent 30%),
+        linear-gradient(180deg, #fbf8f3 0%, #f3ede4 100%);
+      color: var(--text);
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 20px 40px;
+    }
+
+    .shell {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 28px 28px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--current);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.1;
+    }
+
+    .summary {
+      margin: 0;
+      max-width: 70ch;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .status-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 18px 28px 0;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: #fff;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .pill strong {
+      font-weight: 700;
+    }
+
+    .roadmap {
+      position: relative;
+      padding: 28px;
+    }
+
+    .roadmap::before {
+      content: "";
+      position: absolute;
+      left: 48px;
+      right: 48px;
+      top: 126px;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--completed) 0%, #7fb393 45%, var(--line) 45%, var(--line) 100%);
+    }
+
+    .phases {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .phase {
+      min-width: 0;
+    }
+
+    .phase-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 64px;
+    }
+
+    .phase-label[data-status="completed"] { color: var(--completed); }
+    .phase-label[data-status="current"] { color: var(--current); }
+    .phase-label[data-status="planned"] { color: var(--planned); }
+
+    .sprints {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .sprint {
+      width: 100%;
+      display: grid;
+      justify-items: center;
+      gap: 10px;
+    }
+
+    .node-wrap {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 36px;
+    }
+
+    .node {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px currentColor;
+      background: currentColor;
+      position: relative;
+      z-index: 2;
+    }
+
+    .node.completed { color: var(--completed); }
+    .node.current { color: var(--current); transform: scale(1.2); }
+    .node.planned { color: var(--planned); background: #fff; }
+
+    .node.current::after {
+      content: "You are here";
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -48px);
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--current);
+      background: rgba(255, 248, 238, 0.98);
+      border: 1px solid rgba(184, 107, 0, 0.18);
+      border-radius: 999px;
+      padding: 5px 10px;
+      box-shadow: 0 8px 20px rgba(35, 26, 18, 0.08);
+    }
+
+    .sprint-label {
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.35;
+      color: var(--muted);
+      max-width: 14ch;
+    }
+
+    .sprint-label strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 3px;
+      font-size: 13px;
+    }
+
+    .sprint-label[data-status="completed"] strong { color: var(--completed); }
+    .sprint-label[data-status="current"] strong { color: var(--current); }
+    .sprint-label[data-status="planned"] strong { color: var(--planned); }
+
+    .message {
+      margin: 0 28px 28px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .message.error {
+      color: #8a1f11;
+      border-color: rgba(138, 31, 17, 0.2);
+      background: #fff7f5;
+    }
+
+    @media (max-width: 980px) {
+      .phases {
+        grid-template-columns: 1fr;
+      }
+
+      .roadmap::before {
+        display: none;
+      }
+
+      .phase {
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .phase:last-child {
+        border-bottom: 0;
+      }
+
+      .phase-label {
+        margin-bottom: 18px;
+      }
+
+      .sprints {
+        align-items: stretch;
+      }
+
+      .sprint {
+        grid-template-columns: 36px 1fr;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .node-wrap {
+        min-height: 36px;
+      }
+
+      .sprint-label {
+        text-align: left;
+        max-width: none;
+      }
+
+      .node.current::after {
+        left: 0;
+        transform: translate(0, -48px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="shell">
+      <header class="header">
+        <div class="eyebrow">Live roadmap dashboard</div>
+        <h1 id="title">Kodmaskin Oskar Roadmap</h1>
+        <p class="summary" id="summary">Loading roadmap status...</p>
+      </header>
+
+      <div class="status-bar" id="statusBar" aria-live="polite"></div>
+
+      <section class="roadmap" aria-label="Roadmap">
+        <div class="phases" id="phases"></div>
+      </section>
+
+      <p class="message" id="message">Loading roadmap data from <code>roadmap-status.json</code>...</p>
+    </section>
+  </main>
+
+  <script>
+    const titleEl = document.getElementById("title");
+    const summaryEl = document.getElementById("summary");
+    const phasesEl = document.getElementById("phases");
+    const statusBarEl = document.getElementById("statusBar");
+    const messageEl = document.getElementById("message");
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function statusText(status) {
+      if (status === "completed") return "Completed";
+      if (status === "current") return "Current";
+      return "Planned";
+    }
+
+    function renderFallback(message) {
+      messageEl.textContent = message;
+      messageEl.classList.add("error");
+      phasesEl.innerHTML = "";
+      statusBarEl.innerHTML = "";
+    }
+
+    function renderRoadmap(data) {
+      titleEl.textContent = data.title || "Roadmap";
+      summaryEl.textContent = data.summary || "";
+
+      const phases = Array.isArray(data.phases) ? data.phases : [];
+      const currentPhase = phases.find((phase) => phase.id === data.currentPhaseId);
+      let currentSprint = null;
+      for (const phase of phases) {
+        for (const sprint of (phase.sprints || [])) {
+          if (sprint.id === data.currentSprintId) {
+            currentSprint = sprint;
+            break;
+          }
+        }
+        if (currentSprint) {
+          break;
+        }
+      }
+      const phaseText = currentPhase ? `Current phase: ${currentPhase.label}` : "Current phase unavailable";
+      const sprintText = currentSprint ? `Current sprint: ${currentSprint.label}` : "Current sprint unavailable";
+      statusBarEl.innerHTML = `
+        <div class="pill"><strong>Status</strong> Live from JSON</div>
+        <div class="pill"><strong>Phase</strong> ${escapeHtml(phaseText)}</div>
+        <div class="pill"><strong>Sprint</strong> ${escapeHtml(sprintText)}</div>
+      `;
+
+      phasesEl.innerHTML = data.phases.map((phase) => {
+        const phaseSprintHtml = (phase.sprints || []).map((sprint) => {
+          const isCurrent = sprint.id === data.currentSprintId;
+          const nodeClass = sprint.status || "planned";
+
+          return `
+            <div class="sprint">
+              <div class="node-wrap">
+                <span class="node ${escapeHtml(nodeClass)}" aria-hidden="true"></span>
+              </div>
+              <div class="sprint-label" data-status="${escapeHtml(sprint.status || "planned")}">
+                <strong>${escapeHtml(sprint.label)}</strong>
+                ${escapeHtml(statusText(sprint.status))}
+                ${isCurrent ? " - You are here" : ""}
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        return `
+          <article class="phase">
+            <div class="phase-label" data-status="${escapeHtml(phase.status || "planned")}">${escapeHtml(phase.label)}</div>
+            <div class="sprints">
+              ${phaseSprintHtml}
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      messageEl.classList.remove("error");
+      messageEl.textContent = "Roadmap loaded from roadmap-status.json.";
+    }
+
+    fetch("./roadmap-status.json", { cache: "no-store" })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (!data || !Array.isArray(data.phases)) {
+          throw new Error("Invalid roadmap data");
+        }
+        renderRoadmap(data);
+      })
+      .catch((error) => {
+        renderFallback(`Could not load roadmap-status.json. ${error.message}. Run the folder from a local static server to enable fetch.`);
+      });
+  </script>
+</body>
+</html>

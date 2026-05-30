@@ -1,0 +1,88 @@
+{
+  "title": "Kodmaskin Oskar Roadmap",
+  "currentPhaseId": "phase-2",
+  "currentSprintId": "qa-template-field-test",
+  "summary": "Building a safer ChatGPT -> Oskar -> Codex -> GitHub -> Bolt -> QA workflow before Hermes/OpenClaw.",
+  "phases": [
+    {
+      "id": "phase-1",
+      "label": "Fas 1",
+      "status": "completed",
+      "sprints": [
+        {
+          "id": "codex-read-only",
+          "label": "Codex read-only",
+          "status": "completed"
+        },
+        {
+          "id": "handoff-template",
+          "label": "Handoff template",
+          "status": "completed"
+        },
+        {
+          "id": "qa-template",
+          "label": "QA handoff template",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "phase-2",
+      "label": "Fas 2",
+      "status": "current",
+      "sprints": [
+        {
+          "id": "working-tree-verification",
+          "label": "Working-tree checks",
+          "status": "completed"
+        },
+        {
+          "id": "qa-template-field-test",
+          "label": "QA field test",
+          "status": "current"
+        }
+      ]
+    },
+    {
+      "id": "phase-3",
+      "label": "Fas 3",
+      "status": "planned",
+      "sprints": [
+        {
+          "id": "workflow-sop",
+          "label": "Workflow SOP",
+          "status": "planned"
+        },
+        {
+          "id": "codex-runbook",
+          "label": "Codex runbook",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "phase-4",
+      "label": "Fas 4",
+      "status": "planned",
+      "sprints": [
+        {
+          "id": "hermes-sandbox-read-only",
+          "label": "Hermes sandbox read-only",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "phase-5",
+      "label": "Fas 5",
+      "status": "planned",
+      "sprints": [
+        {
+          "id": "semi-autonomous-pr-flow",
+          "label": "Semi-autonomous PR flow",
+          "status": "planned"
+        }
+      ]
+    }
+  ]
+}
