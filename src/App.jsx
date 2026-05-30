@@ -542,6 +542,10 @@ const handleContactSubmit = (event) => {
     return '';
   };
 
+  const isPremiumImageLedProblem = (problem) => {
+    return /realistic image-led|image-led|editorial section|real public image URL/i.test(String(problem || ''));
+  };
+
   const isInitialGeneratedCode = (code) => {
     const value = String(code || '').trim();
 
@@ -1590,8 +1594,7 @@ For Premium, Luxury, and Enterprise outputs, never return a design below the sav
         const onlyImageEditorialProblem =
           validationProblems.length === 1 &&
           validationProblems[0] === visualProblem &&
-          visualProblem &&
-          visualProblem.includes('realistic image-led or editorial section');
+          isPremiumImageLedProblem(visualProblem);
         const onlyContactConfirmationProblem =
           validationProblems.length === 1 && Boolean(contactConfirmationProblem);
 
@@ -1691,8 +1694,7 @@ For Premium, Luxury, and Enterprise outputs, never return a design below the sav
 
           if (
             validationProblems.length === 1 &&
-            visualProblem &&
-            visualProblem.includes('realistic image-led or editorial section')
+            isPremiumImageLedProblem(visualProblem)
           ) {
             const imageProblemMessage =
               'DeepSeek returned a design without a strong image-led/editorial premium section. Add one real public image URL (preferably Unsplash) and image-related code such as img, backgroundImage, photo, visual, figure, or editorial, then try Build Selected Step again or switch Quality level to Standard.';
@@ -2065,8 +2067,7 @@ ${hasExistingApp
         const onlyImageEditorialProblem =
           validationProblems.length === 1 &&
           validationProblems[0] === visualProblem &&
-          visualProblem &&
-          visualProblem.includes('realistic image-led or editorial section');
+          isPremiumImageLedProblem(visualProblem);
         const onlyContactConfirmationProblem =
           validationProblems.length === 1 && Boolean(contactConfirmationProblem);
 
@@ -2170,11 +2171,7 @@ ${hasExistingApp
             return;
           }
 
-          if (
-            validationProblems.length === 1 &&
-            visualProblem &&
-            visualProblem.includes('realistic image-led or editorial section')
-          ) {
+          if (validationProblems.length === 1 && isPremiumImageLedProblem(visualProblem)) {
             const imageProblemMessage =
               'DeepSeek returned a design without a strong image-led/editorial premium section. Add one real public image URL (preferably Unsplash) and image-related code such as img, backgroundImage, photo, visual, figure, or editorial, then try Build / Improve Step again or switch Quality level to Standard.';
             returnToRoadmapWithWarning(imageProblemMessage, imageProblemMessage);
