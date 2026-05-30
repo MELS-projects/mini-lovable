@@ -24,6 +24,66 @@ Notes:
 
 ## Sprint history
 
+### Kodmaskin SOP Sprint
+
+Status:
+Approved
+
+#### Summary
+
+The Kodmaskin SOP sprint created a new standard operating procedure for Kodmaskin Oskar.
+
+The SOP documents the practical operating model for Oskar as an orchestrator / AI tech lead, with specialist agents introduced gradually instead of building one monolithic super-agent.
+
+This was a Kodmaskin workflow documentation sprint, not Mini-Lovable UI work.
+
+#### Git history
+
+* Commit: db988ab Create Kodmaskin SOP
+
+#### Changed files
+
+* docs/KODMACHINE_SOP.md
+
+#### SOP contents
+
+The new SOP documents:
+
+* Kodmaskin Oskar project goal.
+* Oskar Core + specialist-agent model.
+* Mini-Lovable as the first validation and training project.
+* Role model.
+* RACI responsibility matrix.
+* Current workflow.
+* Sprint rules.
+* QA rules.
+* GitHub/Bolt rules.
+* Security rules.
+* Stop conditions.
+* Definition of Done.
+* Future Hermes/OpenClaw role.
+
+#### Safety checks
+
+* No app code was changed.
+* No package files were changed.
+* No prompt files were changed.
+* No existing docs were changed during implementation.
+* No .env or secrets were accessed.
+* No Hermes/OpenClaw installation was performed.
+* No new version or baseline was created.
+* Mini-Lovable UI track remains paused.
+
+#### Workflow result
+
+The project now has a dedicated SOP file that can guide future Kodmaskin workflow, QA, specialist-agent coordination, and safe autonomy expansion.
+
+#### Notes
+
+Hermes/OpenClaw remains WAIT.
+
+Next focus remains Kodmaskin workflow improvement and controlled movement toward safer orchestration.
+
 ### Updated QA Handoff Template Field Read-Only Test
 
 Status:
