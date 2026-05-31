@@ -412,3 +412,25 @@ Codex must not claim `READY FOR CHATGPT QA` if:
 * package/dependency files changed without approval
 * the sprint scope was expanded
 * Codex committed or pushed
+
+## Reusable Codex QA Handoff Footer
+
+Paste this footer at the end of future Codex prompts:
+
+```text
+Return your result using the Standard QA Handoff Packet format.
+
+Include:
+1. Repo context: current working directory, git repo yes/no, branch, remote/origin, working tree before and after.
+2. Sprint scope: sprint name, approved goal, allowed files, forbidden files, hard limits.
+3. Changed files: list every changed file and confirm each was explicitly approved.
+4. Exact changes: short summary of what changed.
+5. Diff summary: summarize the diff and confirm no unrelated refactor or package/dependency change.
+6. Tests/checks run: commands run, manual checks, and result.
+7. Risks: known risks or unclear items for ChatGPT-Nicolas to review.
+8. Stop conditions: state whether any stop condition was triggered.
+9. Approved-files confirmation: "Only approved files were changed: YES / NO".
+10. Final verdict: READY FOR CHATGPT QA / NEEDS FIX / STOP.
+
+Do not claim READY FOR CHATGPT QA if the wrong repo, wrong branch or remote, unapproved files, secrets, unapproved package/dependency changes, scope expansion, or commit/push occurred.
+```
