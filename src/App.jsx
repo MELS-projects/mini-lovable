@@ -336,7 +336,8 @@ Use this test prompt as calibration: "Create a premium website for an exclusive 
 - A visible submit button is required.
 - If there is no backend integration, the form must prevent default submit behavior, use local React state, and show a visible local confirmation message after submit.
 - Contact forms should make required fields obvious.
-- Add clear labels and helpful placeholders for each field.
+- Add visible labels and helpful placeholders for each field.
+- If possible, use aria-labels or accessible helper text for Full name, Email address, and Message.
 - If using required fields, make it clear what is missing before submitting.
 - Prefer simple local validation state for name, email, and message instead of relying only on browser-native required behavior.
 - If the user submits with missing fields, show a visible message such as: "Please fill in name, email, and message before submitting."
@@ -353,6 +354,7 @@ Use this test prompt as calibration: "Create a premium website for an exclusive 
 - The banner text must be honest, for example: "Thank you. This demo preview has recorded your enquiry locally. No email was sent."
 - The success banner should be rendered as a clearly visible inline banner inside the form area, directly above the submit button, not hidden in a separate section.
 - The success banner must be visually obvious and read like a local demo confirmation, not a real email delivery notice.
+- Keep the form visible after successful submit, and if feasible scroll or focus the success banner into view after submit.
 - Avoid wording that implies real delivery: "I will respond within 24 hours", "We have received your email", "Your message has been sent" unless real backend integration exists.
 - Do not invent fake phone numbers, fake emails, fake client names, fake credentials, fake metrics, or placeholder social/contact href="#" links unless they are clearly marked as demo/illustrative only.
 - A valid preview contact form should preferably keep name/email/message fields visible, show missing-field errors near the form, show success banner near the submit button, and not claim real email delivery.
