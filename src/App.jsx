@@ -269,7 +269,6 @@ Before returning App.jsx, silently review and improve the design.
 11. For multi-page websites, navigation must actually switch pages with internal state.
 12. For premium multi-page websites, the home hero should show headline, CTA, proof, and a visual panel high enough to be visible immediately.
 13. About, Services, Cases, Resources, and Contact pages should each feel intentionally designed with their own sections, not like plain filler pages.
-14. If metrics are shown, add a nearby label or disclaimer that they are illustrative/demo unless real verified client results are provided.
 Do not print this checklist.`;
   };
 
@@ -283,9 +282,6 @@ Do not print this checklist.`;
 - Buttons, headings, and key content should remain comfortably visible in the first screen.
 - Avoid blank, nearly empty, or overly tall heroes where the visitor has to scroll far before meaningful content appears.
 - For contact pages, prefer executive meeting, boardroom, architecture, refined office, or abstract premium visuals.
-- If there is no backend/contact integration, the contact intro/body/CTA copy must be demo-safe and must not promise real follow-up, real response, or a business-day reply.
-- Use demo-safe wording such as: "This is a demo preview. Your enquiry is recorded locally and no email is sent."
-- Do not say or imply "we will be in touch", "we will respond", "we will get back to you", "schedule a call", "book a consultation", "our team will contact you", or "within one business day" unless real backend/contact integration exists.
 - The final result should feel curated, not generic.`;
   };
 
@@ -300,9 +296,7 @@ Do not print this checklist.`;
 - For Premium, Luxury, and Enterprise outputs, include at least one real public image URL, preferably a stable Unsplash URL, plus validator-detectable image-related code such as img, backgroundImage, image, photo, visual, figure, or editorial.
 - For contact forms, place the success message as a clearly visible inline banner inside the contact form area, directly above the submit button, and keep the honest local-only wording that says the preview recorded the enquiry locally and no email was sent.
 - Do not use href="#" for social links. If real URLs are not available, omit the social links or render them as non-clickable labels.
-- Prototype/demo content may use illustrative metrics, testimonials, names, and companies only if clearly marked as demo or illustrative.
-- Add a nearby disclaimer next to any hero metrics, case studies, testimonials, client results, or revenue/growth claims unless the user provided verified real data.
-- Publish-safe/client-ready output must not invent fake names, fake client companies, unverifiable metrics, fake phone numbers, fake emails, or fake results.
+- Avoid fake names, fake client companies, unverifiable metrics, fake phone numbers, and fake emails unless they are clearly marked as illustrative/demo content.
 - Do not use emoji icons as the main visual language for Premium, Luxury, or Enterprise.
 - Avoid lorem ipsum, coming soon, under construction, and empty placeholder pages.
 - If creating a consultant website, make it feel like a high-end advisory brand.
@@ -338,12 +332,10 @@ Use this test prompt as calibration: "Create a premium website for an exclusive 
 - A visible submit button is required.
 - If there is no backend integration, the form must prevent default submit behavior, use local React state, and show a visible local confirmation message after submit.
 - Contact forms should make required fields obvious.
-- Add visible labels above each field and helpful placeholders for each field.
-- If possible, use aria-labels or accessible helper text for Full name, Email address, and Message.
+- Add clear labels and helpful placeholders for each field.
 - If using required fields, make it clear what is missing before submitting.
 - Prefer simple local validation state for name, email, and message instead of relying only on browser-native required behavior.
 - If the user submits with missing fields, show a visible message such as: "Please fill in name, email, and message before submitting."
-- If the user did not provide real contact details, do not invent phone numbers, emails, client names, credentials, or social URLs.
 - The validation message should appear near the form, not only as a browser tooltip.
 - After a successful local submit, replace the form or show a visible confirmation directly above or below it.
 - Place the confirmation where the form was or directly above or below it so the user can see it immediately.
@@ -351,16 +343,12 @@ Use this test prompt as calibration: "Create a premium website for an exclusive 
 - Prefer a visible confirmation banner directly above the form submit area or at the top of the contact form panel.
 - For local-only contact forms, do not replace the entire form with only a separate thank-you block as the main confirmation pattern.
 - Prefer keeping the form area visible and showing a clear inline success banner inside the form.
-- The success banner must appear directly above the submit button inside the form and remain visible after submit.
+- The success banner must appear directly above the submit button or at the top of the form panel.
 - The success banner must be controlled by local state such as submitStatus, formStatus, successMessage, or submitted.
 - The banner text must be honest, for example: "Thank you. This demo preview has recorded your enquiry locally. No email was sent."
 - The success banner should be rendered as a clearly visible inline banner inside the form area, directly above the submit button, not hidden in a separate section.
-- The success banner must be visually obvious and read like a local demo confirmation, not a real email delivery notice.
-- Keep the form visible after successful submit, and if feasible scroll or focus the success banner into view after submit.
 - Avoid wording that implies real delivery: "I will respond within 24 hours", "We have received your email", "Your message has been sent" unless real backend integration exists.
-- Do not invent fake phone numbers, fake emails, fake client names, fake credentials, fake metrics, or placeholder social/contact href="#" links unless they are clearly marked as demo/illustrative only.
 - A valid preview contact form should preferably keep name/email/message fields visible, show missing-field errors near the form, show success banner near the submit button, and not claim real email delivery.
-- If the form uses hero or proof metrics, add a nearby label or disclaimer that they are illustrative/demo unless real verified client results are provided.
 - The confirmation must be visible without the user needing to scroll manually.
 - If replacing the entire form with a thank-you block, ensure the thank-you block appears in the same visible area and is visually prominent.
 - For long contact forms, either show a persistent success banner near the submit button or use a React ref and scrollIntoView after submit so the confirmation is brought into view.
@@ -699,7 +687,7 @@ const handleContactSubmit = (event) => {
 
     const hasBackendIntegration = /fetch\s*\(|axios|formspree|emailjs|supabase|firebase/i.test(rawCode);
     const hasMisleadingResponsePromise =
-      /we will invite|we will reply|we will respond|i will respond|i will be in touch|we have received|message has been sent|sent to our team|submitted to the business|real response|real delivery|backend integration|backend api|api call|api request|sends to api|email delivery|email sent/i.test(rawCode);
+      /we review every inquiry|we will invite|we will respond|i will respond|i will be in touch|we have received|message has been sent|request an introductory meeting|submit inquiry|begin the conversation|confidential introductory conversation/i.test(rawCode);
 
     if (!hasLocalSubmitState || !hasVisibleSuccessLanguage) {
       return 'Contact form confirmation is too weak: generated contact forms must use contactForm, contactError, contactSuccessMessage, handleContactSubmit, and an inline role="status" banner that says no email was sent.';
@@ -1380,7 +1368,6 @@ Mandatory repair rules:
 - Do not claim email was sent.
 - Do not promise a real response.
 - Remove or rewrite copy that implies real follow-up.
-- Avoid fake names, fake metrics, fake testimonials, placeholder social/contact links, and fake contact details unless they are clearly marked as demo/illustrative only.
 - Replace "we will respond", "we will invite", "I will be in touch", "submit inquiry", and similar with local-only preview wording.
 - Button text should be "Record enquiry locally".
 - Contact text should say this is a demo/local preview, not a real inquiry workflow.
@@ -1473,7 +1460,6 @@ Design quality rules:
 - Use strong visual hierarchy, polished spacing, clear CTAs, real-feeling copy, and useful structure.
 - Avoid boring default white pages, cramped layouts, weak contrast, generic placeholder text, and emoji-led design.
 - When building landing pages, include hero, services or benefits, proof, CTA, and footer unless the user asks otherwise.
-- If the landing page hero includes CTA buttons labeled "Request an Introduction" or "View the Approach", wire them to scroll to the contact section and approach section respectively, and give those target sections stable ids such as `contact` and `approach`.
 - For premium websites, use mature visual language, realistic imagery, editorial layout, and high-end brand feeling.
 
 Generated website/app copy must be in English by default. Do not write Swedish copy unless the user explicitly asks for Swedish. If the user prompt is Swedish but does not explicitly require Swedish output, translate the intent and generate the website/app in English.
@@ -1484,7 +1470,6 @@ The user is not a programmer. The generated app should feel practical and ready 
 
 Website depth rules:
 - One-page website or Long landing page: keep content on one page with clear sections and working buttons.
-- For one-page and long landing pages, hero CTA buttons must work. "Request an Introduction" should scroll to `#contact`, and "View the Approach" should scroll to `#approach`.
 - Simple multi-page website: use const [activePage, setActivePage] = React.useState("home"). Include Home, About, Services, and Contact.
 - Full business website: use const [activePage, setActivePage] = React.useState("home"). Include Home, About, Services, Cases, Resources, and Contact.
 - Multi-page navigation must use buttons with onClick={() => setActivePage("pageName")}.
@@ -2292,10 +2277,6 @@ The suggested next prompt should be directly usable for Mini-Lovable and should 
 Be practical and direct.
 Check common export risks before scoring:
 - Unverifiable claims, fake testimonials, named clients, or statistics without evidence.
-- Clearly marked demo or illustrative claims should be treated as a warning/risk, not an automatic failure.
-- Unmarked fake claims should be treated as a safety/quality issue.
-- Treat unmarked fake metrics, case studies, testimonials, client results, or revenue/growth claims as a safety/quality issue.
-- Clearly marked demo or illustrative metrics/case claims may be allowed in prototype mode if the nearby disclaimer is visible.
 - Placeholder links such as href="#", empty links, or buttons that do not clearly work.
 - Mailto contact forms that only prepare an email draft and do not send automatically.
 - Missing labels or aria-labels on form fields and important controls.
