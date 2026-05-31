@@ -352,3 +352,61 @@ Stop if any of these appear:
 * unclear commit message
 * push fails
 * post-push working tree is not clean
+
+## Standard QA Handoff Packet
+
+After every workspace-write sprint, Codex must return this packet.
+
+1. Repo context
+   * Current working directory
+   * Git repo: yes/no
+   * Branch
+   * Remote/origin
+   * Working tree before
+   * Working tree after
+2. Sprint scope
+   * Sprint name
+   * Approved goal
+   * Allowed files
+   * Forbidden files
+   * Hard limits
+3. Changed files
+   * List every changed file
+   * State whether each changed file was explicitly approved
+4. Exact changes
+   * Short plain-English summary of what changed
+   * Mention important sections/functions/text changed
+5. Diff summary
+   * Summarize the diff
+   * Confirm no unrelated refactor
+   * Confirm no package/dependency changes unless explicitly approved
+6. Tests/checks run
+   * Commands run
+   * Manual checks done
+   * Build/test result if applicable
+   * If no test was run, explain why
+7. Risks
+   * Known risks
+   * Unclear items
+   * Anything ChatGPT-Nicolas should review carefully
+8. Stop conditions
+   * State whether any stop condition was triggered
+   * If yes, stop and report instead of continuing
+9. Approved-files confirmation
+   * Explicitly state: "Only approved files were changed: YES / NO"
+10. Ready-for-QA verdict
+   * Use exactly one:
+     * READY FOR CHATGPT QA
+     * NEEDS FIX
+     * STOP
+
+Codex must not claim `READY FOR CHATGPT QA` if:
+
+* wrong repo was used
+* branch or remote is wrong
+* unapproved files changed
+* secrets may be exposed
+* tests/checks failed and cause is unclear
+* package/dependency files changed without approval
+* the sprint scope was expanded
+* Codex committed or pushed
