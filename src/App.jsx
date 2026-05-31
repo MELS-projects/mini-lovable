@@ -336,6 +336,7 @@ Use this test prompt as calibration: "Create a premium website for an exclusive 
 - If using required fields, make it clear what is missing before submitting.
 - Prefer simple local validation state for name, email, and message instead of relying only on browser-native required behavior.
 - If the user submits with missing fields, show a visible message such as: "Please fill in name, email, and message before submitting."
+- If the user did not provide real contact details, do not invent phone numbers, emails, client names, credentials, or social URLs.
 - The validation message should appear near the form, not only as a browser tooltip.
 - After a successful local submit, replace the form or show a visible confirmation directly above or below it.
 - Place the confirmation where the form was or directly above or below it so the user can see it immediately.
@@ -347,7 +348,9 @@ Use this test prompt as calibration: "Create a premium website for an exclusive 
 - The success banner must be controlled by local state such as submitStatus, formStatus, successMessage, or submitted.
 - The banner text must be honest, for example: "Thank you. This demo preview has recorded your enquiry locally. No email was sent."
 - The success banner should be rendered as a clearly visible inline banner inside the form area, directly above the submit button, not hidden in a separate section.
+- The success banner must be visually obvious and read like a local demo confirmation, not a real email delivery notice.
 - Avoid wording that implies real delivery: "I will respond within 24 hours", "We have received your email", "Your message has been sent" unless real backend integration exists.
+- Do not invent fake phone numbers, fake emails, fake client names, fake credentials, fake metrics, or placeholder social/contact href="#" links unless they are clearly marked as demo/illustrative only.
 - A valid preview contact form should preferably keep name/email/message fields visible, show missing-field errors near the form, show success banner near the submit button, and not claim real email delivery.
 - The confirmation must be visible without the user needing to scroll manually.
 - If replacing the entire form with a thank-you block, ensure the thank-you block appears in the same visible area and is visually prominent.
@@ -1368,6 +1371,7 @@ Mandatory repair rules:
 - Do not claim email was sent.
 - Do not promise a real response.
 - Remove or rewrite copy that implies real follow-up.
+- Avoid fake names, fake metrics, fake testimonials, placeholder social/contact links, and fake contact details unless they are clearly marked as demo/illustrative only.
 - Replace "we will respond", "we will invite", "I will be in touch", "submit inquiry", and similar with local-only preview wording.
 - Button text should be "Record enquiry locally".
 - Contact text should say this is a demo/local preview, not a real inquiry workflow.
