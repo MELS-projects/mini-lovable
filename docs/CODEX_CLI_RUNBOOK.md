@@ -229,3 +229,99 @@ Codex must report the following:
 ### Final Rule
 
 Codex may edit only explicitly approved files. Codex must not commit or push. Thomas or ChatGPT-Nicolas handles QA and later manual Git steps.
+
+## PowerShell Manual Git Runbook
+
+Use this section for the human-approved PowerShell Git flow after ChatGPT QA.
+
+### Repo Path
+
+```text
+C:\Users\ThomasOlsson\Documents\Projects\mini-lovable
+```
+
+### Start Command
+
+```text
+cd C:\Users\ThomasOlsson\Documents\Projects\mini-lovable
+```
+
+### Pre-Commit Checks
+
+Before staging or committing, confirm:
+
+* `git status`
+* `git diff`
+* only ChatGPT-approved files are modified
+* no secrets or credentials are visible in the diff
+* branch is `main` unless ChatGPT approved another branch
+* remote/origin points to `MELS-projects / mini-lovable`
+
+### Safe Staging Rule
+
+Use explicit file staging only. Do not use `git add .` unless ChatGPT explicitly confirms that every changed file is approved.
+
+### Example Staging Command
+
+```text
+git add docs/CODEX_CLI_RUNBOOK.md
+```
+
+### Commit Command Format
+
+```text
+git commit -m "Approved commit message here"
+```
+
+### Push Command
+
+```text
+git push origin main
+```
+
+### Post-Push Check
+
+Run:
+
+```text
+git status
+```
+
+The expected result is a clean working tree.
+
+### Stop Conditions
+
+Stop immediately if any of the following is true:
+
+* wrong directory
+* wrong branch
+* wrong remote
+* unexpected modified files
+* diff contains secrets or credentials
+* diff contains files not approved by ChatGPT
+* commit message is not approved
+* `git status` shows unclear state
+* push fails
+* any command asks for credentials or permissions unexpectedly
+
+If any stop condition appears, Thomas should return to ChatGPT-Nicolas for QA.
+
+### Do-Not-Run List
+
+Do not run:
+
+```text
+git add .
+git reset
+git clean
+git rebase
+git merge
+git push --force
+npm install
+npm update
+npm audit fix
+del
+rmdir
+any deploy command
+any command that reads .env or secrets
+```
