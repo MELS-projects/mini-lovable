@@ -296,7 +296,8 @@ Do not print this checklist.`;
 - For Premium, Luxury, and Enterprise outputs, include at least one real public image URL, preferably a stable Unsplash URL, plus validator-detectable image-related code such as img, backgroundImage, image, photo, visual, figure, or editorial.
 - For contact forms, place the success message as a clearly visible inline banner inside the contact form area, directly above the submit button, and keep the honest local-only wording that says the preview recorded the enquiry locally and no email was sent.
 - Do not use href="#" for social links. If real URLs are not available, omit the social links or render them as non-clickable labels.
-- Avoid fake names, fake client companies, unverifiable metrics, fake phone numbers, and fake emails unless they are clearly marked as illustrative/demo content.
+- Prototype/demo content may use illustrative metrics, testimonials, names, and companies only if clearly marked as demo or illustrative.
+- Publish-safe/client-ready output must not invent fake names, fake client companies, unverifiable metrics, fake phone numbers, fake emails, or fake results.
 - Do not use emoji icons as the main visual language for Premium, Luxury, or Enterprise.
 - Avoid lorem ipsum, coming soon, under construction, and empty placeholder pages.
 - If creating a consultant website, make it feel like a high-end advisory brand.
@@ -2281,6 +2282,8 @@ The suggested next prompt should be directly usable for Mini-Lovable and should 
 Be practical and direct.
 Check common export risks before scoring:
 - Unverifiable claims, fake testimonials, named clients, or statistics without evidence.
+- Clearly marked demo or illustrative claims should be treated as a warning/risk, not an automatic failure.
+- Unmarked fake claims should be treated as a safety/quality issue.
 - Placeholder links such as href="#", empty links, or buttons that do not clearly work.
 - Mailto contact forms that only prepare an email draft and do not send automatically.
 - Missing labels or aria-labels on form fields and important controls.
