@@ -691,7 +691,7 @@ const handleContactSubmit = (event) => {
 
     const hasBackendIntegration = /fetch\s*\(|axios|formspree|emailjs|supabase|firebase/i.test(rawCode);
     const hasMisleadingResponsePromise =
-      /we review every inquiry|we will invite|we will respond|i will respond|i will be in touch|we have received|message has been sent|request an introductory meeting|submit inquiry|begin the conversation|confidential introductory conversation/i.test(rawCode);
+      /we will invite|we will reply|we will respond|i will respond|i will be in touch|we have received|message has been sent|sent to our team|submitted to the business|real response|real delivery|backend integration|api|email delivery|email sent/i.test(rawCode);
 
     if (!hasLocalSubmitState || !hasVisibleSuccessLanguage) {
       return 'Contact form confirmation is too weak: generated contact forms must use contactForm, contactError, contactSuccessMessage, handleContactSubmit, and an inline role="status" banner that says no email was sent.';
