@@ -1,8 +1,8 @@
 {
   "title": "Kodmaskin Oskar Roadmap",
-  "currentPhaseId": "phase-3",
-  "currentSprintId": "first-medium-implementation-roadmap-build-readiness",
-  "summary": "Building a safer ChatGPT -> Oskar -> Codex -> GitHub -> Bolt -> QA workflow before Hermes/OpenClaw. Latest completed milestone: first medium implementation sprint. Bolt result: PASS WITH NOTE. The project is now in Phase 3: Medium implementation capability. Next safe action: continue medium implementation sprint planning or document/verify dashboard status update.",
+  "currentPhaseId": "phase-4",
+  "currentSprintId": "phase-4-interim-discovery-workflow",
+  "summary": "Building a safer ChatGPT -> Oskar -> Codex -> GitHub -> Bolt -> QA workflow before Hermes/OpenClaw. Latest completed milestone: Standard QA Handoff Packet documented and tested. The project is now in Phase 4: active discovery/interim workflow. Next safe action: continue lightweight orchestrator or interim workflow discovery.",
   "overallProgress": {
     "completedSprints": 21,
     "estimatedRemainingSprints": {
@@ -161,7 +161,7 @@
       "blockers": [
         "Need more medium implementation sprints before considering broader workflow automation"
       ],
-      "notes": "Phase 3 has started with one successful medium implementation sprint. This is the latest completed milestone and the current workflow position.",
+      "notes": "Phase 3 is complete. The documented Codex workflow set is finished, including read-only start, workspace-write start, PowerShell manual Git, commit/push checklist, and the QA handoff packet.",
       "sprints": [
         {
           "id": "codex-read-only-start-command",
@@ -208,7 +208,7 @@
     {
       "id": "phase-4",
       "label": "Phase 4 - Semi-automated Codex/Oskar workflow",
-      "status": "planned",
+      "status": "current",
       "estimatedSprintsTotal": 10,
       "completedSprints": 0,
       "remainingSprintsEstimate": {
@@ -221,7 +221,7 @@
       "blockers": [
         "Requires repeated stable medium implementation capability first"
       ],
-      "notes": "This phase is future-looking and depends on higher workflow stability.",
+      "notes": "Phase 4 is active as a discovery/interim workflow. Hermes/OpenClaw remains WAIT and VM setup remains WAIT.",
       "sprints": [
         {
           "id": "hermes-discovery-sprint",
