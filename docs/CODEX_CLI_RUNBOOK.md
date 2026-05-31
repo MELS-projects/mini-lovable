@@ -325,3 +325,30 @@ rmdir
 any deploy command
 any command that reads .env or secrets
 ```
+
+## Commit/Push Checklist
+
+Use this checklist immediately before committing and pushing approved changes.
+
+* Correct repo: `C:\Users\ThomasOlsson\Documents\Projects\mini-lovable`
+* Correct branch: `main`, unless ChatGPT-Nicolas explicitly approved another branch
+* Correct remote: `origin` must point to `MELS-projects / mini-lovable`
+* Only approved files changed: `git status` shows only files approved by ChatGPT-Nicolas
+* Diff reviewed: `git diff` reviewed before staging
+* No secrets: diff contains no API keys, tokens, passwords, `.env` values, credentials, private token URLs, or customer/private data
+* Explicit staging: stage only approved files by name; do not use `git add .` unless ChatGPT-Nicolas explicitly confirms every changed file is approved
+* Approved commit message: use only the commit message approved by ChatGPT-Nicolas
+* Push to main: use `git push origin main` only after QA approval and correct staging
+* Post-push check: run `git status`; expected result is a clean working tree
+
+Stop if any of these appear:
+
+* wrong repo
+* wrong branch
+* wrong remote
+* unexpected modified files
+* unreviewed diff
+* secrets found in diff
+* unclear commit message
+* push fails
+* post-push working tree is not clean
