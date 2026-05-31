@@ -1473,6 +1473,7 @@ Design quality rules:
 - Use strong visual hierarchy, polished spacing, clear CTAs, real-feeling copy, and useful structure.
 - Avoid boring default white pages, cramped layouts, weak contrast, generic placeholder text, and emoji-led design.
 - When building landing pages, include hero, services or benefits, proof, CTA, and footer unless the user asks otherwise.
+- If the landing page hero includes CTA buttons labeled "Request an Introduction" or "View the Approach", wire them to scroll to the contact section and approach section respectively, and give those target sections stable ids such as `contact` and `approach`.
 - For premium websites, use mature visual language, realistic imagery, editorial layout, and high-end brand feeling.
 
 Generated website/app copy must be in English by default. Do not write Swedish copy unless the user explicitly asks for Swedish. If the user prompt is Swedish but does not explicitly require Swedish output, translate the intent and generate the website/app in English.
@@ -1483,6 +1484,7 @@ The user is not a programmer. The generated app should feel practical and ready 
 
 Website depth rules:
 - One-page website or Long landing page: keep content on one page with clear sections and working buttons.
+- For one-page and long landing pages, hero CTA buttons must work. "Request an Introduction" should scroll to `#contact`, and "View the Approach" should scroll to `#approach`.
 - Simple multi-page website: use const [activePage, setActivePage] = React.useState("home"). Include Home, About, Services, and Contact.
 - Full business website: use const [activePage, setActivePage] = React.useState("home"). Include Home, About, Services, Cases, Resources, and Contact.
 - Multi-page navigation must use buttons with onClick={() => setActivePage("pageName")}.
