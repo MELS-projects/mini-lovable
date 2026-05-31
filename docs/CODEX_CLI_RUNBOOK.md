@@ -357,6 +357,8 @@ Stop if any of these appear:
 
 After every workspace-write sprint, Codex must return this packet.
 
+Return this packet before Thomas sends the result to ChatGPT-Nicolas for QA.
+
 1. Repo context
    * Current working directory
    * Git repo: yes/no
