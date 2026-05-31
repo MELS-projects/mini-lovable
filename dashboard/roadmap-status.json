@@ -2,7 +2,7 @@
   "title": "Kodmaskin Oskar Roadmap",
   "currentPhaseId": "phase-4",
   "currentSprintId": "phase-4-interim-discovery-workflow",
-  "summary": "Building a safer ChatGPT -> Oskar -> Codex -> GitHub -> Bolt -> QA workflow before Hermes/OpenClaw. Latest completed milestone: Phase 4 interim workflow milestone review passed. The workflow-template baseline is stable enough to pause workflow-template work. Next safe action: recheck Mini-Lovable product quality.",
+  "summary": "Mini-Lovable baseline is demo-only and PASS WITH NOTE. Product fix loop is stopped. Remaining issues: contact success is still easy to miss visually, and demo metrics/case disclaimers are not reliably placed near the relevant claims. Next direction: return toward Hermes/orchestrator track.",
   "overallProgress": {
     "completedSprints": 21,
     "estimatedRemainingSprints": {
@@ -221,7 +221,7 @@
       "blockers": [
         "Requires repeated stable medium implementation capability first"
       ],
-      "notes": "Phase 4 interim workflow milestone reached. Workflow-template baseline is stable. Hermes/OpenClaw remains WAIT and VM setup remains WAIT.",
+      "notes": "Phase 4 interim workflow milestone reached. Product fix loop stopped. Baseline remains demo-only, not publish-safe/client-ready. Contact success visibility and metrics/case disclaimers still need attention. Hermes/OpenClaw remains WAIT and VM/WSL/Docker/cloud remains WAIT.",
       "sprints": [
         {
           "id": "hermes-discovery-sprint",
