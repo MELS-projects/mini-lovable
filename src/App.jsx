@@ -269,6 +269,7 @@ Before returning App.jsx, silently review and improve the design.
 11. For multi-page websites, navigation must actually switch pages with internal state.
 12. For premium multi-page websites, the home hero should show headline, CTA, proof, and a visual panel high enough to be visible immediately.
 13. About, Services, Cases, Resources, and Contact pages should each feel intentionally designed with their own sections, not like plain filler pages.
+14. If metrics are shown, add a nearby label or disclaimer that they are illustrative/demo unless real verified client results are provided.
 Do not print this checklist.`;
   };
 
@@ -336,7 +337,7 @@ Use this test prompt as calibration: "Create a premium website for an exclusive 
 - A visible submit button is required.
 - If there is no backend integration, the form must prevent default submit behavior, use local React state, and show a visible local confirmation message after submit.
 - Contact forms should make required fields obvious.
-- Add visible labels and helpful placeholders for each field.
+- Add visible labels above each field and helpful placeholders for each field.
 - If possible, use aria-labels or accessible helper text for Full name, Email address, and Message.
 - If using required fields, make it clear what is missing before submitting.
 - Prefer simple local validation state for name, email, and message instead of relying only on browser-native required behavior.
@@ -349,7 +350,7 @@ Use this test prompt as calibration: "Create a premium website for an exclusive 
 - Prefer a visible confirmation banner directly above the form submit area or at the top of the contact form panel.
 - For local-only contact forms, do not replace the entire form with only a separate thank-you block as the main confirmation pattern.
 - Prefer keeping the form area visible and showing a clear inline success banner inside the form.
-- The success banner must appear directly above the submit button or at the top of the form panel.
+- The success banner must appear directly above the submit button inside the form and remain visible after submit.
 - The success banner must be controlled by local state such as submitStatus, formStatus, successMessage, or submitted.
 - The banner text must be honest, for example: "Thank you. This demo preview has recorded your enquiry locally. No email was sent."
 - The success banner should be rendered as a clearly visible inline banner inside the form area, directly above the submit button, not hidden in a separate section.
@@ -358,6 +359,7 @@ Use this test prompt as calibration: "Create a premium website for an exclusive 
 - Avoid wording that implies real delivery: "I will respond within 24 hours", "We have received your email", "Your message has been sent" unless real backend integration exists.
 - Do not invent fake phone numbers, fake emails, fake client names, fake credentials, fake metrics, or placeholder social/contact href="#" links unless they are clearly marked as demo/illustrative only.
 - A valid preview contact form should preferably keep name/email/message fields visible, show missing-field errors near the form, show success banner near the submit button, and not claim real email delivery.
+- If the form uses hero or proof metrics, add a nearby label or disclaimer that they are illustrative/demo unless real verified client results are provided.
 - The confirmation must be visible without the user needing to scroll manually.
 - If replacing the entire form with a thank-you block, ensure the thank-you block appears in the same visible area and is visually prominent.
 - For long contact forms, either show a persistent success banner near the submit button or use a React ref and scrollIntoView after submit so the confirmation is brought into view.
