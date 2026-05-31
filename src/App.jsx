@@ -282,6 +282,9 @@ Do not print this checklist.`;
 - Buttons, headings, and key content should remain comfortably visible in the first screen.
 - Avoid blank, nearly empty, or overly tall heroes where the visitor has to scroll far before meaningful content appears.
 - For contact pages, prefer executive meeting, boardroom, architecture, refined office, or abstract premium visuals.
+- If there is no backend/contact integration, the contact intro/body/CTA copy must be demo-safe and must not promise real follow-up, real response, or a business-day reply.
+- Use demo-safe wording such as: "This is a demo preview. Your enquiry is recorded locally and no email is sent."
+- Do not say or imply "we will be in touch", "we will respond", "we will get back to you", "schedule a call", "book a consultation", "our team will contact you", or "within one business day" unless real backend/contact integration exists.
 - The final result should feel curated, not generic.`;
   };
 
