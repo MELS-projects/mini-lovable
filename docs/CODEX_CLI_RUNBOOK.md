@@ -103,3 +103,129 @@ Codex must not proceed with implementation unless:
 * GitHub is the source of truth.
 * This workflow is read-only except for `cd`.
 * Do not use this runbook for Hermes/OpenClaw work or VM setup.
+
+## Workspace-Write Start Workflow
+
+Use this section only for an approved narrow implementation or documentation sprint.
+
+### Repo Path
+
+```text
+C:\Users\ThomasOlsson\Documents\Projects\mini-lovable
+```
+
+### Start Command
+
+```text
+cd C:\Users\ThomasOlsson\Documents\Projects\mini-lovable
+```
+
+### Required Pre-Write Checks
+
+Before any edit, confirm:
+
+1. Current working directory
+2. Git repo
+3. Current branch
+4. Remote/origin
+5. Working tree status before changes
+6. Latest commits
+7. Required files exist
+8. Approved sprint scope
+9. Allowed files for this sprint
+10. Forbidden files for this sprint
+
+### Write Scope Rule
+
+Codex may edit only files explicitly listed in the approved sprint prompt. If a needed file is not listed, Codex must stop and ask for ChatGPT QA direction.
+
+### Allowed Commands
+
+```text
+cd C:\Users\ThomasOlsson\Documents\Projects\mini-lovable
+git status
+git branch
+git remote -v
+git log --oneline -5
+git diff
+dir
+type package.json
+safe project checks already approved by the sprint, if any
+```
+
+### Forbidden Commands
+
+Do not run:
+
+```text
+git add
+git commit
+git push
+git merge
+git rebase
+git reset
+git clean
+npm install
+npm update
+npm audit fix
+del
+rmdir
+move
+any deploy command
+any command that reads .env or secrets
+any command outside the approved repo
+```
+
+### Working Tree and Diff
+
+Codex must report:
+
+* working tree status before changes
+* changed files after changes
+* git diff summary after changes
+* confirmation that only approved files changed
+
+Codex must inspect the diff before reporting back. If the diff includes any unapproved file, Codex must stop and report it.
+
+### Stop Conditions
+
+Stop immediately if any of the following is true:
+
+* wrong directory
+* not a git repo
+* wrong branch
+* wrong remote
+* unexpected modified files before starting
+* missing required files
+* sprint scope is unclear
+* requested file is not listed as allowed
+* task requires secrets
+* task requires dependency install
+* task requires files outside approved repo
+* task requires commit/push
+* diff contains unapproved files
+* tests/checks fail and cause is unclear
+
+### Expected Output Format
+
+Codex must report the following:
+
+1. Current working directory
+2. Git repo: yes/no
+3. Branch
+4. Remote/origin
+5. Working tree before
+6. Approved sprint scope
+7. Allowed files
+8. Forbidden files
+9. Files changed
+10. Working tree after
+11. Diff summary
+12. Checks/tests run
+13. Risks or unclear items
+14. Confirmation that only approved files changed
+15. Final verdict: `READY FOR CHATGPT QA` / `NEEDS FIX` / `STOP`
+
+### Final Rule
+
+Codex may edit only explicitly approved files. Codex must not commit or push. Thomas or ChatGPT-Nicolas handles QA and later manual Git steps.
