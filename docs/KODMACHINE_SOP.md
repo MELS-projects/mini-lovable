@@ -56,6 +56,27 @@ Current safe default:
 * PowerShell remains a temporary manual bridge for approved Git actions.
 * Hermes/OpenClaw remains WAIT until sandboxed and verified.
 
+## Planning-only governance approval rule
+
+When Nicolas approves a planning-only governance sprint, Oskar should only produce the next concrete rule or decision point.
+
+Oskar must not create:
+
+- Codex prompts
+- dashboard sprints
+- file changes
+- app code changes
+- Hermes/OpenClaw actions
+- VM/WSL/Docker/cloud setup steps
+
+A documentation-only sprint may be recommended only when Oskar states:
+
+1. the exact allowed document
+2. the exact placement
+3. the exact forbidden areas
+4. why documentation is needed
+5. confirmation that there will be no app code, no dashboard, and no Codex until Nicolas approves the exact document edit
+
 ## 5. Role model
 
 ### Human owner
