@@ -77,6 +77,44 @@ A documentation-only sprint may be recommended only when Oskar states:
 4. why documentation is needed
 5. confirmation that there will be no app code, no dashboard, and no Codex until Nicolas approves the exact document edit
 
+## n8n Communication Hub v1 read-only operating rule
+
+n8n Communication Hub v1 may operate only as a manual secretary/router.
+
+Allowed:
+
+- Receive one pasted message from Thomas
+- Preserve the original message
+- Identify receiver using the approved routing priority rule
+- Return one ROUTING PACKET
+- Add routing metadata only
+
+Routing priority:
+
+1. Explicit "Thomas → [role]" overrides all other routing signals.
+2. Explicit "TO: [role]" is second priority.
+3. Message type / classification is third priority.
+4. If unclear, route to Nicolas for QA.
+
+Forbidden:
+
+- No secrets
+- No API keys
+- No repo access
+- No GitHub read/write
+- No Codex automation
+- No Bolt automation
+- No dashboard update
+- No file changes
+- No terminal/PowerShell
+- No external actions
+- No Hermes/OpenClaw
+- No VM/WSL/Docker/cloud
+
+Stop condition:
+
+If routing is unclear, unsafe, or suggests implementation, route to Nicolas for QA.
+
 ## 5. Role model
 
 ### Human owner
