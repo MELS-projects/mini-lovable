@@ -142,6 +142,40 @@ MESSAGE:
 
 If input is unclear, nested, or asks for action outside the secretary/router role, route to Nicolas for QA.
 
+## Oskar Session Start Packet v1
+
+Use this format at the start of a new Kodmaskin/Oskar session.
+
+OSKAR SESSION START PACKET v1
+
+Current status:
+[...]
+
+Active route:
+[Nicolas / Oskar / Codex / Dashboard / Bolt / PowerShell / Stop]
+
+Forbidden actions:
+- No Codex unless Nicolas approved
+- No dashboard unless Nicolas approved
+- No file changes unless Nicolas approved
+- No external actions
+- No Hermes/OpenClaw
+- No VM/WSL/Docker/cloud
+- No secrets/API keys
+- No terminal/PowerShell unless explicitly approved
+
+Next decision point:
+[...]
+
+Codex needed?
+YES / NO / AFTER NICOLAS APPROVES
+
+Dashboard needed?
+YES / NO / AFTER NICOLAS APPROVES
+
+Thomas next action:
+[one exact action]
+
 ## 5. Role model
 
 ### Human owner
