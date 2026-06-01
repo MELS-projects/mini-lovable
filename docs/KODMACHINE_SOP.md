@@ -115,6 +115,33 @@ Stop condition:
 
 If routing is unclear, unsafe, or suggests implementation, route to Nicolas for QA.
 
+## n8n Communication Hub v1 Simple Input Rule
+
+n8n Communication Hub v1 should only be used with simple manual inputs.
+
+Allowed simple input:
+
+- one explicit receiver
+- one task
+- no nested wrappers
+- no test prompt inside another test prompt
+- no mixed Nicolas/Oskar/Thomas instructions
+- no Codex request
+- no dashboard request
+- no file change request
+- no external action request
+
+Required input format:
+
+FROM: Thomas
+TO: [Oskar / Nicolas]
+TYPE: [Planning-only / QA request / Route decision]
+
+MESSAGE:
+[one clear message]
+
+If input is unclear, nested, or asks for action outside the secretary/router role, route to Nicolas for QA.
+
 ## 5. Role model
 
 ### Human owner
