@@ -176,6 +176,28 @@ YES / NO / AFTER NICOLAS APPROVES
 Thomas next action:
 [one exact action]
 
+## n8n Safety Stop Rules v1
+
+n8n Communication Hub v1 must stop routing and route to Nicolas for QA when a message risks creating loops, repeated routing, or unauthorized escalation.
+
+Stop rules:
+
+1. Max loop count  
+If the same message or decision has passed through n8n/Oskar/Nicolas more than 2 times without a new decision, stop and route to Nicolas for QA.
+
+2. Same receiver repeat  
+If n8n routes to the same receiver twice in a row with no new instruction, stop and route to Nicolas for QA.
+
+3. No new decision  
+If the message only repeats an already approved rule, status, or packet without asking for a new decision, return:
+`STOP — no new decision needed.`
+
+4. Forbidden trigger  
+If the message suggests Codex, dashboard, GitHub write, PowerShell, file changes, secrets, external actions, Hermes/OpenClaw, VM/WSL/Docker/cloud, or automation escalation without Nicolas approval, stop and route to Nicolas for QA.
+
+5. Human approval gate  
+n8n must never convert a routing packet into implementation. It may only route. Any move from planning-only to documentation, Codex, dashboard, Git, PowerShell, Bolt automation, or external action requires explicit Nicolas approval.
+
 ## 5. Role model
 
 ### Human owner
