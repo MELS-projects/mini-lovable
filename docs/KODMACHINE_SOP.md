@@ -176,6 +176,46 @@ YES / NO / AFTER NICOLAS APPROVES
 Thomas next action:
 [one exact action]
 
+## Oskar Daily Operating Loop v1
+
+Use this daily loop for manual Kodmaskin/Oskar work.
+
+1. Start session  
+Thomas starts with `Oskar Session Start Packet v1`.
+
+2. Send simple input  
+Thomas sends one simple input through n8n:
+
+```text
+FROM: Thomas
+TO: [Oskar / Nicolas]
+TYPE: [Planning-only / QA request / Route decision]
+
+MESSAGE:
+[one clear message]
+```
+
+3. Route packet
+   n8n returns one `ROUTING PACKET`.
+
+4. Oskar decision
+   If receiver is Oskar, Oskar returns one next decision point or one Nicolas QA request.
+
+5. Nicolas gate
+   If approval is needed, Thomas sends the QA request to Nicolas.
+
+6. Nicolas result
+   Nicolas returns `APPROVE`, `APPROVE WITH FIX`, or `STOP`.
+
+7. Stop conditions
+   Stop and route to Nicolas if:
+
+* route is unclear
+* same receiver repeats
+* no new decision exists
+* automation is suggested
+* Codex, dashboard, GitHub, PowerShell, file changes, secrets, external actions, Hermes/OpenClaw, VM/WSL/Docker/cloud appear without Nicolas approval
+
 ## n8n Safety Stop Rules v1
 
 n8n Communication Hub v1 must stop routing and route to Nicolas for QA when a message risks creating loops, repeated routing, or unauthorized escalation.
