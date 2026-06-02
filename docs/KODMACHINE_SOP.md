@@ -216,6 +216,38 @@ MESSAGE:
 * automation is suggested
 * Codex, dashboard, GitHub, PowerShell, file changes, secrets, external actions, Hermes/OpenClaw, VM/WSL/Docker/cloud appear without Nicolas approval
 
+## Oskar Workday Closeout Packet v1
+
+Use this format to end each Kodmaskin/Oskar work cycle.
+
+```text
+OSKAR WORKDAY CLOSEOUT PACKET v1
+
+Current status:
+[...]
+
+Latest commit:
+[commit hash / none / unknown]
+
+Repo status:
+[clean / dirty / unknown]
+
+Open decisions:
+- [...]
+
+Next start point:
+[...]
+
+Codex needed?
+YES / NO / AFTER NICOLAS APPROVES
+
+Dashboard needed?
+YES / NO / AFTER NICOLAS APPROVES
+
+Thomas next action:
+[one exact action]
+```
+
 ## n8n Safety Stop Rules v1
 
 n8n Communication Hub v1 must stop routing and route to Nicolas for QA when a message risks creating loops, repeated routing, or unauthorized escalation.
