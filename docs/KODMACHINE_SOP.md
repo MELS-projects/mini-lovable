@@ -270,6 +270,46 @@ If the message suggests Codex, dashboard, GitHub write, PowerShell, file changes
 5. Human approval gate  
 n8n must never convert a routing packet into implementation. It may only route. Any move from planning-only to documentation, Codex, dashboard, Git, PowerShell, Bolt automation, or external action requires explicit Nicolas approval.
 
+## n8n v2 STOP + Retry Gate v1
+
+n8n v2 supervised auto-forward remains STOPPED.
+
+Do not run a final n8n v2 retry test yet.
+
+n8n v2 may only be retried after Nicolas approves an explicit retry test using Retry Gate v1.
+
+Retry Gate v1 requires:
+
+1. Strict input gate = PASS  
+   The input must contain exactly:
+   - `INSTRUCTION_TO_N8N`
+   - `MESSAGE_TO_FORWARD`
+   - `EXPECTED_FIRST_RECEIVER`
+
+2. Max 2 forwards  
+   n8n may forward at most:
+   - Thomas/n8n → Oskar
+   - Oskar/n8n → Nicolas
+
+3. Visible Thomas stop point  
+   After the second forward, the process must stop visibly for Thomas.
+
+4. Oskar ↔ Nicolas only  
+   No receiver other than Oskar or Nicolas is allowed.
+
+5. Immediate STOP on wrapper/receiver error  
+   Stop if:
+   - wrapper text appears in Original message
+   - Receiver is inferred instead of copied from `EXPECTED_FIRST_RECEIVER`
+   - `MESSAGE_TO_FORWARD` is not the only Original message
+   - route is unclear
+   - same receiver repeats with no new decision
+
+6. No escalation  
+   No Codex, dashboard, file changes, automation, GitHub, PowerShell, Bolt, secrets, Hermes/OpenClaw, VM/WSL/Docker/cloud, or external actions.
+
+Until Nicolas approves a specific retry test, n8n v2 remains STOPPED.
+
 ## 5. Role model
 
 ### Human owner
