@@ -310,6 +310,31 @@ Retry Gate v1 requires:
 
 Until Nicolas approves a specific retry test, n8n v2 remains STOPPED.
 
+## Loop Budget v1
+
+For planning-only Oskar ↔ Nicolas flows:
+
+Max rounds:
+- Oskar → Nicolas → Oskar → Nicolas = 2 QA rounds max
+
+Stop immediately if:
+- a new packet format creates another new packet format
+- same receiver repeats without new decision
+- no Codex/file/action is needed
+- decision is only “define next format”
+- Thomas has spent more than 10 minutes routing one topic
+
+Required close:
+After APPROVE, return:
+1. final decision
+2. what changed in workflow
+3. whether documentation is needed
+4. next real action
+5. STOP / CONTINUE
+
+Default:
+If no real action is needed, STOP.
+
 ## 5. Role model
 
 ### Human owner
