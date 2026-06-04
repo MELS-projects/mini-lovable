@@ -3262,7 +3262,7 @@ The generated app is stored in src/App.jsx.
               onChange={(event) => setPrompt(event.target.value)}
             />
             <div style={{ color: '#94a3b8', fontSize: '11px', lineHeight: 1.35, marginTop: '6px' }}>
-              Tip: Start with a simple idea, like “a premium website for a business consultant”.
+              Describe the app you want to build. Include the goal, target users, and any must-have features.
             </div>
             <div
               style={{
