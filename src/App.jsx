@@ -350,8 +350,6 @@ Use this test prompt as calibration: "Create a premium website for an exclusive 
 - Avoid wording that implies real delivery: "I will respond within 24 hours", "We have received your email", "Your message has been sent" unless real backend integration exists.
 - A valid preview contact form should preferably keep name/email/message fields visible, show missing-field errors near the form, show success banner near the submit button, and not claim real email delivery.
 - The confirmation must be visible without the user needing to scroll manually.
-- Do not hide the confirmation in a clipped, fixed, absolute, or collapsed layout.
-- Keep the confirmation in the same visible area as the submit button.
 - If replacing the entire form with a thank-you block, ensure the thank-you block appears in the same visible area and is visually prominent.
 - For long contact forms, either show a persistent success banner near the submit button or use a React ref and scrollIntoView after submit so the confirmation is brought into view.
 - Do not rely on a subtle text change only.
@@ -415,9 +413,7 @@ const handleContactSubmit = (event) => {
 13. Do not promise a real response.
 14. Do not use backend words unless backend integration exists.
 15. Inputs and textarea must stay controlled and remain editable after submit.
-16. Keep the confirmation in the same visible area as the submit button and do not place it inside a clipped, fixed, absolute, hidden, or collapsed container.
-17. If the contact form is long, use scrollIntoView or equivalent so the visible confirmation is brought into view immediately after submit.
-18. This pattern should pass the contact form confirmation validator.`;
+16. This pattern should pass the contact form confirmation validator.`;
   };
 
   const getReactRuntimeSafetyInstruction = () => {
@@ -689,10 +685,6 @@ const handleContactSubmit = (event) => {
       /aria-live=["']polite["']|role=["']status["']|role=["']alert["']/i.test(rawCode) ||
       /(successMessage|submitStatus|formStatus|successBanner|confirmationBanner)[\s\S]{0,200}(thank you|thanks|success|prepared for review|noted in this preview|demo preview|no email was sent|message will not be sent)/i.test(rawCode);
 
-    const hasHiddenContactConfirmationLayout =
-      /contactSuccessMessage[\s\S]{0,260}(display:\s*['"]none['"]|visibility:\s*['"]hidden['"]|opacity:\s*0|position:\s*['"](absolute|fixed)['"]|overflow:\s*['"]hidden['"])/i.test(formBlock) ||
-      /(display:\s*['"]none['"]|visibility:\s*['"]hidden['"]|opacity:\s*0|position:\s*['"](absolute|fixed)['"]|overflow:\s*['"]hidden['"])[\s\S]{0,260}contactSuccessMessage/i.test(formBlock);
-
     const hasBackendIntegration = /fetch\s*\(|axios|formspree|emailjs|supabase|firebase/i.test(rawCode);
     const hasMisleadingResponsePromise =
       /we review every inquiry|we will invite|we will respond|i will respond|i will be in touch|we have received|message has been sent|request an introductory meeting|submit inquiry|begin the conversation|confidential introductory conversation/i.test(rawCode);
@@ -703,10 +695,6 @@ const handleContactSubmit = (event) => {
 
     if (!hasInlineSuccessBanner) {
       return 'Contact form confirmation is not visible enough: use an inline success banner inside the form area, preferably above the submit button, and keep the message honest that no email was sent.';
-    }
-
-    if (hasHiddenContactConfirmationLayout) {
-      return 'Contact form confirmation is not visible enough: keep the success banner in the same visible area as the submit button and avoid clipped, fixed, absolute, hidden, or collapsed layout around the confirmation.';
     }
 
     if (hasMisleadingResponsePromise && !hasBackendIntegration) {
@@ -1373,7 +1361,6 @@ Mandatory repair rules:
 - Render contactSuccessMessage as an inline banner inside the form, directly above the submit button.
 - The success banner must be inside the <form>, directly above the submit button.
 - Do not render the success banner above the <form>.
-- Keep the success banner in the same visible area as the submit button and do not hide it in a clipped, fixed, absolute, hidden, or collapsed container.
 - The banner must include:
   role="status"
   aria-live="polite"
