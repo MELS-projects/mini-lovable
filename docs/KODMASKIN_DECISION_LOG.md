@@ -147,3 +147,13 @@ Source-of-truth log for important Kodmaskin decisions. Older entries are backfil
 - Next action: Keep current work text-only unless Nicolas approves otherwise.
 - Reason: Daily OS must come before Hermes.
 
+### 14) PASS - Controlled API-Assisted Workflow v1 / Sprint 3 strategic reference
+- Date: UNKNOWN
+- Decision type: PASS
+- Decision title: Controlled API-Assisted Workflow v1 / Sprint 3
+- Affected area: API, Nicolas, Thomas, Codex, Governance, Safety
+- Source: Backfilled from chat history; `docs/SPRINT_LOG.md`
+- Summary: Controlled API-Assisted Workflow v1 / Sprint 3 is a PASS / planning-only design reference only. No live API integration is approved. Provider path is OpenAI-first, DeepSeek is later routine-packaging test only, hybrid is deferred, input is manual/n8n-controlled text input only, output is manual inbox first, human review is required after every API output, Nicolas gate is required for YELLOW / RED / STOP / UNCLEAR or any file/log/workflow change, and Thomas final approval is required before real use beyond draft review.
+- Status: PASS / planning-only
+- Next action: Keep the design reference only until a separate approval is granted.
+- Reason: The workflow is intentionally limited to planning, review, and safety-gated future direction.
