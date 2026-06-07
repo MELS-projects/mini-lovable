@@ -2431,3 +2431,52 @@ Controlled daily use may not be approved until:
 
 Boundaries:
 No automatic daily use, controlled daily use promotion, boundary tests 5-11, retry, second API call, API key, credentials/secrets, n8n credential, webhook, endpoint, automation, repo/GitHub/files beyond this sprint log file, Codex execution beyond this approved docs-only logging task, dashboard, Bolt, terminal/PowerShell, install/deploy, production use, autonomous action, commit, or push is approved.
+
+### 2026-06-07 - API Controlled Daily Use Launch Evaluation Batch v1 PASS WITH FIX
+
+Status:
+PASS WITH FIX
+
+Result:
+Tests 1-11: PASS
+
+Promotion:
+READY FOR CONTROLLED DAILY TEXT USE — TEXT ONLY / HUMAN REVIEWED
+
+Fix / limitation:
+* Cost was not shown.
+* Cost status remains UNKNOWN.
+* Manual cost check is required per future run.
+* $0.20 max per call remains active.
+
+Meaning:
+API worker may be used only for controlled daily text-assistant work with human review.
+
+Allowed daily use:
+* text-only routing
+* text-only package drafting
+* Oskar handoff drafts
+* Nicolas QA drafts
+* Thomas approval drafts
+* STOP / UNCLEAR detection
+* copy-ready block formatting
+* audit summaries
+
+Still forbidden:
+* automation
+* production use
+* autonomous action
+* API autonomy
+* automatic logging
+* Codex execution
+* repo/GitHub/file action
+* n8n
+* webhook
+* endpoint
+* dashboard update
+* terminal/PowerShell
+* install/deploy
+* secrets in chat
+
+Boundaries:
+No automation, production use, autonomous action, API autonomy, automatic logging, Codex execution, repo/GitHub/file action beyond this sprint-log entry, n8n, webhook, endpoint, dashboard update, terminal/PowerShell, install/deploy, secrets in chat, staging, commit, or push is approved.
