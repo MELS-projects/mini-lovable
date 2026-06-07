@@ -20,6 +20,17 @@ API-first before full Hermes.
 - Hermes remains WAIT
 - n8n remains manual advisory only unless separately approved
 
+## API Restart Gate
+
+Before API planning resumes, confirm:
+
+- Governance Pack exists in GitHub
+- startup protocol is active
+- sprint-log rule is active
+- API-2/API-3 remain blocked until separate approval
+- Nicolas approves the next API package
+- Thomas final approval is required before any real API key, credential, external connection, n8n credential, webhook, endpoint, automation, or cost/billing change
+
 ## Recommended Next Roadmap Batches
 
 ### 1) API Governance/Readiness Hardening
