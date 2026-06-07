@@ -46,6 +46,10 @@ At session start, agents should check:
 - Strategic PASS / STOP / WAIT / APPROVE WITH FIX -> `docs/KODMASKIN_DECISION_LOG.md`
 - Current status changes -> `docs/KODMASKIN_OPERATING_STATE.md`
 
+## Logging Control Rule
+
+After every sprint closeout, confirm whether the outcome must be logged before treating the chain as fully complete.
+
 ## Current Preserved Next Action
 
 Do not start API-2, API-3, Hermes, webhook, automation, Codex, repo/file work, terminal/PowerShell, secrets, or deployment until separately approved.

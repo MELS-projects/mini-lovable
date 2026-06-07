@@ -19,6 +19,7 @@ Manual Daily OS Transport is active. Daily OS must come before Hermes. Current w
 - Codex Text-Packager goes to Nicolas before Codex
 - n8n/manual transport goes to Nicolas before setup/action
 - STOP creates no new work
+- After every sprint closeout, confirm whether the outcome must be logged before treating the chain as fully complete
 
 ## Closed Tracks
 
