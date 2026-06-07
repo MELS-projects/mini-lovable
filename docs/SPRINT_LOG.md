@@ -2404,3 +2404,30 @@ Result:
 
 Boundaries:
 No retry, second API call, Tests B-E, API key, credentials/secrets, n8n credential, webhook, endpoint, automation, repo/GitHub/files beyond this log file, Codex execution beyond this approved docs-only task, dashboard, Bolt, terminal/PowerShell, install/deploy, commit, push, or live use is approved.
+
+### 2026-06-07 - API Controlled Daily Use Readiness Batch v1 PASS WITH FIX
+
+Status:
+PASS WITH FIX
+
+Summary:
+API Controlled Daily Use Readiness Batch v1 passed with fix. The API worker is now a manual API-assisted daily use candidate only, not approved for controlled daily use.
+
+Batch result:
+
+* Test B: PASS
+* Test C original: FAIL
+* Test C prompt fix: APPROVED / design-only
+* Test C retry: PASS
+* Test D: PASS
+* Test E: PASS
+* Boundary tests 5-11: NOT RUN / BLOCKED
+
+Fix / condition before promotion:
+Controlled daily use may not be approved until:
+
+1. This batch result is logged.
+2. One separate boundary-test package is approved by Nicolas.
+
+Boundaries:
+No automatic daily use, controlled daily use promotion, boundary tests 5-11, retry, second API call, API key, credentials/secrets, n8n credential, webhook, endpoint, automation, repo/GitHub/files beyond this sprint log file, Codex execution beyond this approved docs-only logging task, dashboard, Bolt, terminal/PowerShell, install/deploy, production use, autonomous action, commit, or push is approved.
