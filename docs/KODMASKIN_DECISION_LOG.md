@@ -190,6 +190,27 @@ NO, except this separately approved docs-only logging task.
 Dashboard needed:
 NO
 
+## 2026-06-07 — Anti-Ping-Pong Nicolas package operating rule approved
+
+Decision:
+APPROVE
+
+Summary:
+
+* Anti-Ping-Pong Nicolas Package Operating Rule v1 is approved as Oskar’s default rule for complete Nicolas QA packages.
+* Future packages must include predictable context, preserved fixes, STOP rules, closeout, logging check, and exact next step.
+* Future logging targets must use exact repo paths, for example `docs/KODMASKIN_DECISION_LOG.md`.
+* This approval is packaging behavior only and does not approve execution, Codex by default, dashboard, file edits beyond separately approved docs-only logging, repo/GitHub actions, PowerShell/terminal, n8n, API, webhook, endpoint, live pilot, limited live pilot, automation, concrete tool paths, credentials/secrets, install, deploy, or logging action outside this approved task.
+
+Codex needed:
+NO except separately approved docs-only logging.
+
+Dashboard needed:
+NO
+
+Next action:
+Use Anti-Ping-Pong Nicolas Package Operating Rule v1 for future Nicolas QA packages.
+
 ## 2026-06-07 — Complete Nicolas-ready package standard approved
 
 Decision:
