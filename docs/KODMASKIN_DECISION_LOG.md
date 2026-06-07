@@ -190,6 +190,27 @@ NO, except this separately approved docs-only logging task.
 Dashboard needed:
 NO
 
+## 2026-06-07 — Complete Nicolas-ready package standard approved
+
+Decision:
+APPROVE WITH FIX
+
+Summary:
+
+* Complete Nicolas-Ready Package Standard v1 is approved as the default Oskar format for future Nicolas QA packages.
+* The standard must reduce ping-pong by including context, preserved fixes, full decision content, STOP conditions, closeout text, next receiver, Codex status, dashboard status, and logging check.
+* Preserved fix: all future logging targets must use exact repo path, for example `docs/KODMASKIN_DECISION_LOG.md`.
+* This is a packaging standard only. It does not approve execution, Codex beyond this approved docs-only task, dashboard, file edits beyond this target file, repo/GitHub action, PowerShell/terminal, n8n, API, webhook, endpoint, live pilot, automation, concrete tool path, credentials/secrets, install, deploy, or logging action beyond this approved task.
+
+Codex needed:
+AFTER NICOLAS APPROVES A SEPARATE DOCS-ONLY LOGGING TASK
+
+Dashboard needed:
+NO
+
+Next action:
+Use Complete Nicolas-Ready Package Standard v1 for future Nicolas QA packages.
+
 ## 2026-06-07 — Transport boundary definition approved
 
 Decision:
