@@ -190,6 +190,27 @@ NO, except this separately approved docs-only logging task.
 Dashboard needed:
 NO
 
+## 2026-06-07 — Transport boundary definition approved
+
+Decision:
+APPROVE WITH FIX
+
+Summary:
+
+* Transport Boundary Definition Package v1 is closed as planning-only.
+* Preserved boundary: transport planning may define only meaning, manual limits, future Nicolas gates, STOP rules, and required future approval-package contents.
+* Preserved fix: no new API permission is approved. Required wording: "previously approved controlled daily API text use, when separately approved".
+* This does not approve tool selection, setup, execution, n8n, API, webhook, live pilot, Codex beyond this approved docs-only task, dashboard, repo/file action beyond this target file, terminal/PowerShell, credentials/secrets, or automation.
+
+Codex needed:
+AFTER NICOLAS APPROVES A SEPARATE DOCS-ONLY LOGGING TASK
+
+Dashboard needed:
+NO
+
+Next action:
+Use the transport boundary definition only as a planning rule for future Nicolas-gated transport packages.
+
 ## 2026-06-07 — Controlled logging governance approved
 
 Decision:
