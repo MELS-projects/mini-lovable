@@ -67,48 +67,43 @@ Codex is not generally approved. Codex may only perform this exact docs-only tas
 
 Dashboard is not approved and not needed for Sprint OS-1.
 
+## Current API-assisted state
+
+READY FOR CONTROLLED DAILY TEXT USE — TEXT ONLY / HUMAN REVIEWED / NO TRANSPORT
+
+Meaning:
+
+* API may draft one text-only OSKAR_DECISION-style output for Thomas review only.
+* Thomas must manually review before acting.
+* No automatic transport.
+* No manual inbox pilot.
+* No batch.
+* No retry unless separately approved.
+* No Codex execution unless separately approved.
+* No file/logging action unless separately approved.
+* No dashboard.
+* No n8n/webhook/automation.
+* No live transport.
+* No production use.
+
+Cost tracking rule:
+Every future API use must record cost as either `verified` or `not verified`.
+
 ## Next Allowed Step
 
-After this file is created or updated, Codex must return only:
+V4.3 small eval logging/update is ready for Nicolas QA closeout.
 
-1. Diff summary.
-2. Safety confirmation.
-3. Confirmation that only `docs/KODMASKIN_OPERATING_STATE.md` was created or updated.
+After Nicolas approval:
 
-Required Codex return format:
+* Thomas may commit and push only the approved docs changes.
+* Allowed files for commit:
 
-CODEX RESULT
-
-Files changed:
-
-* `docs/KODMASKIN_OPERATING_STATE.md`
-
-Diff summary:
-Codex must write a short factual summary of the created or updated operating-state content.
-
-Safety confirmation:
-
-* Docs-only: YES
-* Only allowed file changed: YES
-* No app-code changes: YES
-* No repo changes beyond one markdown file: YES
-* No n8n/webhook/automation/secrets/deploy: YES
-* No dashboard changes: YES
-* No commit/push: YES
-
-Next action:
-Return result to Oskar.
-
-STOP CONDITIONS
-
-Codex must stop and report instead of editing if:
-
-* any file other than `docs/KODMASKIN_OPERATING_STATE.md` would need to change
-* app-code would need to change
-* package/config/workflow/dashboard files would need to change
-* n8n/webhook/endpoint/automation work is needed
-* credentials/secrets are involved
-* install/deploy is needed
-* commit/push is requested
-* source state is unclear
-* requested action exceeds docs-only scope
+  * `docs/KODMASKIN_DECISION_LOG.md`
+  * `docs/KODMASKIN_OPERATING_STATE.md`
+* No API call.
+* No model call.
+* No Codex execution beyond separately approved docs-only fixes.
+* No dashboard.
+* No n8n/webhook/automation.
+* No live transport.
+* No production use.
