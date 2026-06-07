@@ -157,3 +157,17 @@ Source-of-truth log for important Kodmaskin decisions. Older entries are backfil
 - Status: PASS / planning-only
 - Next action: Keep the design reference only until a separate approval is granted.
 - Reason: The workflow is intentionally limited to planning, review, and safety-gated future direction.
+
+## 2026-06-07 — First Real API Pilot Approval Package PASS
+
+Status:
+PASS / planning-only
+
+Source:
+Nicolas PASS
+
+Summary:
+First Real API Pilot Approval Package was approved as planning-only. A later separate executable pilot package is still required before any API-call, credential handling, setup, or live use.
+
+Boundaries:
+No API-call, API key, credentials/secrets, n8n credential, webhook, endpoint, automation, repo/GitHub/files beyond this log file, Codex execution beyond this approved docs-only task, dashboard, Bolt, terminal/PowerShell, install/deploy, or live use is approved.
