@@ -211,7 +211,6 @@ NO
 Next action:
 Use the controlled logging rule for future documentation logging requests.
 
-
 ## 2026-06-07 — V4.3 Small Eval result
 
 Status:
@@ -252,3 +251,45 @@ NO except separately approved docs-only logging.
 Dashboard needed:
 NO
 
+## 2026-06-07 — Controlled Daily Text Use Rule v1
+
+Status:
+ACTIVE WITH FIX
+
+Summary:
+
+* `Controlled Daily Text Use Rule v1` is active only for future separately approved one-call daily text drafts.
+* Daily text use is not automatically approved.
+* Each future daily text call requires separate approval unless Nicolas later approves a different cadence.
+* Next execution is not approved.
+* Cost rule is accepted with fix: no daily text call may claim clean PASS unless cost is verified.
+* Unverified cost can only be PASS WITH FIX if all schema, receiver, forbidden-action, and human-review checks pass.
+
+Approved use:
+
+* Future separately approved one-call daily text drafts only.
+* Text-only output for Thomas review only.
+* Human review required before action.
+
+Still not approved:
+
+* automatic transport
+* manual inbox pilot
+* batch
+* retry
+* Codex execution beyond separately approved docs-only logging
+* file/logging action without separate Nicolas approval
+* dashboard update
+* repo/GitHub action
+* n8n/webhook/endpoint/automation
+* terminal/PowerShell
+* credentials/secrets
+* install/deploy
+* live transport
+* production use
+
+Codex needed:
+NO except separately approved docs-only logging.
+
+Dashboard needed:
+NO
