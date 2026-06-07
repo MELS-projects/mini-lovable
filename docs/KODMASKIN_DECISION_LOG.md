@@ -190,8 +190,27 @@ NO, except this separately approved docs-only logging task.
 Dashboard needed:
 NO
 
+## 2026-06-07 — Controlled logging governance approved
+
+Decision:
+APPROVE WITH FIX
+
+Summary:
+
+* Controlled Logging Pilot Approval Package v1 is approved as governance-only.
+* Future logging tasks require separate Nicolas approval before Codex.
+* Preserved fix: every future logging task must specify the exact target file path before Nicolas can approve Codex. No path guessing.
+* This does not approve logging execution, API use, n8n, transport, Copilot, dashboard, automation, webhook, endpoint, secrets, or file changes beyond a separately approved docs-only task.
+
+Codex needed:
+AFTER NICOLAS APPROVES A SEPARATE DOCS-ONLY LOGGING TASK
+
+Dashboard needed:
+NO
+
 Next action:
-Prepare a future execution approval package only after the exact API request field/path for schema placement is known and approved.
+Use the controlled logging rule for future documentation logging requests.
+
 
 ## 2026-06-07 — V4.3 Small Eval result
 
