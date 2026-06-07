@@ -171,3 +171,25 @@ First Real API Pilot Approval Package was approved as planning-only. A later sep
 
 Boundaries:
 No API-call, API key, credentials/secrets, n8n credential, webhook, endpoint, automation, repo/GitHub/files beyond this log file, Codex execution beyond this approved docs-only task, dashboard, Bolt, terminal/PowerShell, install/deploy, or live use is approved.
+
+## 2026-06-07 — V4.3 Future Execution Approval Package review-only result
+
+Status:
+APPROVE WITH FIX
+
+Summary:
+
+* V4.3 Future Execution Approval Package was approved as review-only.
+* No execution was approved.
+* Before any execution approval, the package must add the exact API request field/path for schema placement, not only the phrase "API-level structured output configuration".
+* Still not approved: model call, API call, credentials, Codex execution beyond approved docs-only logging, dashboard, n8n, Playground execution, fallback free-text JSON, files beyond this approved log file, automation, live transport, or production use.
+
+Codex needed:
+NO, except this separately approved docs-only logging task.
+
+Dashboard needed:
+NO
+
+Next action:
+Prepare a future execution approval package only after the exact API request field/path for schema placement is known and approved.
+
