@@ -20,6 +20,22 @@ This policy defines safe OpenAI API usage for Kodmaskin. It is documentation onl
 - API billing and usage must be checked separately from ChatGPT Business.
 - Budget alerts and project limits should be configured before repeated API use.
 
+## Initial API Pilot Budget
+
+* Total starting API budget: $5.
+* Default usage: manual OpenAI Platform Playground tests only.
+* Default model: cheapest approved mini model visible in OpenAI Platform.
+* Max per approved manual call: $0.20.
+* No retry by default.
+* No automation.
+* No n8n.
+* No webhook.
+* No endpoint.
+* At or above $3: review usage before next call.
+* At or above $4: pause and ask Nicolas before next call.
+* At or above $5: STOP until Thomas approves new budget.
+* $5 is expected to be enough for the current manual API pilot/test ladder if mini model and one-call rule are followed.
+
 ## Approval and Use Limits
 
 - No automation, n8n, webhook, endpoint, or agent API use without separate Nicolas approval.
