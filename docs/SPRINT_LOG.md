@@ -2341,3 +2341,23 @@ NO after this docs update returns for QA.
 
 Dashboard needed:
 NO
+
+### Controlled API-Assisted Workflow v1
+
+Status:
+PASS / planning-only
+
+Summary:
+
+* Controlled API-Assisted Workflow v1 replaced the former "Full API Integration v1" name.
+* OpenAI-first is the approved provider direction.
+* DeepSeek is later routine-packaging test only.
+* Hybrid is deferred.
+* Input path is manual/n8n-controlled text input only.
+* Output path is manual inbox first.
+* Repo logging requires a separate Nicolas-approved docs/logging task.
+* API worker permissions are limited to draft, classify, package, detect missing fields, and summarize.
+* Human review is required after every API output.
+* Nicolas gate is required for YELLOW / RED / STOP / UNCLEAR or any file/log/workflow change.
+* Thomas final approval is required before any real use beyond draft review.
+* No setup, credentials, Codex execution, repo/files/GitHub, webhook, endpoint, automation, install/deploy, or live pilot is approved.
