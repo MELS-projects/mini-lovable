@@ -2361,3 +2361,23 @@ Summary:
 * Nicolas gate is required for YELLOW / RED / STOP / UNCLEAR or any file/log/workflow change.
 * Thomas final approval is required before any real use beyond draft review.
 * No setup, credentials, Codex execution, repo/files/GitHub, webhook, endpoint, automation, install/deploy, or live pilot is approved.
+
+### 2026-06-07 - First Controlled Live API Run v1 STOP
+
+Status:
+STOP / failed output contract
+
+Source:
+Nicolas STOP and approved design-only API output prompt fix
+
+Summary:
+First Controlled Live API Run v1 failed the approved output contract. The API output omitted mandatory fields: `Codex needed`, `Dashboard needed`, and `Human review required`.
+
+Failure boundary:
+The output also suggested "Record/archive", which is blocked because it may imply logging or file action.
+
+Approved fix status:
+API output prompt fix was approved as design-only. No second API call or retry is approved.
+
+Boundaries:
+No second API call, retry, API key, credentials/secrets, n8n credential, webhook, endpoint, automation, repo/GitHub/files beyond this log file, Codex execution beyond this approved docs-only task, dashboard, Bolt, terminal/PowerShell, install/deploy, or live use is approved.
