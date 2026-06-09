@@ -190,6 +190,26 @@ NO, except this separately approved docs-only logging task.
 Dashboard needed:
 NO
 
+## 2026-06-09 — Hermes n8n Text Transport Pilot Approval Package v1
+
+Decision:
+APPROVE
+
+Summary:
+- Approved as one controlled text-only pilot package.
+- No setup expansion.
+- No webhook creation.
+- No execution yet.
+
+Codex needed:
+NO
+
+Dashboard needed:
+NO
+
+Next action:
+Prepare only the approved pilot execution package if Thomas requests it later.
+
 ## 2026-06-07 — Anti-Ping-Pong Nicolas package operating rule approved
 
 Decision:
