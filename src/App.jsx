@@ -403,7 +403,7 @@ const handleContactSubmit = (event) => {
 
 3. Keep the form visible after submit.
 
-4. Render the success message as an inline banner inside the form area, directly above the submit button:
+|4. Render the success message as an inline banner inside the form area, directly above the submit button:
 {contactSuccessMessage && (
   <div role="status" aria-live="polite" style={{ ... }}>
     {contactSuccessMessage}
@@ -421,7 +421,33 @@ const handleContactSubmit = (event) => {
 13. Do not promise a real response.
 14. Do not use backend words unless backend integration exists.
 15. Inputs and textarea must stay controlled and remain editable after submit.
-16. This pattern should pass the contact form confirmation validator.`;
+16. This pattern should pass the contact form confirmation validator.
+17. STYLED CONFIRMATION: The success banner must use a distinct visual style:
+  - Green-tinted background (#e8f5e9 or #d4edda)
+  - Bold/semibold font weight
+  - Font size at least 1.05rem
+  - Padding at least 14px all sides
+  - Rounded corners (border-radius: 8px)
+  - Left border accent (border-left: 4px solid green)
+  - Optional: checkmark icon before the text
+18. VALIDATION VISIBILITY: Validation errors must appear:
+  - Inline inside the form, near the submit button
+  - Red-tinted banner or individual inline field errors
+  - Not only as browser tooltips
+  - Must be visible immediately on submit with missing fields
+19. LOCAL-ONLY WORDING: After submit, the form must clearly state:
+  - This is a demo/local preview
+  - No email was sent
+  - The enquiry was recorded locally
+  - No real response will come
+20. REPAIR RESILIENCE: Repair must not:
+  - Remove or weaken the demo-only confirmation
+  - Add real email sending or backend claims
+  - Replace the success banner with a thin or subtle text change
+  - Remove contactSuccessMessage, contactError, or handleContactSubmit
+  - Change the honest local-only text to imply real delivery
+  - Add "we will respond", "I will be in touch", or similar copy
+  - Downgrade the banner styling to a plain-text message`;
   };
 
   const getReactRuntimeSafetyInstruction = () => {
@@ -1389,11 +1415,16 @@ Mandatory repair rules:
 - Button text should be "Record enquiry locally".
 - Contact text should say this is a demo/local preview, not a real inquiry workflow.
 - Remove fake named testimonials and unverifiable statistics if present.
-- Do not add backend integration.
-- Do not use external libraries.
-- Use inline styles only.
-- Ensure the final code exports default function App.
-- Ensure JSX syntax is valid.`
+|- Do not add backend integration.
+|- Do not use external libraries.
+|- Use inline styles only.
+|- Ensure the final code exports default function App.
+|- Ensure JSX syntax is valid.
+|- STYLED CONFIRMATION: Use green-tinted background (#e8f5e9), bold text, font-size at least 1.05rem, padding at least 14px, rounded corners, left green border accent, and optional checkmark icon.
+|- VALIDATION VISIBILITY: Show contactError inline inside the form, not only as browser tooltip. Use red-tinted banner near the submit button.
+|- LOCAL-ONLY WORDING: Must clearly state the preview recorded the enquiry locally and no email was sent. No "we will respond", "I will be in touch", or similar.
+|- REPAIR RESILIENCE: Do not weaken the demo-only banner, do not remove contactSuccessMessage/contactError, do not add real email or backend claims, do not downgrade banner styling.
+|- Keep button text "Record enquiry locally".`
       },
       {
         role: 'user',
