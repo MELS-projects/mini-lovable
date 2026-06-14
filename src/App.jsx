@@ -344,9 +344,17 @@ Use this test prompt as calibration: "Create a premium website for an exclusive 
 - For local-only contact forms, do not replace the entire form with only a separate thank-you block as the main confirmation pattern.
 - Prefer keeping the form area visible and showing a clear inline success banner inside the form.
 - The success banner must appear directly above the submit button or at the top of the form panel.
-- The success banner must be controlled by local state such as submitStatus, formStatus, successMessage, or submitted.
-- The banner text must be honest, for example: "Thank you. This demo preview has recorded your enquiry locally. No email was sent."
-- The success banner should be rendered as a clearly visible inline banner inside the form area, directly above the submit button, not hidden in a separate section.
+|- The success banner must be controlled by local state such as submitStatus, formStatus, successMessage, or submitted.
+|- The banner text must be honest, for example: "Thank you. This demo preview has recorded your enquiry locally. No email was sent."
+|- The success banner must be visually prominent:
+  - Distinct background color (e.g. green-tinted or blue-tinted)
+  - Bold or semibold font weight
+  - Larger font size (at least 1.05rem)
+  - Padding around text (at least 12px)
+  - Rounded corners
+  - Left border accent or icon for visibility
+  - Must clearly stand out from the form background
+|- The success banner should be rendered as a clearly visible inline banner inside the form area, directly above the submit button, not hidden in a separate section.
 - Avoid wording that implies real delivery: "I will respond within 24 hours", "We have received your email", "Your message has been sent" unless real backend integration exists.
 - A valid preview contact form should preferably keep name/email/message fields visible, show missing-field errors near the form, show success banner near the submit button, and not claim real email delivery.
 - The confirmation must be visible without the user needing to scroll manually.
@@ -1357,13 +1365,22 @@ Mandatory repair rules:
   Please fill in name, email, and message before submitting.
 - On valid submit, set contactSuccessMessage exactly to:
   Thank you. This demo preview recorded your enquiry locally. No email was sent.
-- Keep the form fields visible after submit.
-- Render contactSuccessMessage as an inline banner inside the form, directly above the submit button.
-- The success banner must be inside the <form>, directly above the submit button.
-- Do not render the success banner above the <form>.
-- The banner must include:
+|- Keep the form fields visible after submit.
+|- Render contactSuccessMessage as a visually prominent inline banner inside the form, directly above the submit button.
+|- The success banner must be inside the <form>, directly above the submit button.
+|- Do not render the success banner above the <form>.
+|- The banner must include:
   role="status"
   aria-live="polite"
+|- The success banner must be visually prominent:
+  - Use a distinct background color (e.g. green-tinted #e8f5e9 or blue-tinted #e3f2fd)
+  - Use bold or semibold font weight
+  - Use larger font size than normal form text (at least 1.05rem or 16px)
+  - Add padding (at least 12px all sides)
+  - Add rounded corners (border-radius: 8px)
+  - Add a left border accent or icon for visibility
+  - Make it clearly stand out from the form background
+  - Do not make it a thin or subtle banner that could be missed
 - Do not replace the whole form with a thank-you screen.
 - Do not claim email was sent.
 - Do not promise a real response.
