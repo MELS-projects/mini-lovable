@@ -2933,23 +2933,22 @@ The generated app is stored in src/App.jsx.
       ? 'Ready to build this step.'
       : 'Select a roadmap step first.';
 
-  // SANDBOX BANNER — injected by Multica sandbox POC Gate 1
-  // Updated by DeerFlow simulation — POC Gate 2
+  // SANDBOX BANNER — clear, friendly sandbox indicator
   const sandboxBanner = (
     <div style={{
       width: '100%',
-      backgroundColor: '#fff3cd',
-      color: '#856404',
+      backgroundColor: '#fff8e1',
+      color: '#664d00',
       padding: '8px 16px',
       textAlign: 'center',
-      fontWeight: 700,
-      fontSize: '14px',
-      borderBottom: '2px solid #ffc107',
+      fontWeight: 600,
+      fontSize: '13px',
+      borderBottom: '2px solid #ffa000',
       position: 'sticky',
       top: 0,
       zIndex: 9999
     }}>
-      SANDBOX — Multica controlled instance | POC Gate 2 | {new Date().toLocaleString()}
+      ⚠ Preview — your work stays local, is never deployed, and is not visible to anyone else. Safe to experiment!
     </div>
   );
 
