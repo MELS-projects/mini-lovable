@@ -2934,6 +2934,7 @@ The generated app is stored in src/App.jsx.
       : 'Select a roadmap step first.';
 
   // SANDBOX BANNER — injected by Multica sandbox POC Gate 1
+  // Updated by DeerFlow simulation — POC Gate 2
   const sandboxBanner = (
     <div style={{
       width: '100%',
@@ -2948,7 +2949,7 @@ The generated app is stored in src/App.jsx.
       top: 0,
       zIndex: 9999
     }}>
-      SANDBOX — Multica controlled instance
+      SANDBOX — Multica controlled instance | POC Gate 2 | {new Date().toLocaleString()}
     </div>
   );
 
