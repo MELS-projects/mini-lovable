@@ -386,6 +386,52 @@ Use this test prompt as calibration: "Create a premium website for an exclusive 
 - If using a local confirmation only, phrase it honestly, for example: "Thank you. Your enquiry has been prepared for review.", "Thank you. This demo form stores your message locally only.", or "Thank you. Your request has been noted in this preview." Do not say: "Your message has been sent.", "Email sent successfully.", or "We have received your email." unless there is real backend integration.`;
   };
 
+  const getBookingFormSafetyInstruction = () => {
+    return `Booking page and booking section rules:
+- If the generated app includes a Booking page or booking section, the booking form rules from getBookingFormCodeRecipeInstruction() take precedence over the contact form recipe.
+- A booking form must include: service selection, preferred date, preferred time, name, email, and phone number fields.
+- Service selection should be a dropdown or radio buttons with options like "Business consultation", "Strategy session", "Executive coaching", "Custom project".
+- The date field should show a date picker or text input with clear placeholder.
+- The time field should show a dropdown or text input with placeholder "e.g. Morning, Afternoon, or specific time".
+- Phone field should be optional.
+- A visible submit button is required.
+- If there is no backend integration, the form must prevent default submit behavior, use local React state, and show a visible local confirmation message after submit.
+- Booking forms should make required fields obvious.
+- Add clear labels and helpful placeholders for each field.
+- If using required fields, make it clear what is missing before submitting.
+- The success message must be honest: "Thank you. This demo preview recorded your booking request locally. No email was sent."
+- Do not claim real booking confirmation, real email delivery, or real scheduling.
+- Do not say "we will respond", "we will confirm", "I will be in touch", or similar.
+- The confirmation must be visible without the user needing to scroll manually.
+- UNIVERSAL FORM RULE (applies to ALL generated apps with booking forms):
+  ANY app with a booking <form> element must:
+  - Use local React state (no real backend fetch/post)
+  - Show honest demo-only wording on submit (booking recorded locally, no email sent)
+  - Not claim real email/API/backend delivery or real booking confirmation
+  - Show inline success banner or confirmation
+  - Keep form fields visible after submit
+  - Not use "we will respond", "we will confirm", or similar
+- STYLED CONFIRMATION: The success banner must be visually prominent:
+  - Green-tinted background (#e8f5e9 or #d4edda)
+  - Bold/semibold font weight
+  - Larger font size (at least 1.05rem)
+  - Padding at least 14px all sides
+  - Rounded corners (border-radius: 8px)
+  - Left border accent (border-left: 4px solid green)
+  - Must clearly stand out from the form background
+  - Must be inside the <form>, directly above the submit button
+- Avoid wording that implies real delivery or real booking confirmation.
+- If using a local confirmation only, phrase it honestly: "Thank you. This demo preview recorded your booking request locally. No email was sent."
+- Do not say: "Your booking has been confirmed.", "Your appointment has been scheduled.", "We have received your booking request and will contact you.", or similar.
+- Booking forms must be fully visible and usable in the preview iframe.
+- Avoid layouts where the booking form is placed in a narrow column that can be clipped.
+- For booking pages, prefer a responsive layout using flexWrap, grid with minmax, or a single-column layout on narrow screens.
+- The form container should use width: "100%" and a sensible maxWidth.
+- Inputs, textareas, and submit buttons should use boxSizing: "border-box" and width: "100%".
+- Avoid horizontal overflow on booking pages.
+- Confirmation after submit must appear in the same visible area where the form was, not off-screen.`;
+  };
+
   const getContactFormCodeRecipeInstruction = () => {
     return `Contact form implementation recipe:
 If the generated app includes any Contact page or Contact section with a form, this recipe is mandatory.
@@ -456,6 +502,86 @@ const handleContactSubmit = (event) => {
   - Remove contactSuccessMessage, contactError, or handleContactSubmit
   - Change the honest local-only text to imply real delivery
   - Add "we will respond", "I will be in touch", or similar copy
+  - Downgrade the banner styling to a plain-text message`;
+  };
+
+  const getBookingFormCodeRecipeInstruction = () => {
+    return `Booking form implementation recipe:
+If the generated app includes any Booking page, booking section, or booking flow with a form, this recipe is mandatory and takes precedence over the contact form recipe.
+When generating a local-only booking form, use this structure or an equivalent pattern:
+
+1. Define top-level state inside App with the exact state names:
+const [bookingForm, setBookingForm] = React.useState({ service: '', preferredDate: '', preferredTime: '', name: '', email: '', phone: '', message: '' });
+const [bookingError, setBookingError] = React.useState('');
+const [bookingSuccessMessage, setBookingSuccessMessage] = React.useState('');
+
+2. Use a submit handler with the exact handler name:
+const handleBookingSubmit = (event) => {
+  event.preventDefault();
+
+  if (!bookingForm.service.trim() || !bookingForm.preferredDate.trim() || !bookingForm.name.trim() || !bookingForm.email.trim()) {
+    setBookingError('Please fill in service, date, name, and email before submitting.');
+    setBookingSuccessMessage('');
+    return;
+  }
+
+  setBookingError('');
+  setBookingSuccessMessage('Thank you. This demo preview recorded your booking request locally. No email was sent.');
+};
+
+3. Keep the form visible after submit.
+
+4. Render the success message as an inline banner inside the form area, directly above the submit button:
+{bookingSuccessMessage && (
+  <div role="status" aria-live="polite" style={{ ... }}>
+    {bookingSuccessMessage}
+  </div>
+)}
+
+5. Place the success banner inside the <form>, directly above the submit button.
+6. Make the success banner clearly visible with honest local-only wording: the preview recorded the booking locally and no email was sent.
+7. Keep the form fields visible after submit.
+8. Do not replace the whole form with only a thank-you block.
+9. Booking-specific fields should include:
+   - Service selection (e.g. dropdown or radio options like "Business consultation", "Strategy session", "Executive coaching", "Custom project")
+   - Preferred date (date picker or text input with placeholder "Select your preferred date")
+   - Preferred time (dropdown or text input with placeholder "e.g. Morning, Afternoon, or specific time")
+   - Full name
+   - Email address
+   - Phone number (optional, with placeholder "Your phone number (optional)")
+   - Message or special requests (optional textarea)
+10. Do not use vague variable names such as submitted only, unless bookingSuccessMessage also exists.
+11. The generated code must include the literal string bookingSuccessMessage.
+12. Do not say the message was sent.
+13. Do not promise a real response or real booking confirmation.
+14. Do not use backend words unless backend integration exists.
+15. Inputs and textarea must stay controlled and remain editable after submit.
+16. This pattern should pass the booking form confirmation validator.
+17. STYLED CONFIRMATION: The success banner must use a distinct visual style:
+  - Green-tinted background (#e8f5e9 or #d4edda)
+  - Bold/semibold font weight
+  - Font size at least 1.05rem
+  - Padding at least 14px all sides
+  - Rounded corners (border-radius: 8px)
+  - Left border accent (border-left: 4px solid green)
+  - Optional: checkmark icon before the text
+18. VALIDATION VISIBILITY: Validation errors must appear:
+  - Inline inside the form, near the submit button
+  - Red-tinted banner or individual inline field errors
+  - Not only as browser tooltips
+  - Must be visible immediately on submit with missing fields
+19. LOCAL-ONLY WORDING: After submit, the form must clearly state:
+  - This is a demo/local preview
+  - No email was sent
+  - The booking was recorded locally
+  - No real response or booking will be confirmed
+20. REPAIR RESILIENCE: Repair must not:
+  - Remove or weaken the demo-only confirmation
+  - Add real email sending or backend claims
+  - Replace the success banner with a thin or subtle text change
+  - Remove bookingSuccessMessage, bookingError, or handleBookingSubmit
+  - Change the honest local-only text to imply real delivery or real booking confirmation
+  - Add "we will respond", "we will confirm", "I will be in touch", or similar copy
   - Downgrade the banner styling to a plain-text message`;
   };
 
@@ -695,22 +821,22 @@ const handleContactSubmit = (event) => {
     const rawCode = String(code || '');
     const lowerCode = rawCode.toLowerCase();
 
-    const hasContactForm =
+    const hasAnyForm =
       /<form/i.test(rawCode) &&
       /onSubmit/i.test(rawCode) &&
-      /(name|email|message|phone|company|date|time|booking|inquiry|contact|subscribe|signup|register)/i.test(rawCode);
+      /(name|email|message|phone|company|date|time|booking|inquiry|contact|subscribe|signup|register|service)/i.test(rawCode);
 
-    if (!hasContactForm) {
+    if (!hasAnyForm) {
       return '';
     }
 
     const formBlockMatch = rawCode.match(/<form[\s\S]*?<\/form>/i);
     const formBlock = formBlockMatch ? formBlockMatch[0] : '';
-    const hasContactSuccessMessageInForm = /contactSuccessMessage/i.test(formBlock);
+    const hasSuccessMessageInForm = /(contactSuccessMessage|bookingSuccessMessage)/i.test(formBlock);
     const hasInlineStatusInForm = /role=["']status["']|aria-live=["']polite["']/i.test(formBlock);
 
-    if (!hasContactSuccessMessageInForm || !hasInlineStatusInForm) {
-      return 'Contact form confirmation must be inside the form: render contactSuccessMessage as an inline role="status" banner directly above the submit button inside <form>.';
+    if (!hasSuccessMessageInForm || !hasInlineStatusInForm) {
+      return 'Form confirmation must be inside the form: render contactSuccessMessage or bookingSuccessMessage as an inline role="status" banner directly above the submit button inside <form>.';
     }
 
     const hasLocalSubmitState =
@@ -718,34 +844,36 @@ const handleContactSubmit = (event) => {
       /setFormSubmitted\s*\(\s*true\s*\)/i.test(rawCode) ||
       /setSuccess\s*\(\s*true\s*\)/i.test(rawCode) ||
       /setIsSubmitted\s*\(\s*true\s*\)/i.test(rawCode) ||
-      /setContactSuccessMessage\s*\(/i.test(rawCode);
+      /setContactSuccessMessage\s*\(/i.test(rawCode) ||
+      /setBookingSuccessMessage\s*\(/i.test(rawCode);
 
     const hasVisibleSuccessLanguage =
-      /thank you|thanks|success|submitted|prepared for review|noted in this preview|demo form|no email was sent|message will not be sent/i.test(rawCode);
+      /thank you|thanks|success|submitted|prepared for review|noted in this preview|demo form|demo preview|no email was sent|message will not be sent|recorded your booking|recorded your enquiry|recorded locally/i.test(rawCode);
 
     const hasInlineSuccessBanner =
-      /successMessage|submitStatus|formStatus|successBanner|confirmationBanner/i.test(rawCode) ||
+      /(SuccessMessage|submitStatus|formStatus|successBanner|confirmationBanner)/i.test(rawCode) ||
       /aria-live=["']polite["']|role=["']status["']|role=["']alert["']/i.test(rawCode) ||
-      /(successMessage|submitStatus|formStatus|successBanner|confirmationBanner)[\s\S]{0,200}(thank you|thanks|success|prepared for review|noted in this preview|demo preview|no email was sent|message will not be sent)/i.test(rawCode);
+      /(SuccessMessage|submitStatus|formStatus|successBanner|confirmationBanner)[\s\S]{0,200}(thank you|thanks|success|prepared for review|noted in this preview|demo preview|no email was sent|message will not be sent|recorded your booking|recorded your enquiry|recorded locally)/i.test(rawCode);
 
     const hasBackendIntegration = /fetch\s*\(|axios|formspree|emailjs|supabase|firebase/i.test(rawCode);
     const hasMisleadingResponsePromise =
-      /we review every inquiry|we will invite|we will respond|i will respond|i will be in touch|we have received|message has been sent|request an introductory meeting|submit inquiry|begin the conversation|confidential introductory conversation/i.test(rawCode);
+      /we review every inquiry|we will invite|we will respond|i will respond|i will be in touch|we have received|message has been sent|request an introductory meeting|submit inquiry|begin the conversation|confidential introductory conversation|your booking has been confirmed|your appointment has been scheduled|we will confirm|we will contact you/i.test(rawCode);
 
     if (!hasLocalSubmitState || !hasVisibleSuccessLanguage) {
-      return 'Contact form confirmation is too weak: generated contact forms must use contactForm, contactError, contactSuccessMessage, handleContactSubmit, and an inline role="status" banner that says no email was sent.';
+      return 'Form confirmation is too weak: generated forms must use contactForm/bookingForm, contactError/bookingError, contactSuccessMessage/bookingSuccessMessage, handleContactSubmit/handleBookingSubmit, and an inline role="status" banner that says no email was sent.';
     }
 
     if (!hasInlineSuccessBanner) {
-      return 'Contact form confirmation is not visible enough: use an inline success banner inside the form area, preferably above the submit button, and keep the message honest that no email was sent.';
+      return 'Form confirmation is not visible enough: use an inline success banner inside the form area, preferably above the submit button, and keep the message honest that no email was sent.';
     }
 
     if (hasMisleadingResponsePromise && !hasBackendIntegration) {
-      return 'Contact form copy is misleading: local-only forms must not imply real delivery or a real response unless backend integration exists.';
+      return 'Form copy is misleading: local-only forms must not imply real delivery, real booking confirmation, or a real response unless backend integration exists.';
     }
 
     return '';
   };
+
 
   const getValidationProblems = ({
     codeProblem,
@@ -1487,6 +1615,119 @@ Return the complete repaired App.jsx only.`
     return cleanGeneratedCode(data.choices[0].message.content);
   };
 
+
+
+  const repairBookingFormWithDeepSeek = async ({ originalCode, originalPrompt, source }) => {
+    const repairMessages = [
+      {
+        role: 'system',
+        content: `You are a senior React developer repairing one App.jsx file that has a booking form.
+
+Return only raw React code for one complete App.jsx file.
+Do not use markdown, backticks, explanations, or comments before/after the code.
+Keep the existing design, layout, copy, navigation, and all unrelated functionality unchanged.
+Fix only the booking form confirmation UX.
+
+Mandatory repair rules:
+- If there is a booking form, it must use top-level state:
+  const [bookingForm, setBookingForm] = React.useState({ service: '', preferredDate: '', preferredTime: '', name: '', email: '', phone: '', message: '' });
+  const [bookingError, setBookingError] = React.useState('');
+  const [bookingSuccessMessage, setBookingSuccessMessage] = React.useState('');
+- It must use this handler name:
+  handleBookingSubmit
+- The form must use onSubmit={handleBookingSubmit}
+- On submit, call event.preventDefault()
+- If service, preferredDate, name, or email is missing, set bookingError to:
+  Please fill in service, date, name, and email before submitting.
+- On valid submit, set bookingSuccessMessage exactly to:
+  Thank you. This demo preview recorded your booking request locally. No email was sent.
+- Keep the form fields visible after submit.
+- Render bookingSuccessMessage as a visually prominent inline banner inside the form, directly above the submit button.
+- The success banner must be inside the <form>, directly above the submit button.
+- Do not render the success banner above the <form>.
+- The banner must include:
+  role="status"
+  aria-live="polite"
+- The success banner must be visually prominent:
+  - Use a distinct background color (e.g. green-tinted #e8f5e9 or blue-tinted #e3f2fd)
+  - Use bold or semibold font weight
+  - Use larger font size than normal form text (at least 1.05rem or 16px)
+  - Add padding (at least 12px all sides)
+  - Add rounded corners (border-radius: 8px)
+  - Add a left border accent or icon for visibility
+  - Make it clearly stand out from the form background
+  - Do not make it a thin or subtle banner that could be missed
+- Do not replace the whole form with a thank-you screen.
+- Do not claim email was sent or booking was confirmed.
+- Do not promise a real response or real booking.
+- Remove or rewrite copy that implies real follow-up or real booking confirmation.
+- Replace "we will respond", "we will confirm", "I will be in touch", "booking confirmed", "your appointment has been scheduled" and similar with local-only preview wording.
+- Button text should be "Record booking locally".
+- Booking text should say this is a demo/local preview, not a real booking workflow.
+- Remove fake named testimonials and unverifiable statistics if present.
+- Do not add backend integration.
+- Do not use external libraries.
+- Use inline styles only.
+- Ensure the final code exports default function App.
+- Ensure JSX syntax is valid.
+- STYLED CONFIRMATION: Use green-tinted background (#e8f5e9), bold text, font-size at least 1.05rem, padding at least 14px, rounded corners, left green border accent, and optional checkmark icon.
+- VALIDATION VISIBILITY: Show bookingError inline inside the form, not only as browser tooltip. Use red-tinted banner near the submit button.
+- LOCAL-ONLY WORDING: Must clearly state the preview recorded the booking request locally and no email was sent. No "we will respond", "we will confirm", "I will be in touch", or similar.
+- REPAIR RESILIENCE: Do not weaken the demo-only banner, do not remove bookingSuccessMessage/bookingError, do not add real email or backend claims, do not downgrade banner styling.
+- Keep button text "Record booking locally".
+- UNIVERSAL FORM RULE (applies to ALL booking forms):
+  ANY app with a booking <form> element that collects user data must:
+  - Use local React state (no real backend fetch/post)
+  - Show honest demo-only wording on submit
+  - Not claim real email/API/backend delivery or real booking confirmation
+  - Show inline success banner or confirmation
+  - Keep form fields visible after submit
+  - Not use "we will respond", "we will confirm", "I will be in touch", or similar`
+      },
+      {
+        role: 'user',
+        content: `Original user prompt:
+${originalPrompt || 'No active prompt.'}
+
+Repair source:
+${source}
+
+Current generated App.jsx that failed booking form validation:
+${originalCode}
+
+Return the complete repaired App.jsx only.`
+      }
+    ];
+
+    const response = await fetch('https://api.deepseek.com/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model: 'deepseek-chat',
+        messages: repairMessages,
+        max_tokens: 8192,
+        temperature: 0.15
+      })
+    });
+
+    const responseText = await response.text();
+
+    if (!response.ok) {
+      throw new Error(`DeepSeek repair returned ${response.status}: ${responseText}`);
+    }
+
+    const data = JSON.parse(responseText);
+
+    if (!data.choices || data.choices.length === 0) {
+      throw new Error('DeepSeek repair response did not contain code.');
+    }
+
+    return cleanGeneratedCode(data.choices[0].message.content);
+  };
+
   const handleGenerate = async () => {
     if (!apiKey || !prompt) {
       setStatus('Error: API key and prompt are required');
@@ -1571,12 +1812,13 @@ ${getOutputProtectionInstruction()}
 
 ${getGroundZeroScoringInstruction()}
 
-${getContactFormSafetyInstruction()}
+${templateRecipe === 'Booking app' ? getBookingFormSafetyInstruction() : getContactFormSafetyInstruction()}
 
-${getContactFormCodeRecipeInstruction()}
+${templateRecipe === 'Booking app' ? getBookingFormCodeRecipeInstruction() : getContactFormCodeRecipeInstruction()}
 
 ${getReactRuntimeSafetyInstruction()}
-- If you create a contact form, you must use the contact form recipe exactly, including contactForm, contactError, contactSuccessMessage, handleContactSubmit, role="status", aria-live="polite", and the exact "No email was sent" success wording.
+- If you create a booking form (templateRecipe = Booking app), you must use the booking form recipe exactly, including bookingForm, bookingError, bookingSuccessMessage, handleBookingSubmit, role="status", aria-live="polite", and the exact "No email was sent" success wording.
+- If you create a contact form (non-booking templateRecipe), you must use the contact form recipe exactly, including contactForm, contactError, contactSuccessMessage, handleContactSubmit, role="status", aria-live="polite", and the exact "No email was sent" success wording.
 - For multi-page apps inside one App.jsx, avoid nested page components rendered as <ContactPage /> from inside App. Use direct render helper functions or external child components so forms do not remount while typing.
 - Contact pages must be responsive in the preview iframe. The form must not be clipped, horizontally hidden, or placed off-screen.
 
@@ -1692,7 +1934,7 @@ For Premium, Luxury, and Enterprise outputs, never return a design below the sav
           setStatus('Repairing contact form confirmation...');
 
           try {
-            const repairedCode = await repairContactFormWithDeepSeek({
+            const repairedCode = await (templateRecipe === 'Booking app' ? repairBookingFormWithDeepSeek : repairContactFormWithDeepSeek)({
               originalCode: aiResponseCode,
               originalPrompt: prompt,
               source: 'Generate / Update'
@@ -2044,12 +2286,13 @@ Generated website/app copy must be in English by default. Do not write Swedish c
 The user is not a programmer, so make the result practical and ready to paste into Bolt.
 - For contact forms, successful submit must show a clearly visible confirmation banner or scroll the confirmation into view. Users should never feel that clicking submit did nothing.
 
-${getContactFormSafetyInstruction()}
+${templateRecipe === 'Booking app' ? getBookingFormSafetyInstruction() : getContactFormSafetyInstruction()}
 
-${getContactFormCodeRecipeInstruction()}
+${templateRecipe === 'Booking app' ? getBookingFormCodeRecipeInstruction() : getContactFormCodeRecipeInstruction()}
 
 ${getReactRuntimeSafetyInstruction()}
-- If you create a contact form, you must use the contact form recipe exactly, including contactForm, contactError, contactSuccessMessage, handleContactSubmit, role="status", aria-live="polite", and the exact "No email was sent" success wording.
+- If you create a booking form (templateRecipe = Booking app), you must use the booking form recipe exactly, including bookingForm, bookingError, bookingSuccessMessage, handleBookingSubmit, role="status", aria-live="polite", and the exact "No email was sent" success wording.
+- If you create a contact form (non-booking templateRecipe), you must use the contact form recipe exactly, including contactForm, contactError, contactSuccessMessage, handleContactSubmit, role="status", aria-live="polite", and the exact "No email was sent" success wording.
 - For multi-page apps inside one App.jsx, avoid nested page components rendered as <ContactPage /> from inside App. Use direct render helper functions or external child components so forms do not remount while typing.
 - Contact pages must be responsive in the preview iframe. The form must not be clipped, horizontally hidden, or placed off-screen.
 
@@ -2168,7 +2411,7 @@ ${hasExistingApp
           setStatus('Repairing contact form confirmation...');
 
           try {
-            const repairedCode = await repairContactFormWithDeepSeek({
+            const repairedCode = await (templateRecipe === 'Booking app' ? repairBookingFormWithDeepSeek : repairContactFormWithDeepSeek)({
               originalCode: aiResponseCode,
               originalPrompt: prompt || `Build roadmap step: ${stepToBuild}`,
               source: `Build / Improve Step ${stepToBuild}`
