@@ -2955,6 +2955,91 @@ The generated app is stored in src/App.jsx.
   return (
     <div className="app-container">
       {sandboxBanner}
+      {/* --- PREMIUM SAAS HERO --- */}
+      <div
+        style={{
+          padding: "48px 32px 32px",
+          textAlign: "center",
+          borderBottom: "1px solid #1f2937",
+          background: "linear-gradient(160deg, #0c0f1c 0%, #05070a 100%)",
+          position: "relative",
+          overflow: "hidden"
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: "-60px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "320px",
+            height: "160px",
+            background: "radial-gradient(ellipse, rgba(99,102,241,0.12) 0%, transparent 70%)",
+            pointerEvents: "none"
+          }}
+        />
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <h1
+            style={{
+              fontSize: "clamp(28px, 4vw, 40px)",
+              fontWeight: 800,
+              color: "#f1f5f9",
+              margin: "0 0 12px",
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em"
+            }}
+          >
+            Build premium websites
+            <br />
+            without writing code
+          </h1>
+          <p
+            style={{
+              fontSize: "clamp(14px, 1.8vw, 17px)",
+              color: "#94a3b8",
+              maxWidth: "480px",
+              margin: "0 auto 24px",
+              lineHeight: 1.55,
+              fontWeight: 400
+            }}
+          >
+            Describe what you want — Mini-Lovable generates polished,
+            production-ready React websites in seconds.
+          </p>
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "12px"
+            }}
+          >
+            <button
+              onClick={() => {
+                const promptInput = document.getElementById("generation-prompt");
+                if (promptInput) promptInput.scrollIntoView({ behavior: "smooth", block: "center" });
+              }}
+              style={{
+                backgroundColor: "#6366f1",
+                color: "#fff",
+                border: "none",
+                borderRadius: "10px",
+                padding: "12px 28px",
+                fontSize: "15px",
+                fontWeight: 700,
+                cursor: "pointer",
+                whiteSpace: "nowrap"
+              }}
+            >
+              Start building
+            </button>
+            <div style={{ color: "#64748b", fontSize: "13px", lineHeight: 1.3 }}>
+              No sign-up needed
+              <br />
+              <span style={{ color: "#475569" }}>Free to try</span>
+            </div>
+          </div>
+        </div>
+      </div>
       <div
         className="left-panel"
         style={{
@@ -3334,9 +3419,9 @@ The generated app is stored in src/App.jsx.
               Mini-Lovable will turn your idea into a first premium website draft you can preview and improve.
             </div>
             <textarea
-              id="prompt"
+              id="generation-prompt"
               className="textarea-field"
-              placeholder="Example: make the selected section more premium..."
+              placeholder="Example: build a premium landing page for a SaaS startup..."
               rows="3"
               style={{
                 minHeight: '74px',
