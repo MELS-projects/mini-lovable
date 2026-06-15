@@ -267,7 +267,7 @@ Before returning App.jsx, silently review and improve the design.
 9. Existing functionality is preserved when editing.
 10. The final code is complete, valid, and exports default function App.
 11. For multi-page websites, navigation must actually switch pages with internal state.
-12. For premium multi-page websites, the home hero should show headline, CTA, proof, and a visual panel high enough to be visible immediately.
+12. For premium multi-page websites, the home hero should show headline, a specific conversion-focused CTA (e.g. "Book a consultation"), proof, and a visual panel high enough to be visible immediately.
 13. About, Services, Cases, Resources, and Contact pages should each feel intentionally designed with their own sections, not like plain filler pages.
 Do not print this checklist.`;
   };
@@ -303,13 +303,13 @@ Do not print this checklist.`;
 - For Simple multi-page website or Full business website, include activePage, setActivePage, working navigation buttons, and real content for every page.
 - Do not use React Router.
 - Do not use href-only navigation in multi-page mode.
-- For premium multi-page mode, avoid a mostly empty hero. Prefer a compact editorial hero with visible text, CTA, proof, and visual card/image in the first screen.`;
+- For premium multi-page mode, avoid a mostly empty hero. Prefer a compact editorial hero with visible text, a specific conversion-focused CTA (e.g. "Book a consultation"), proof, and visual card/image in the first screen.`;
   };
 
   const getGroundZeroScoringInstruction = () => {
     return `Ground Zero scoring rules:
 Before returning code for Premium, Luxury, or Enterprise, silently score the result against the current Mini-Lovable v19 Ground Zero baseline.
-The baseline is a dark premium consultant landing page with strong hero, polished typography, clear CTA, image-led editorial section, services, process, metrics/result cards, testimonial, and mature high-end tone.
+The baseline is a dark premium consultant landing page with strong hero, polished typography, specific conversion-focused CTA wording ("Book a consultation", "Request a demo"), image-led editorial section, services, process, metrics/result cards, testimonial, and mature high-end tone.
 The result must be equal to or better than that baseline.
 Improve internally if:
 - The first screen is only a plain gradient, centered text, and buttons.
@@ -1764,6 +1764,7 @@ Keep code compact enough to finish.
 Design quality rules:
 - Make every result look premium, modern, and intentional.
 - Use strong visual hierarchy, polished spacing, clear CTAs, real-feeling copy, and useful structure.
+- Hero CTAs must use specific conversion-focused wording (e.g. "Book a consultation", "Request a demo", "Schedule a call", "Start your project") instead of generic "Learn more" or "Get started".
 - Avoid boring default white pages, cramped layouts, weak contrast, generic placeholder text, and emoji-led design.
 - When building landing pages, include hero, services or benefits, proof, CTA, and footer unless the user asks otherwise.
 - For premium websites, use mature visual language, realistic imagery, editorial layout, and high-end brand feeling.
@@ -1795,7 +1796,7 @@ Edit section rules:
 
 Premium multi-page design floor:
 - Home should feel as premium as a strong long landing page, not like a sparse app shell.
-- Home first screen should show meaningful content early: headline, subcopy, CTA, proof/metrics, and a visual panel or image.
+- Home first screen should show meaningful content early: headline, subcopy, a conversion-focused hero CTA (e.g. "Book a consultation" instead of "Learn more"), proof/metrics, and a visual panel or image.
 - Avoid mostly empty black/dark hero screens.
 - Prefer a split or layered editorial hero with a premium image, boardroom/architecture/office visual, or image-like panel.
 - About, Services, and Contact should each feel like designed pages with layout, visual hierarchy, proof, CTA, and at least one visual or strong editorial panel where useful.
