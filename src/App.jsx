@@ -357,7 +357,16 @@ Use this test prompt as calibration: "Create a premium website for an exclusive 
 |- The success banner should be rendered as a clearly visible inline banner inside the form area, directly above the submit button, not hidden in a separate section.
 - Avoid wording that implies real delivery: "I will respond within 24 hours", "We have received your email", "Your message has been sent" unless real backend integration exists.
 - A valid preview contact form should preferably keep name/email/message fields visible, show missing-field errors near the form, show success banner near the submit button, and not claim real email delivery.
-- The confirmation must be visible without the user needing to scroll manually.
+|- The confirmation must be visible without the user needing to scroll manually.
+|- UNIVERSAL FORM RULE (applies to ALL generated apps, not only Contact pages):
+  ANY app with a <form> element and submit handler that collects user data
+  must:
+  - Use local React state (no real backend fetch/post)
+  - Show honest demo-only wording on submit
+  - Not claim real email/API/backend delivery
+  - Show inline success banner or confirmation
+  - Keep form fields visible after submit
+  - Not use "we will respond", "I will be in touch", or similar
 - If replacing the entire form with a thank-you block, ensure the thank-you block appears in the same visible area and is visually prominent.
 - For long contact forms, either show a persistent success banner near the submit button or use a React ref and scrollIntoView after submit so the confirmation is brought into view.
 - Do not rely on a subtle text change only.
@@ -689,7 +698,7 @@ const handleContactSubmit = (event) => {
     const hasContactForm =
       /<form/i.test(rawCode) &&
       /onSubmit/i.test(rawCode) &&
-      /(name|email|message)/i.test(rawCode);
+      /(name|email|message|phone|company|date|time|booking|inquiry|contact|subscribe|signup|register)/i.test(rawCode);
 
     if (!hasContactForm) {
       return '';
@@ -1424,7 +1433,15 @@ Mandatory repair rules:
 |- VALIDATION VISIBILITY: Show contactError inline inside the form, not only as browser tooltip. Use red-tinted banner near the submit button.
 |- LOCAL-ONLY WORDING: Must clearly state the preview recorded the enquiry locally and no email was sent. No "we will respond", "I will be in touch", or similar.
 |- REPAIR RESILIENCE: Do not weaken the demo-only banner, do not remove contactSuccessMessage/contactError, do not add real email or backend claims, do not downgrade banner styling.
-|- Keep button text "Record enquiry locally".`
+|- Keep button text "Record enquiry locally".
+|- UNIVERSAL FORM RULE (applies to ALL generated apps):
+  ANY app with a <form> element that collects user data must:
+  - Use local React state (no real backend fetch/post)
+  - Show honest demo-only wording on submit
+  - Not claim real email/API/backend delivery
+  - Show inline success banner or confirmation
+  - Keep form fields visible after submit
+  - Not use "we will respond", "I will be in touch", or similar`
       },
       {
         role: 'user',
