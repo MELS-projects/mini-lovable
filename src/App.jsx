@@ -2933,8 +2933,28 @@ The generated app is stored in src/App.jsx.
       ? 'Ready to build this step.'
       : 'Select a roadmap step first.';
 
+  // SANDBOX BANNER — injected by Multica sandbox POC Gate 1
+  const sandboxBanner = (
+    <div style={{
+      width: '100%',
+      backgroundColor: '#fff3cd',
+      color: '#856404',
+      padding: '8px 16px',
+      textAlign: 'center',
+      fontWeight: 700,
+      fontSize: '14px',
+      borderBottom: '2px solid #ffc107',
+      position: 'sticky',
+      top: 0,
+      zIndex: 9999
+    }}>
+      SANDBOX — Multica controlled instance
+    </div>
+  );
+
   return (
     <div className="app-container">
+      {sandboxBanner}
       <div
         className="left-panel"
         style={{
