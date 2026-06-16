@@ -1252,9 +1252,24 @@ const handleBookingSubmit = (event) => {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Preview</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script>
+      window.__cdnFailed = false;
+      window.__cdnErrorMsg = '';
+      function cdnError(url) {
+        window.__cdnFailed = true;
+        window.__cdnErrorMsg += url;
+        document.getElementById('root').innerHTML =
+          '<div class="preview-error">' +
+          'Preview script loading error:\n\n' +
+          'Some CDN scripts could not be loaded from unpkg.com:' +
+          '\n' + window.__cdnErrorMsg +
+          '\n\nTry refreshing the page or check your internet connection.' +
+          '</div>';
+      }
+    </script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" onerror="cdnError('react@18/umd/react.development.js')"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" onerror="cdnError('react-dom@18/umd/react-dom.development.js')"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" onerror="cdnError('@babel/standalone/babel.min.js')"></script>
     <style>
       * { box-sizing: border-box; }
       html, body, #root { margin: 0; min-height: 100%; width: 100%; }
@@ -1276,6 +1291,10 @@ const handleBookingSubmit = (event) => {
     <div id="root"></div>
     <script type="text/babel">
       try {
+        if (window.__cdnFailed) {
+          throw new Error('CDN scripts failed to load. Preview cannot render.');
+        }
+
         const { useState, useEffect, useMemo, useRef } = React;
 
         ${previewCode}
@@ -4722,6 +4741,7 @@ The generated app is stored in src/App.jsx.
           </div>
         ) : (
           <iframe
+            key={previewHtml}
             ref={previewFrameRef}
             title="Generated app preview"
             srcDoc={previewHtml}
