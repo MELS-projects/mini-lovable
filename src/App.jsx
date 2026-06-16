@@ -1192,18 +1192,42 @@ const handleBookingSubmit = (event) => {
         color: #d1d5db;
         background: rgba(2, 6, 23, 0.38);
       }
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 16px 0 4px;
+      }
+      .chip {
+        border: 1px solid rgba(96, 165, 250, 0.3);
+        border-radius: 999px;
+        padding: 6px 14px;
+        color: #93c5fd;
+        font-size: 12px;
+        font-weight: 600;
+        background: rgba(30, 64, 175, 0.2);
+        cursor: default;
+      }
     </style>
   </head>
   <body>
     <main class="empty-wrap">
       <section class="empty-card">
         <div class="eyebrow">Mini-Lovable is ready</div>
-        <h1>No app generated yet</h1>
-        <p>Use the prompt box on the left, or click the standard test prompt shortcut, then press Generate / Update.</p>
+        <h1>Start with a prompt</h1>
+        <p>Describe the website or app you want. Add the goal, audience, and must-have features — then click <strong>Generate / Update</strong>.</p>
+        <div class="chip-row">
+          <span class="chip">Business consultant</span>
+          <span class="chip">SaaS landing page</span>
+          <span class="chip">Portfolio site</span>
+          <span class="chip">E-commerce</span>
+        </div>
         <div class="steps">
-          <div class="step">1. Choose app settings</div>
-          <div class="step">2. Write or load a prompt</div>
-          <div class="step">3. Click Generate / Update</div>
+          <div class="step">1. Choose app settings (type, style, quality)</div>
+          <div class="step">2. Write a prompt or pick a starter above</div>
+          <div class="step">3. Click Generate / Update — preview appears here</div>
+          <div class="step">4. Refine with suggestions or roadmap</div>
+          <div class="step">5. Export as ZIP, HTML, or PNG</div>
         </div>
       </section>
     </main>
@@ -3234,7 +3258,20 @@ The generated app is stored in src/App.jsx.
 
             <div style={compactInfoCardStyle}>
               <div style={compactInfoLabelStyle}>Versions</div>
-              <div style={compactInfoValueStyle}>{versionHistory.length} saved</div>
+              <div style={compactInfoValueStyle}>
+                {versionHistory.length > 0
+                  ? `${versionHistory.length} saved`
+                  : 'none'}
+              </div>
+              {versionHistory.length > 0 && (
+                <div
+                  onClick={handleUndoVersion}
+                  style={{ color: '#93c5fd', fontSize: '9px', marginTop: '2px', cursor: 'pointer', textDecoration: 'underline dotted' }}
+                  title="Restore previous version"
+                >
+                  undo v{versionHistory.length}
+                </div>
+              )}
             </div>
 
             <div style={compactInfoCardStyle}>
@@ -3806,6 +3843,80 @@ The generated app is stored in src/App.jsx.
             </div>
           </div>
 
+          {/* Version history */}
+          {versionHistory.length > 0 && (
+            <div
+              style={{
+                borderTop: '1px solid #1f2937',
+                marginTop: '8px',
+                paddingTop: '8px'
+              }}
+            >
+              <div style={{ color: '#64748b', fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '6px' }}>
+                Version history
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                {[...versionHistory].reverse().slice(0, 5).map((v, index) => {
+                  const vNum = versionHistory.length - index;
+                  const label = v.projectName && v.projectName !== 'GeneratedApp'
+                    ? v.projectName
+                    : `v${vNum}`;
+                  const detail = v.appType !== 'Landing page' ? v.appType : '';
+                  return (
+                    <div
+                      key={vNum}
+                      onClick={() => {
+                        setGeneratedCode(v.code);
+                        setChatHistory(v.chatHistory);
+                        setAppType(v.appType || 'Landing page');
+                        setGoal(v.goal || 'Create new app');
+                        setDesignStyle(v.designStyle || 'Premium SaaS');
+                        setTemplateRecipe(v.templateRecipe || 'None / custom');
+                        setQualityLevel(v.qualityLevel || 'Premium');
+                        setPageFeeling(v.pageFeeling || 'Safe and professional');
+                        setWebsiteDepth(v.websiteDepth || 'Long landing page');
+                        setEditSection(v.editSection || 'Whole app');
+                        setProjectName(v.projectName || 'GeneratedApp');
+                        setVersionHistory(versionHistory.slice(0, versionHistory.length - index));
+                        setStatus(`Restored v${vNum}`);
+                        setActiveView('preview');
+                      }}
+                      style={{
+                        backgroundColor: '#0f172a',
+                        border: '1px solid #1f2937',
+                        borderRadius: '6px',
+                        padding: '6px 8px',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center'
+                      }}
+                    >
+                      <div>
+                        <span style={{ color: '#e2e8f0', fontSize: '10px', fontWeight: 600 }}>
+                          v{vNum}{label !== `v${vNum}` ? ` · ${label}` : ''}
+                        </span>
+                        {detail && (
+                          <span style={{ color: '#64748b', fontSize: '9px', marginLeft: '4px' }}>
+                            · {detail}
+                          </span>
+                        )}
+                      </div>
+                      <span style={{ color: '#94a3b8', fontSize: '9px' }}>
+                        {detail ? '' : 'restore \u2192'}
+                      </span>
+                    </div>
+                  );
+                })}
+                {versionHistory.length > 5 && (
+                  <div style={{ color: '#64748b', fontSize: '9px', textAlign: 'center', padding: '2px' }}>
+                    +{versionHistory.length - 5} older versions
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
           {/* MVP readiness checklist */}
           <div
             style={{
@@ -3828,40 +3939,51 @@ The generated app is stored in src/App.jsx.
                 {
                   label: 'Describe',
                   done: () => chatHistory.filter(m => m.role === 'user').length > 0,
-                  hint: 'Add a prompt'
+                  hint: 'Add a prompt',
+                  action: () => {
+                    const promptField = document.getElementById('prompt');
+                    if (promptField) promptField.focus();
+                  }
                 },
                 {
                   label: 'Preview',
                   done: () => generatedCode && generatedCode !== '// Your generated code will appear here...',
-                  hint: 'Generate an app'
+                  hint: 'Generate an app',
+                  action: () => setActiveView('preview')
                 },
                 {
                   label: 'Contact',
                   done: () => templateRecipe === 'Booking app',
-                  hint: 'Try Booking app'
+                  hint: 'Try Booking app',
+                  action: () => setTemplateRecipe('Booking app')
                 },
                 {
                   label: 'Export',
                   done: () => versionHistory.length > 0,
-                  hint: 'Save a version'
+                  hint: 'Save a version',
+                  action: () => handleSaveCheckpoint()
                 },
                 {
                   label: 'Mobile',
                   done: () => true,
-                  hint: 'Always ready'
+                  hint: 'Always ready',
+                  action: () => {}
                 }
               ].map((item) => {
                 const isDone = item.done();
                 return (
                   <div
                     key={item.label}
+                    onClick={!isDone ? item.action : undefined}
+                    title={!isDone ? `Click to ${item.hint.toLowerCase()}` : undefined}
                     style={{
                       backgroundColor: isDone ? '#064e3b' : '#1f2937',
                       borderRadius: '6px',
                       padding: '6px 8px',
                       textAlign: 'center',
                       border: `1px solid ${isDone ? '#10b981' : '#374151'}`,
-                      opacity: isDone ? 1 : 0.7
+                      opacity: isDone ? 1 : 0.7,
+                      cursor: isDone ? 'default' : 'pointer'
                     }}
                   >
                     <div style={{ color: isDone ? '#6ee7b7' : '#94a3b8', fontSize: '13px', fontWeight: 700, marginBottom: '1px' }}>
@@ -4081,7 +4203,7 @@ The generated app is stored in src/App.jsx.
           </div>
 
           <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', justifyContent: 'flex-end', alignItems: 'center' }}>
-            <span style={{ color: '#fbbf24', fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '2px 6px', backgroundColor: '#1f2937', borderRadius: '3px' }}>
+            <span style={{ color: '#fbbf24', fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '2px 6px', backgroundColor: '#1f2937', borderRadius: '3px' }} title="All exports are local and never sent. ZIP = full project, HTML = instant preview, PNG = screenshot, App.jsx = code backup.">
               Demo export — local only
             </span>
             <button
