@@ -43,6 +43,13 @@ export default function App() {
   const previewFrameRef = useRef(null);
   const [versionHistory, setVersionHistory] = useState([]);
   const [checkpoint, setCheckpoint] = useState(null);
+  const [showOnboarding, setShowOnboarding] = useState(() => {
+    try {
+      return localStorage.getItem('ml_onboarding_dismissed') !== 'true';
+    } catch {
+      return true;
+    }
+  });
 
   useEffect(() => {
     try {
@@ -3223,6 +3230,53 @@ The generated app is stored in src/App.jsx.
   return (
     <div className="app-container">
       {sandboxBanner}
+
+      {/* Onboarding overlay for first-time users */}
+      {showOnboarding && !hasRealGeneratedApp(generatedCode) && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 10000, backgroundColor: 'rgba(0,0,0,0.65)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+          <div style={{ backgroundColor: '#0f172a', border: '1px solid #1e293b', borderRadius: '16px', padding: '32px', maxWidth: '480px', width: '100%', boxShadow: '0 25px 80px rgba(0,0,0,0.6)', position: 'relative' }}>
+            {/* Close button */}
+            <button
+              onClick={() => { try { localStorage.setItem('ml_onboarding_dismissed', 'true'); } catch (e) {} setShowOnboarding(false); }}
+              style={{ position: 'absolute', top: '12px', right: '12px', width: '28px', height: '28px', borderRadius: '50%', border: 'none', backgroundColor: '#1e293b', color: '#94a3b8', fontSize: '16px', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}
+              aria-label="Close onboarding"
+            >&times;</button>
+            <div style={{ color: '#93c5fd', fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '4px' }}>Welcome to Mini-Lovable</div>
+            <h2 style={{ color: '#f1f5f9', fontSize: '20px', margin: '0 0 20px', fontWeight: 700 }}>How it works</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#1e3a5f', color: '#60a5fa', fontSize: '13px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>1</div>
+                <div><div style={{ color: '#e2e8f0', fontSize: '14px', fontWeight: 600 }}>Describe</div><div style={{ color: '#94a3b8', fontSize: '12px', lineHeight: 1.4 }}>Tell us what kind of website or app you want to build</div></div>
+              </div>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#1e3a5f', color: '#60a5fa', fontSize: '13px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>2</div>
+                <div><div style={{ color: '#e2e8f0', fontSize: '14px', fontWeight: 600 }}>Generate</div><div style={{ color: '#94a3b8', fontSize: '12px', lineHeight: 1.4 }}>AI creates a premium website based on your description</div></div>
+              </div>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#1e3a5f', color: '#60a5fa', fontSize: '13px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>3</div>
+                <div><div style={{ color: '#e2e8f0', fontSize: '14px', fontWeight: 600 }}>Preview</div><div style={{ color: '#94a3b8', fontSize: '12px', lineHeight: 1.4 }}>See a live preview of your generated site in the right panel</div></div>
+              </div>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#1e3a5f', color: '#60a5fa', fontSize: '13px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>4</div>
+                <div><div style={{ color: '#e2e8f0', fontSize: '14px', fontWeight: 600 }}>Refine</div><div style={{ color: '#94a3b8', fontSize: '12px', lineHeight: 1.4 }}>Use natural language prompts to improve the design and content</div></div>
+              </div>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#1e3a5f', color: '#60a5fa', fontSize: '13px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>5</div>
+                <div><div style={{ color: '#e2e8f0', fontSize: '14px', fontWeight: 600 }}>Export</div><div style={{ color: '#94a3b8', fontSize: '12px', lineHeight: 1.4 }}>Copy, download, or save your generated code as a checkpoint</div></div>
+              </div>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#1e3a5f', color: '#60a5fa', fontSize: '13px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>6</div>
+                <div><div style={{ color: '#e2e8f0', fontSize: '14px', fontWeight: 600 }}>Contact</div><div style={{ color: '#94a3b8', fontSize: '12px', lineHeight: 1.4 }}>Every generated site includes a demo contact form — safe to experiment</div></div>
+              </div>
+            </div>
+            <button
+              onClick={() => { try { localStorage.setItem('ml_onboarding_dismissed', 'true'); } catch (e) {} setShowOnboarding(false); }}
+              style={{ width: '100%', backgroundColor: '#2563eb', color: 'white', border: 'none', borderRadius: '8px', padding: '11px 16px', fontSize: '14px', fontWeight: 600, cursor: 'pointer' }}
+            >Get started</button>
+          </div>
+        </div>
+      )}
+
       <div
         className="left-panel"
         style={{
