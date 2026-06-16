@@ -4736,19 +4736,49 @@ The generated app is stored in src/App.jsx.
             </div>
           </div>
         ) : (
-          <iframe
-            ref={previewFrameRef}
-            title="Generated app preview"
-            srcDoc={previewHtml}
-            sandbox="allow-scripts allow-modals allow-same-origin"
-            style={{
-              flexGrow: 1,
-              width: '100%',
-              height: '100%',
-              border: 'none',
-              backgroundColor: 'white'
-            }}
-          />
+          <div style={{
+            position: 'relative',
+            flexGrow: 1,
+            width: '100%',
+            height: '100%'
+          }}>
+            <iframe
+              ref={previewFrameRef}
+              title="Generated app preview"
+              srcDoc={previewHtml}
+              sandbox="allow-scripts allow-modals allow-same-origin"
+              style={{
+                position: 'absolute',
+                top: 0, left: 0, width: '100%', height: '100%',
+                border: 'none',
+                backgroundColor: 'white',
+                display: hasRealGeneratedApp(generatedCode) && !isGenerating ? undefined : 'none'
+              }}
+            />
+            <div style={{
+              position: 'absolute',
+              top: 0, left: 0, width: '100%', height: '100%',
+              display: hasRealGeneratedApp(generatedCode) && !isGenerating ? 'none' : 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'radial-gradient(circle at top left, #172033, #05070a 58%)',
+              color: '#e5e7eb',
+              padding: '32px',
+              textAlign: 'center',
+              gap: '12px'
+            }}>
+              <div style={{ fontSize: '36px' }}>
+                {'\ud83d\ude80'}
+              </div>
+              <div style={{ fontSize: 'clamp(18px, 3vw, 24px)', fontWeight: 700, color: '#f1f5f9' }}>
+                Ready to build
+              </div>
+              <div style={{ fontSize: '13px', color: '#94a3b8', lineHeight: 1.5, maxWidth: '400px' }}>
+                Enter a prompt and click Generate / Update to create your first app.
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>
