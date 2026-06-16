@@ -83,20 +83,29 @@ body {
     border-bottom: 1px solid #1f2937;
   }
   .panel-content {
-    padding: 20px 24px;
+    padding: 14px 20px;
   }
 }
 
 /* Mobile: compact padding */
 @media (max-width: 640px) {
+  .app-container {
+    grid-template-columns: 1fr;
+  }
+  .left-panel {
+    border-right: none;
+    border-bottom: none;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
   .panel-content {
-    padding: 16px 16px;
+    padding: 12px 14px;
   }
   .title {
-    font-size: 20px;
+    font-size: 18px;
   }
   .input-field,
   .textarea-field {
-    font-size: 13px;
+    font-size: 14px;
   }
 }

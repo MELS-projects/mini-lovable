@@ -267,7 +267,7 @@ Before returning App.jsx, silently review and improve the design.
 9. Existing functionality is preserved when editing.
 10. The final code is complete, valid, and exports default function App.
 11. For multi-page websites, navigation must actually switch pages with internal state.
-12. For premium multi-page websites, the home hero should show headline, CTA, proof, and a visual panel high enough to be visible immediately.
+12. For premium multi-page websites, the home hero should show headline, a specific conversion-focused CTA (e.g. "Book a consultation"), proof, and a visual panel high enough to be visible immediately.
 13. About, Services, Cases, Resources, and Contact pages should each feel intentionally designed with their own sections, not like plain filler pages.
 Do not print this checklist.`;
   };
@@ -303,13 +303,13 @@ Do not print this checklist.`;
 - For Simple multi-page website or Full business website, include activePage, setActivePage, working navigation buttons, and real content for every page.
 - Do not use React Router.
 - Do not use href-only navigation in multi-page mode.
-- For premium multi-page mode, avoid a mostly empty hero. Prefer a compact editorial hero with visible text, CTA, proof, and visual card/image in the first screen.`;
+- For premium multi-page mode, avoid a mostly empty hero. Prefer a compact editorial hero with visible text, a specific conversion-focused CTA (e.g. "Book a consultation"), proof, and visual card/image in the first screen.`;
   };
 
   const getGroundZeroScoringInstruction = () => {
     return `Ground Zero scoring rules:
 Before returning code for Premium, Luxury, or Enterprise, silently score the result against the current Mini-Lovable v19 Ground Zero baseline.
-The baseline is a dark premium consultant landing page with strong hero, polished typography, clear CTA, image-led editorial section, services, process, metrics/result cards, testimonial, and mature high-end tone.
+The baseline is a dark premium consultant landing page with strong hero, polished typography, specific conversion-focused CTA wording ("Book a consultation", "Request a demo"), image-led editorial section, services, process, metrics/result cards, testimonial, and mature high-end tone.
 The result must be equal to or better than that baseline.
 Improve internally if:
 - The first screen is only a plain gradient, centered text, and buttons.
@@ -1764,6 +1764,7 @@ Keep code compact enough to finish.
 Design quality rules:
 - Make every result look premium, modern, and intentional.
 - Use strong visual hierarchy, polished spacing, clear CTAs, real-feeling copy, and useful structure.
+- Hero CTAs must use specific conversion-focused wording (e.g. "Book a consultation", "Request a demo", "Schedule a call", "Start your project") instead of generic "Learn more" or "Get started".
 - Avoid boring default white pages, cramped layouts, weak contrast, generic placeholder text, and emoji-led design.
 - When building landing pages, include hero, services or benefits, proof, CTA, and footer unless the user asks otherwise.
 - For premium websites, use mature visual language, realistic imagery, editorial layout, and high-end brand feeling.
@@ -1795,7 +1796,7 @@ Edit section rules:
 
 Premium multi-page design floor:
 - Home should feel as premium as a strong long landing page, not like a sparse app shell.
-- Home first screen should show meaningful content early: headline, subcopy, CTA, proof/metrics, and a visual panel or image.
+- Home first screen should show meaningful content early: headline, subcopy, a conversion-focused hero CTA (e.g. "Book a consultation" instead of "Learn more"), proof/metrics, and a visual panel or image.
 - Avoid mostly empty black/dark hero screens.
 - Prefer a split or layered editorial hero with a premium image, boardroom/architecture/office visual, or image-like panel.
 - About, Services, and Contact should each feel like designed pages with layout, visual hierarchy, proof, CTA, and at least one visual or strong editorial panel where useful.
@@ -3218,14 +3219,11 @@ The generated app is stored in src/App.jsx.
           <div style={compactTopBarStyle}>
             <div style={{ ...compactInfoCardStyle, backgroundColor: 'transparent', border: 'none', padding: 0 }}>
               <h1 className="title" style={{ marginBottom: '3px', fontSize: '26px' }}>Mini-Lovable</h1>
-              <div style={{ color: '#93c5fd', fontSize: '11px', fontWeight: 600 }}>
-                v52.16 · GitHub baseline verified
+              <div style={{ color: '#93c5fd', fontSize: '12px', fontWeight: 600, lineHeight: 1.4, marginBottom: '4px' }}>
+                AI website generator — describe, preview, refine
               </div>
-              <div style={{ color: '#94a3b8', fontSize: '10px', fontWeight: 600, marginTop: '2px' }}>
-                GitHub baseline verified · Bolt preview synced
-              </div>
-              <div style={{ color: '#a7f3d0', fontSize: '10px', fontWeight: 600, marginTop: '2px' }}>
-                Codex CLI workspace-write verified
+              <div style={{ color: '#64748b', fontSize: '10px', fontWeight: 600, lineHeight: 1.3 }}>
+                v52.16 · GitHub verified · Bolt synced · Codex verified
               </div>
             </div>
 
@@ -3388,7 +3386,7 @@ The generated app is stored in src/App.jsx.
             </div>
 
             <div className="input-group" style={compactInputGroupStyle}>
-              <label>Ground Zero rule</label>
+              <label>Quality baseline</label>
               <div
                 style={{
                   minHeight: '31px',
@@ -3408,7 +3406,7 @@ The generated app is stored in src/App.jsx.
 
           <div style={compactControlGridStyle}>
             <div className="input-group" style={compactInputGroupStyle}>
-              <label htmlFor="page-feeling">Page feeling</label>
+              <label htmlFor="page-feeling">Tone / feeling</label>
               <select
                 id="page-feeling"
                 className="input-field"
@@ -3429,7 +3427,7 @@ The generated app is stored in src/App.jsx.
             </div>
 
             <div className="input-group" style={compactInputGroupStyle}>
-              <label>What this controls</label>
+              <label>Hint</label>
               <div
                 style={{
                   minHeight: '31px',
@@ -3468,7 +3466,7 @@ The generated app is stored in src/App.jsx.
             </div>
 
             <div className="input-group" style={compactInputGroupStyle}>
-              <label>What this controls</label>
+              <label>Hint</label>
               <div
                 style={{
                   minHeight: '31px',
@@ -3512,7 +3510,7 @@ The generated app is stored in src/App.jsx.
             </div>
 
             <div className="input-group" style={compactInputGroupStyle}>
-              <label>What this controls</label>
+              <label>Hint</label>
               <div
                 style={{
                   minHeight: '31px',
@@ -3546,10 +3544,10 @@ The generated app is stored in src/App.jsx.
           >
             <div>
               <div style={{ color: '#bfdbfe', fontSize: '11px', fontWeight: 700, marginBottom: '3px' }}>
-                Standard test prompt
+                Quick test
               </div>
               <div style={{ color: '#94a3b8', fontSize: '10px', lineHeight: 1.35 }}>
-                Create a premium website for an exclusive business development consultant
+                Generate a premium consultant website to test the pipeline
               </div>
             </div>
             <button
@@ -3571,15 +3569,15 @@ The generated app is stored in src/App.jsx.
 
           <div className="input-group" style={{ marginBottom: '6px' }}>
             <label htmlFor="prompt">
-              Prompt ({chatHistory.filter((message) => message.role === 'user').length} changes in memory)
+              What do you want to build?
             </label>
             <div style={{ color: '#cbd5e1', fontSize: '11px', lineHeight: 1.35, marginBottom: '6px' }}>
-              Mini-Lovable will turn your idea into a first premium website draft you can preview and improve.
+              Describe your idea. Include the goal, audience, and any must-have features. Mini-Lovable turns your description into a premium website draft you can preview and improve.
             </div>
             <textarea
               id="prompt"
               className="textarea-field"
-              placeholder="Example: make the selected section more premium..."
+              placeholder="Example: A premium consulting landing page with services, testimonials, and a contact form"
               rows="3"
               style={{
                 minHeight: '74px',
@@ -3590,7 +3588,7 @@ The generated app is stored in src/App.jsx.
               onChange={(event) => setPrompt(event.target.value)}
             />
             <div style={{ color: '#94a3b8', fontSize: '11px', lineHeight: 1.35, marginTop: '6px' }}>
-              Describe the app you want to build. Include the goal, target users, and any must-have features.
+              Or pick a quick starter below
             </div>
             <div
               style={{
@@ -3602,16 +3600,20 @@ The generated app is stored in src/App.jsx.
             >
               {[
                 {
-                  label: 'Premium consultant website',
-                  prompt: 'Create a premium website for an exclusive business consultant.'
+                  label: 'Business consultant',
+                  prompt: 'Create a premium website for an exclusive business development consultant with services, testimonials, and contact form.'
                 },
                 {
-                  label: 'Local service business',
-                  prompt: 'Create a polished website for a local service business.'
+                  label: 'SaaS landing page',
+                  prompt: 'Create a modern SaaS landing page with features, pricing tiers, and a free trial CTA.'
                 },
                 {
-                  label: 'Product landing page',
-                  prompt: 'Create a modern landing page for a new product.'
+                  label: 'Portfolio site',
+                  prompt: 'Create a polished portfolio website for a creative professional showcasing recent work and contact info.'
+                },
+                {
+                  label: 'E-commerce storefront',
+                  prompt: 'Create a modern e-commerce storefront with product grid, categories, and shopping cart.'
                 }
               ].map(({ label, prompt: chipPrompt }) => (
                 <button
@@ -3634,6 +3636,117 @@ The generated app is stored in src/App.jsx.
                   {label}
                 </button>
               ))}
+            </div>
+          </div>
+
+          {/* Workflow + trust section */}
+          <div
+            style={{
+              borderTop: '1px solid #1f2937',
+              marginTop: '10px',
+              paddingTop: '10px'
+            }}
+          >
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+                gap: '8px'
+              }}
+            >
+              <div
+                style={{
+                  backgroundColor: '#0f172a',
+                  border: '1px solid #1f2937',
+                  borderRadius: '8px',
+                  padding: '10px 12px',
+                  textAlign: 'center'
+                }}
+              >
+                <div style={{ color: '#60a5fa', fontSize: '20px', fontWeight: 700, marginBottom: '2px' }}>1</div>
+                <div style={{ color: '#e2e8f0', fontSize: '11px', fontWeight: 600 }}>Describe</div>
+                <div style={{ color: '#64748b', fontSize: '10px', lineHeight: 1.35, marginTop: '2px' }}>
+                  Tell us what you want to build
+                </div>
+              </div>
+              <div
+                style={{
+                  backgroundColor: '#0f172a',
+                  border: '1px solid #1f2937',
+                  borderRadius: '8px',
+                  padding: '10px 12px',
+                  textAlign: 'center'
+                }}
+              >
+                <div style={{ color: '#60a5fa', fontSize: '20px', fontWeight: 700, marginBottom: '2px' }}>2</div>
+                <div style={{ color: '#e2e8f0', fontSize: '11px', fontWeight: 600 }}>Generate</div>
+                <div style={{ color: '#64748b', fontSize: '10px', lineHeight: 1.35, marginTop: '2px' }}>
+                  AI builds a premium draft
+                </div>
+              </div>
+              <div
+                style={{
+                  backgroundColor: '#0f172a',
+                  border: '1px solid #1f2937',
+                  borderRadius: '8px',
+                  padding: '10px 12px',
+                  textAlign: 'center'
+                }}
+              >
+                <div style={{ color: '#60a5fa', fontSize: '20px', fontWeight: 700, marginBottom: '2px' }}>3</div>
+                <div style={{ color: '#e2e8f0', fontSize: '11px', fontWeight: 600 }}>Preview</div>
+                <div style={{ color: '#64748b', fontSize: '10px', lineHeight: 1.35, marginTop: '2px' }}>
+                  See it live in the preview tab
+                </div>
+              </div>
+              <div
+                style={{
+                  backgroundColor: '#0f172a',
+                  border: '1px solid #1f2937',
+                  borderRadius: '8px',
+                  padding: '10px 12px',
+                  textAlign: 'center'
+                }}
+              >
+                <div style={{ color: '#60a5fa', fontSize: '20px', fontWeight: 700, marginBottom: '2px' }}>4</div>
+                <div style={{ color: '#e2e8f0', fontSize: '11px', fontWeight: 600 }}>Refine</div>
+                <div style={{ color: '#64748b', fontSize: '10px', lineHeight: 1.35, marginTop: '2px' }}>
+                  Iterate with roadmap or prompts
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Trust/value section */}
+          <div
+            style={{
+              borderTop: '1px solid #1f2937',
+              marginTop: '10px',
+              paddingTop: '10px'
+            }}
+          >
+            <div style={{ color: '#64748b', fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '8px' }}>
+              Why Mini-Lovable
+            </div>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+                gap: '6px'
+              }}
+            >
+              <div style={{ backgroundColor: '#0f172a', borderRadius: '6px', padding: '8px 10px', border: '1px solid #1f2937' }}>
+                <div style={{ color: '#34d399', fontSize: '12px', fontWeight: 700, marginBottom: '2px' }}>No-code</div>
+                <div style={{ color: '#94a3b8', fontSize: '10px', lineHeight: 1.35 }}>Describe in your own words, no coding needed</div>
+              </div>
+              <div style={{ backgroundColor: '#0f172a', borderRadius: '6px', padding: '8px 10px', border: '1px solid #1f2937' }}>
+                <div style={{ color: '#60a5fa', fontSize: '12px', fontWeight: 700, marginBottom: '2px' }}>Premium quality</div>
+                <div style={{ color: '#94a3b8', fontSize: '10px', lineHeight: 1.35 }}>AI generates production-ready React sites</div>
+              </div>
+              <div style={{ backgroundColor: '#0f172a', borderRadius: '6px', padding: '8px 10px', border: '1px solid #1f2937' }}>
+                <div style={{ color: '#fbbf24', fontSize: '12px', fontWeight: 700, marginBottom: '2px' }}>Exportable</div>
+                <div style={{ color: '#94a3b8', fontSize: '10px', lineHeight: 1.35 }}>Download your site as a ZIP, PNG, or HTML file</div>
+              </div>
             </div>
           </div>
         </div>
@@ -3829,19 +3942,19 @@ The generated app is stored in src/App.jsx.
                   ? 'Planner roadmap'
                   : activeView === 'review'
                     ? 'Generated app review'
-                    : 'Generated app preview'}
+                    : 'Live preview of generated app'}
             </span>
             <span style={{ color: '#94a3b8', fontSize: '10px', fontWeight: 600, lineHeight: 1.2 }}>
-              Run App Review = checks generated site | Review Results = shows feedback
+              App Review = checks generated site | Review Results = shows feedback
             </span>
           </div>
 
           <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', justifyContent: 'flex-end', alignItems: 'center' }}>
             <span style={{ color: '#94a3b8', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-              Generated App = created site | Tool = builder
+              App = created site | Tool = builder
             </span>
             <span style={{ color: '#bfdbfe', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-              Generated App actions
+              App actions
             </span>
             <button
               onClick={handleCopyCode}
