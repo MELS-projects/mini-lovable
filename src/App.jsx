@@ -1252,9 +1252,24 @@ const handleBookingSubmit = (event) => {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Preview</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" onerror="window.__reactFailed=true"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" onerror="window.__reactDomFailed=true"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" onerror="window.__babelFailed=true"></script>
+    <script>
+      // CDN load guard: detect if scripts failed to load and show fallback
+      window.addEventListener('DOMContentLoaded', function() {
+        var root = document.getElementById('root');
+        if (typeof React === 'undefined' || typeof ReactDOM === 'undefined') {
+          root.innerHTML =
+            '<div style="font-family:monospace;color:#fed7aa;background:#431407;padding:20px;min-height:100vh;white-space:pre-wrap">' +
+            'Preview could not load: ' +
+            (window.__reactFailed ? 'React CDN failed to load. ' : '') +
+            (window.__reactDomFailed ? 'ReactDOM CDN failed to load. ' : '') +
+            (window.__babelFailed ? 'Babel CDN failed to load. ' : '') +
+            'Check your internet connection and try again.</div>';
+        }
+      });
+    </script>
     <style>
       * { box-sizing: border-box; }
       html, body, #root { margin: 0; min-height: 100%; width: 100%; }
