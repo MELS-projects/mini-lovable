@@ -3749,6 +3749,137 @@ The generated app is stored in src/App.jsx.
               </div>
             </div>
           </div>
+
+          {/* Refinement workflow */}
+          <div
+            style={{
+              borderTop: '1px solid #1f2937',
+              marginTop: '10px',
+              paddingTop: '8px'
+            }}
+          >
+            <div style={{ color: '#64748b', fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '6px' }}>
+              What to improve next
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                gap: '5px',
+                flexWrap: 'wrap',
+                marginBottom: '8px'
+              }}
+            >
+              {['Design', 'Copy', 'Layout', 'Contact form', 'Mobile'].map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  onClick={() => {
+                    const suggestions = {
+                      'Design': 'Improve the visual design — make it more premium and polished',
+                      'Copy': 'Improve the copy and messaging — make the text more compelling',
+                      'Layout': 'Improve the page layout — better spacing and visual flow',
+                      'Contact form': 'Add or improve the contact form with name, email, and message fields',
+                      'Mobile': 'Improve mobile responsiveness — ensure everything works on small screens'
+                    };
+                    setPrompt(suggestions[item]);
+                    setStatus(`Suggested: Improve ${item.toLowerCase()}`);
+                  }}
+                  style={{
+                    border: '1px solid #334155',
+                    borderRadius: '999px',
+                    padding: '3px 8px',
+                    color: '#cbd5e1',
+                    backgroundColor: '#111827',
+                    fontSize: '10px',
+                    fontWeight: 700,
+                    lineHeight: 1.2,
+                    cursor: 'pointer',
+                    appearance: 'none'
+                  }}
+                >
+                  + {item}
+                </button>
+              ))}
+            </div>
+            <div style={{ color: '#94a3b8', fontSize: '10px', lineHeight: 1.35 }}>
+              Click a suggestion to load it as your next prompt, then hit <strong>Generate / Update</strong>.
+            </div>
+          </div>
+
+          {/* MVP readiness checklist */}
+          <div
+            style={{
+              borderTop: '1px solid #1f2937',
+              marginTop: '8px',
+              paddingTop: '8px'
+            }}
+          >
+            <div style={{ color: '#64748b', fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '6px' }}>
+              MVP readiness
+            </div>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
+                gap: '5px'
+              }}
+            >
+              {[
+                {
+                  label: 'Describe',
+                  done: () => chatHistory.filter(m => m.role === 'user').length > 0,
+                  hint: 'Add a prompt'
+                },
+                {
+                  label: 'Preview',
+                  done: () => generatedCode && generatedCode !== '// Your generated code will appear here...',
+                  hint: 'Generate an app'
+                },
+                {
+                  label: 'Contact',
+                  done: () => templateRecipe === 'Booking app',
+                  hint: 'Try Booking app'
+                },
+                {
+                  label: 'Export',
+                  done: () => versionHistory.length > 0,
+                  hint: 'Save a version'
+                },
+                {
+                  label: 'Mobile',
+                  done: () => true,
+                  hint: 'Always ready'
+                }
+              ].map((item) => {
+                const isDone = item.done();
+                return (
+                  <div
+                    key={item.label}
+                    style={{
+                      backgroundColor: isDone ? '#064e3b' : '#1f2937',
+                      borderRadius: '6px',
+                      padding: '6px 8px',
+                      textAlign: 'center',
+                      border: `1px solid ${isDone ? '#10b981' : '#374151'}`,
+                      opacity: isDone ? 1 : 0.7
+                    }}
+                  >
+                    <div style={{ color: isDone ? '#6ee7b7' : '#94a3b8', fontSize: '13px', fontWeight: 700, marginBottom: '1px' }}>
+                      {isDone ? '\u2713' : '\u25CB'}
+                    </div>
+                    <div style={{ color: isDone ? '#d1fae5' : '#9ca3af', fontSize: '9px', fontWeight: 600 }}>
+                      {item.label}
+                    </div>
+                    {!isDone && (
+                      <div style={{ color: '#6b7280', fontSize: '8px', marginTop: '1px' }}>
+                        {item.hint}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         <div
@@ -3950,11 +4081,8 @@ The generated app is stored in src/App.jsx.
           </div>
 
           <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', justifyContent: 'flex-end', alignItems: 'center' }}>
-            <span style={{ color: '#94a3b8', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-              App = created site | Tool = builder
-            </span>
-            <span style={{ color: '#bfdbfe', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-              App actions
+            <span style={{ color: '#fbbf24', fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '2px 6px', backgroundColor: '#1f2937', borderRadius: '3px' }}>
+              Demo export — local only
             </span>
             <button
               onClick={handleCopyCode}
@@ -3970,21 +4098,21 @@ The generated app is stored in src/App.jsx.
               onClick={handleDownloadCode}
               style={generatedAppActionButtonStyle}
             >
-              Download Generated App.jsx
+              Export App.jsx
             </button>
 
             <button
               onClick={handleDownloadZip}
               style={generatedAppActionButtonStyle}
             >
-              Export Generated ZIP
+              Export ZIP
             </button>
 
             <button
               onClick={handleDownloadPreviewImage}
               style={generatedAppActionButtonStyle}
             >
-              Download Generated PNG
+              Export PNG
             </button>
 
             <button
@@ -3992,7 +4120,7 @@ The generated app is stored in src/App.jsx.
               style={generatedAppActionButtonStyle}
               title="Download the generated app preview as an HTML backup file"
             >
-              Download Generated HTML
+              Export HTML
             </button>
 
             <label
@@ -4002,7 +4130,7 @@ The generated app is stored in src/App.jsx.
                 alignItems: 'center'
               }}
             >
-              Import Generated App
+              Import app
               <input
                 type="file"
                 accept=".jsx,.js,.txt"
@@ -4016,7 +4144,7 @@ The generated app is stored in src/App.jsx.
               disabled={isReviewing}
               style={{
                 ...generatedAppActionButtonStyle,
-                backgroundColor: isReviewing ? '#4b5563' : generatedAppActionButtonStyle.backgroundColor,
+                backgroundColor: isReviewing ? '#4b5563' : '#7c3aed',
                 cursor: isReviewing ? 'not-allowed' : 'pointer',
                 opacity: isReviewing ? 0.85 : 1
               }}
@@ -4025,33 +4153,86 @@ The generated app is stored in src/App.jsx.
             </button>
 
             <span style={{ color: '#ddd6fe', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-              Tool backup actions
+              Tool
             </span>
             <button
               onClick={handleBackupToolCode}
               style={miniLovableToolActionButtonStyle}
             >
-              Backup Tool App
+              Backup Tool
             </button>
 
             <button
               onClick={handleDownloadToolTxt}
               style={miniLovableToolActionButtonStyle}
             >
-              Download Tool Source TXT
+              Download Source
             </button>
           </div>
         </div>
 
         {activeView === 'code' ? (
-          <div style={{ padding: '20px', overflow: 'auto', flexGrow: 1 }}>
+          <div style={{ padding: '18px', overflow: 'auto', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+            {/* Preview status header */}
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '8px',
+                marginBottom: '10px',
+                flexWrap: 'wrap'
+              }}
+            >
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+                <span
+                  style={{
+                    backgroundColor: '#1f2937',
+                    color: '#e2e8f0',
+                    fontSize: '10px',
+                    fontWeight: 700,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    padding: '3px 8px',
+                    borderRadius: '4px',
+                    border: '1px solid #374151'
+                  }}
+                >
+                  {appType}
+                </span>
+                <span
+                  style={{
+                    backgroundColor: generatedCode && generatedCode !== '// Your generated code will appear here...' && generatedCode !== '// Code panel cleared. Memory is still active.' && generatedCode !== '// Memory cleared. Start a new app.'
+                      ? '#065f46'
+                      : '#374151',
+                    color: generatedCode && generatedCode !== '// Your generated code will appear here...' && generatedCode !== '// Code panel cleared. Memory is still active.' && generatedCode !== '// Memory cleared. Start a new app.'
+                      ? '#6ee7b7'
+                      : '#9ca3af',
+                    fontSize: '10px',
+                    fontWeight: 700,
+                    padding: '3px 8px',
+                    borderRadius: '4px'
+                  }}
+                >
+                  {generatedCode && generatedCode !== '// Your generated code will appear here...' && generatedCode !== '// Code panel cleared. Memory is still active.' && generatedCode !== '// Memory cleared. Start a new app.'
+                    ? 'Generated'
+                    : 'Empty'}
+                </span>
+              </div>
+              <div style={{ color: '#64748b', fontSize: '10px', lineHeight: 1.3 }}>
+                {versionHistory.length > 0
+                  ? `${versionHistory.length} version${versionHistory.length !== 1 ? 's' : ''} saved · ${chatHistory.filter(m => m.role === 'user').length} prompt${chatHistory.filter(m => m.role === 'user').length !== 1 ? 's' : ''}`
+                  : 'No versions yet'}
+              </div>
+            </div>
             <pre
               style={{
                 color: '#4ade80',
                 fontSize: '14px',
                 whiteSpace: 'pre-wrap',
                 fontFamily: 'monospace',
-                margin: 0
+                margin: 0,
+                flexGrow: 1
               }}
             >
               {generatedCode}
