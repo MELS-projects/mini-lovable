@@ -3560,6 +3560,91 @@ The generated app is stored in src/App.jsx.
             </div>
           </div>
 
+          {/* Handoff-driven run */}
+          <div
+            style={{
+              border: '1px solid #164e63',
+              background: 'linear-gradient(135deg, rgba(8, 47, 73, 0.92), rgba(15, 23, 42, 0.96))',
+              borderRadius: '12px',
+              padding: '10px 12px',
+              marginBottom: '8px',
+              boxShadow: '0 14px 34px rgba(8, 47, 73, 0.18)'
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', alignItems: 'flex-start', flexWrap: 'wrap', marginBottom: '9px' }}>
+              <div>
+                <div style={{ color: '#67e8f9', fontSize: '10px', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '2px' }}>
+                  Handoff-driven run
+                </div>
+                <div style={{ color: '#f8fafc', fontSize: '13px', fontWeight: 800 }}>
+                  Planner handoff → executor scope → sandbox approval
+                </div>
+              </div>
+              <div style={{ color: '#bae6fd', fontSize: '10px', lineHeight: 1.35, maxWidth: '280px' }}>
+                Demo run contract from docs/kodmachine-handoff.md. The executor can change only approved Mini-Lovable files, then reports into the receiver above.
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(104px, 1fr))', gap: '6px', marginBottom: '9px' }}>
+              {[
+                { step: '1', label: 'Planner handoff', detail: 'Phase 7 goal and scope defined' },
+                { step: '2', label: 'Executor scope', detail: 'Allowed file: src/App.jsx' },
+                { step: '3', label: 'Files changed', detail: 'UI proves the handoff loop' },
+                { step: '4', label: 'Smoke-run', detail: 'npm run smoke-run required' },
+                { step: '5', label: 'Thomas approval', detail: 'Human gate before commit' },
+                { step: '6', label: 'Commit/push gate', detail: 'Push only after explicit approval' }
+              ].map((item) => (
+                <div
+                  key={item.step}
+                  style={{
+                    border: '1px solid rgba(103, 232, 249, 0.24)',
+                    backgroundColor: 'rgba(15, 23, 42, 0.78)',
+                    borderRadius: '9px',
+                    padding: '8px 9px',
+                    minHeight: '78px'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '5px' }}>
+                    <div style={{ width: '20px', height: '20px', borderRadius: '999px', backgroundColor: '#0891b2', color: '#ecfeff', fontSize: '10px', fontWeight: 900, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      {item.step}
+                    </div>
+                    <div style={{ color: '#e0f2fe', fontSize: '10px', fontWeight: 800, lineHeight: 1.2 }}>
+                      {item.label}
+                    </div>
+                  </div>
+                  <div style={{ color: '#94a3b8', fontSize: '9px', lineHeight: 1.35 }}>
+                    {item.detail}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(142px, 1fr))', gap: '6px' }}>
+              {[
+                { label: 'Phase name', value: 'Phase 7 — Handoff Contract → Real Executor Run' },
+                { label: 'Allowed files', value: 'src/App.jsx only for this run' },
+                { label: 'Test gate', value: 'smoke-run PASS before approval' },
+                { label: 'Approval gate', value: 'Thomas approves before commit' },
+                { label: 'Commit/push rule', value: 'commit + push only in approved flow' }
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  style={{
+                    borderTop: '1px solid rgba(148, 163, 184, 0.16)',
+                    paddingTop: '6px'
+                  }}
+                >
+                  <div style={{ color: '#67e8f9', fontSize: '9px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '2px' }}>
+                    {item.label}
+                  </div>
+                  <div style={{ color: '#e2e8f0', fontSize: '10px', lineHeight: 1.35, fontWeight: 700 }}>
+                    {item.value}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div style={compactControlGridStyle}>
             <div className="input-group" style={compactInputGroupStyle}>
               <label htmlFor="api-key">DeepSeek API Key</label>
