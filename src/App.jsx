@@ -1161,18 +1161,18 @@ const handleBookingSubmit = (event) => {
         padding: 32px;
       }
       .empty-card {
-        max-width: 560px;
+        max-width: 720px;
         width: 100%;
-        border: 1px solid rgba(148, 163, 184, 0.24);
-        background: rgba(15, 23, 42, 0.78);
-        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+        border: 1px solid rgba(96, 165, 250, 0.28);
+        background: rgba(15, 23, 42, 0.82);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
         border-radius: 24px;
         padding: 32px;
       }
       .eyebrow {
         color: #93c5fd;
         font-size: 12px;
-        font-weight: 700;
+        font-weight: 800;
         letter-spacing: 0.12em;
         text-transform: uppercase;
         margin-bottom: 12px;
@@ -1187,17 +1187,45 @@ const handleBookingSubmit = (event) => {
         line-height: 1.6;
         margin: 0 0 18px;
       }
-      .steps {
+      .status-grid {
         display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 10px;
-        margin-top: 22px;
+        margin: 22px 0;
       }
-      .step {
+      .status-card {
         border: 1px solid rgba(148, 163, 184, 0.18);
-        border-radius: 14px;
-        padding: 12px 14px;
-        color: #d1d5db;
-        background: rgba(2, 6, 23, 0.38);
+        border-radius: 16px;
+        padding: 14px;
+        background: rgba(2, 6, 23, 0.46);
+      }
+      .status-label {
+        color: #60a5fa;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 7px;
+      }
+      .status-title {
+        color: #f8fafc;
+        font-size: 15px;
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+      .status-copy {
+        color: #94a3b8;
+        font-size: 12px;
+        line-height: 1.45;
+      }
+      .next-action {
+        border: 1px solid rgba(52, 211, 153, 0.38);
+        border-radius: 16px;
+        padding: 16px;
+        background: rgba(6, 78, 59, 0.22);
+        color: #d1fae5;
+        font-weight: 700;
+        line-height: 1.5;
       }
       .chip-row {
         display: flex;
@@ -1220,21 +1248,32 @@ const handleBookingSubmit = (event) => {
   <body>
     <main class="empty-wrap">
       <section class="empty-card">
-        <div class="eyebrow">Mini-Lovable is ready</div>
-        <h1>Start with a prompt</h1>
-        <p>Describe the website or app you want. Add the goal, audience, and must-have features — then click <strong>Generate / Update</strong>.</p>
-        <div class="chip-row">
-          <span class="chip">Business consultant</span>
-          <span class="chip">SaaS landing page</span>
-          <span class="chip">Portfolio site</span>
-          <span class="chip">E-commerce</span>
+        <div class="eyebrow">Sandbox MVP loop</div>
+        <h1>Build a visible website draft, then verify the loop.</h1>
+        <p>Mini-Lovable turns a plain-language prompt into a React preview. This screen is the safe empty state: nothing has been generated, deployed, sent, or pushed yet.</p>
+        <div class="status-grid" aria-label="Mini-Lovable workflow status">
+          <div class="status-card">
+            <div class="status-label">Input</div>
+            <div class="status-title">Prompt first</div>
+            <div class="status-copy">Describe the site, audience, and must-have sections in the left panel.</div>
+          </div>
+          <div class="status-card">
+            <div class="status-label">Preview</div>
+            <div class="status-title">Output appears here</div>
+            <div class="status-copy">After Generate / Update, this panel switches from instructions to the live generated app.</div>
+          </div>
+          <div class="status-card">
+            <div class="status-label">Build / smoke</div>
+            <div class="status-title">Terminal verified</div>
+            <div class="status-copy">Use npm run smoke-run to confirm build, diff stat, and clean review status.</div>
+          </div>
         </div>
-        <div class="steps">
-          <div class="step">1. Choose app settings (type, style, quality)</div>
-          <div class="step">2. Write a prompt or pick a starter above</div>
-          <div class="step">3. Click Generate / Update — preview appears here</div>
-          <div class="step">4. Refine with suggestions or roadmap</div>
-          <div class="step">5. Export as ZIP, HTML, or PNG</div>
+        <div class="next-action">Next action: pick a starter or write a prompt, click Generate / Update, inspect Preview, then run smoke-run before commit/push approval.</div>
+        <div class="chip-row">
+          <span class="chip">Sandbox MVP</span>
+          <span class="chip">Local-only preview</span>
+          <span class="chip">Fast agent loop</span>
+          <span class="chip">Build/smoke before approval</span>
         </div>
       </section>
     </main>
@@ -3225,7 +3264,7 @@ The generated app is stored in src/App.jsx.
 
   // SANDBOX BANNER — clear, friendly sandbox indicator
   const sandboxBanner = (
-    <div style={{
+    <div role="alert" aria-label="Sandbox environment notice" style={{
       width: '100%',
       background: 'linear-gradient(90deg, #fff8e1 0%, #fff3cd 100%)',
       color: '#664d00',
@@ -3369,6 +3408,74 @@ The generated app is stored in src/App.jsx.
             <div style={compactInfoCardStyle}>
               <div style={compactInfoLabelStyle}>Checkpoint</div>
               <div style={compactInfoValueStyle}>{checkpoint ? checkpoint.savedAt : 'none'}</div>
+            </div>
+          </div>
+
+          {/* Visible value demo status */}
+          <div
+            style={{
+              border: '1px solid #1f2937',
+              background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.82))',
+              borderRadius: '12px',
+              padding: '10px 12px',
+              marginBottom: '8px',
+              boxShadow: '0 14px 32px rgba(0, 0, 0, 0.18)'
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '8px' }}>
+              <div>
+                <div style={{ color: '#93c5fd', fontSize: '10px', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '2px' }}>
+                  Visible value demo
+                </div>
+                <div style={{ color: '#f8fafc', fontSize: '13px', fontWeight: 800 }}>
+                  Prompt → preview → build/smoke review loop
+                </div>
+              </div>
+              <div style={{ color: '#cbd5e1', fontSize: '10px', lineHeight: 1.35, maxWidth: '260px' }}>
+                This sandbox is local-only. Generate a draft, inspect the preview, then verify with smoke-run before any approved commit/push.
+              </div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(118px, 1fr))', gap: '6px' }}>
+              {[
+                {
+                  label: 'Input',
+                  value: prompt.trim() ? 'Ready' : 'Needs prompt',
+                  detail: prompt.trim() ? 'Prompt loaded' : 'Write or pick starter',
+                  done: Boolean(prompt.trim())
+                },
+                {
+                  label: 'Preview',
+                  value: hasRealGeneratedApp(generatedCode) ? 'Generated' : 'Empty state',
+                  detail: hasRealGeneratedApp(generatedCode) ? 'Live app visible' : 'Output appears right',
+                  done: hasRealGeneratedApp(generatedCode)
+                },
+                {
+                  label: 'Build/smoke',
+                  value: 'Manual gate',
+                  detail: 'Run npm run smoke-run',
+                  done: false
+                }
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  style={{
+                    border: `1px solid ${item.done ? '#10b981' : '#334155'}`,
+                    backgroundColor: item.done ? 'rgba(6, 78, 59, 0.35)' : 'rgba(15, 23, 42, 0.9)',
+                    borderRadius: '9px',
+                    padding: '8px 9px'
+                  }}
+                >
+                  <div style={{ color: item.done ? '#6ee7b7' : '#94a3b8', fontSize: '9px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '3px' }}>
+                    {item.label}
+                  </div>
+                  <div style={{ color: '#e2e8f0', fontSize: '12px', fontWeight: 800, marginBottom: '2px' }}>
+                    {item.done ? '\u2713 ' : ''}{item.value}
+                  </div>
+                  <div style={{ color: '#94a3b8', fontSize: '9px', lineHeight: 1.35 }}>
+                    {item.detail}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
