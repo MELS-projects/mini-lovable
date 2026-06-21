@@ -3560,7 +3560,7 @@ The generated app is stored in src/App.jsx.
             </div>
           </div>
 
-          {/* Handoff-driven run */}
+          {/* Handoff-driven run trace */}
           <div
             style={{
               border: '1px solid #164e63',
@@ -3574,31 +3574,59 @@ The generated app is stored in src/App.jsx.
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', alignItems: 'flex-start', flexWrap: 'wrap', marginBottom: '9px' }}>
               <div>
                 <div style={{ color: '#67e8f9', fontSize: '10px', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '2px' }}>
-                  Handoff-driven run
+                  Run trace
                 </div>
                 <div style={{ color: '#f8fafc', fontSize: '13px', fontWeight: 800 }}>
-                  Planner handoff → executor scope → sandbox approval
+                  Artifact → executor → sandbox → approval report
                 </div>
               </div>
-              <div style={{ color: '#bae6fd', fontSize: '10px', lineHeight: 1.35, maxWidth: '280px' }}>
-                Demo run contract from docs/kodmachine-handoff.md. The executor can change only approved Mini-Lovable files, then reports into the receiver above.
+              <div style={{ color: '#bae6fd', fontSize: '10px', lineHeight: 1.35, maxWidth: '292px' }}>
+                Source artifact: docs/runs/phase-8-handoff.md. This static trace shows the executor followed the handoff before any commit/push gate is opened.
               </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(132px, 1fr))', gap: '6px', marginBottom: '9px' }}>
+              {[
+                { label: 'Run id', value: 'kodmachine-phase-8-trace-001', tone: '#67e8f9' },
+                { label: 'Source artifact', value: 'docs/runs/phase-8-handoff.md', tone: '#93c5fd' },
+                { label: 'Executor result', value: 'Mini-Lovable run trace UI updated', tone: '#34d399' },
+                { label: 'Smoke-run status', value: 'PASS required before approval', tone: '#fbbf24' },
+                { label: 'Approval status', value: 'Waiting for Thomas approval', tone: '#c4b5fd' }
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  style={{
+                    border: '1px solid rgba(103, 232, 249, 0.24)',
+                    backgroundColor: 'rgba(15, 23, 42, 0.78)',
+                    borderRadius: '9px',
+                    padding: '8px 9px',
+                    minHeight: '70px'
+                  }}
+                >
+                  <div style={{ color: item.tone, fontSize: '9px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '3px' }}>
+                    {item.label}
+                  </div>
+                  <div style={{ color: '#e2e8f0', fontSize: '10px', lineHeight: 1.35, fontWeight: 800, overflowWrap: 'anywhere' }}>
+                    {item.value}
+                  </div>
+                </div>
+              ))}
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(104px, 1fr))', gap: '6px', marginBottom: '9px' }}>
               {[
-                { step: '1', label: 'Planner handoff', detail: 'Phase 7 goal and scope defined' },
-                { step: '2', label: 'Executor scope', detail: 'Allowed file: src/App.jsx' },
-                { step: '3', label: 'Files changed', detail: 'UI proves the handoff loop' },
-                { step: '4', label: 'Smoke-run', detail: 'npm run smoke-run required' },
-                { step: '5', label: 'Thomas approval', detail: 'Human gate before commit' },
-                { step: '6', label: 'Commit/push gate', detail: 'Push only after explicit approval' }
+                { step: '1', label: 'Artifact', detail: 'Phase 8 handoff file created' },
+                { step: '2', label: 'Executor input', detail: 'Allowed files and gates read' },
+                { step: '3', label: 'Files changed', detail: 'Artifact + src/App.jsx only' },
+                { step: '4', label: 'Sandbox smoke', detail: 'npm run smoke-run required' },
+                { step: '5', label: 'Report trace', detail: 'Return maps to run id' },
+                { step: '6', label: 'Commit/push gate', detail: 'Only after explicit approval' }
               ].map((item) => (
                 <div
                   key={item.step}
                   style={{
-                    border: '1px solid rgba(103, 232, 249, 0.24)',
-                    backgroundColor: 'rgba(15, 23, 42, 0.78)',
+                    border: '1px solid rgba(103, 232, 249, 0.18)',
+                    backgroundColor: 'rgba(15, 23, 42, 0.66)',
                     borderRadius: '9px',
                     padding: '8px 9px',
                     minHeight: '78px'
@@ -3621,8 +3649,8 @@ The generated app is stored in src/App.jsx.
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(142px, 1fr))', gap: '6px' }}>
               {[
-                { label: 'Phase name', value: 'Phase 7 — Handoff Contract → Real Executor Run' },
-                { label: 'Allowed files', value: 'src/App.jsx only for this run' },
+                { label: 'Trace id', value: 'mini-lovable-phase-8-artifact-executor-report' },
+                { label: 'Allowed files', value: 'docs/runs/phase-8-handoff.md + src/App.jsx' },
                 { label: 'Test gate', value: 'smoke-run PASS before approval' },
                 { label: 'Approval gate', value: 'Thomas approves before commit' },
                 { label: 'Commit/push rule', value: 'commit + push only in approved flow' }
@@ -3637,7 +3665,7 @@ The generated app is stored in src/App.jsx.
                   <div style={{ color: '#67e8f9', fontSize: '9px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '2px' }}>
                     {item.label}
                   </div>
-                  <div style={{ color: '#e2e8f0', fontSize: '10px', lineHeight: 1.35, fontWeight: 700 }}>
+                  <div style={{ color: '#e2e8f0', fontSize: '10px', lineHeight: 1.35, fontWeight: 700, overflowWrap: 'anywhere' }}>
                     {item.value}
                   </div>
                 </div>
