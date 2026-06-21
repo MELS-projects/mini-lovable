@@ -3227,18 +3227,41 @@ The generated app is stored in src/App.jsx.
   const sandboxBanner = (
     <div style={{
       width: '100%',
-      backgroundColor: '#fff8e1',
+      background: 'linear-gradient(90deg, #fff8e1 0%, #fff3cd 100%)',
       color: '#664d00',
       padding: '8px 16px',
-      textAlign: 'center',
-      fontWeight: 600,
-      fontSize: '13px',
       borderBottom: '2px solid #ffa000',
       position: 'sticky',
       top: 0,
-      zIndex: 9999
+      zIndex: 9999,
+      boxShadow: '0 6px 18px rgba(0, 0, 0, 0.08)'
     }}>
-      ⚠ Preview — your work stays local, is never deployed, and is not visible to anyone else. Safe to experiment!
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
+        <span style={{ backgroundColor: '#ffa000', color: '#fffdf5', borderRadius: '999px', padding: '3px 10px', fontSize: '11px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+          MVP mode
+        </span>
+        <span style={{ fontWeight: 700, fontSize: '13px' }}>
+          ⚠ Preview only — your work stays local, is never deployed, and is not visible to anyone else.
+        </span>
+        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', justifyContent: 'center' }}>
+          {['Fast test loop', 'Small reversible changes', 'Safe to experiment'].map((item) => (
+            <span
+              key={item}
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.72)',
+                border: '1px solid rgba(102, 77, 0, 0.16)',
+                borderRadius: '999px',
+                padding: '3px 8px',
+                fontSize: '11px',
+                fontWeight: 700,
+                color: '#7c5b00'
+              }}
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
     </div>
   );
 
