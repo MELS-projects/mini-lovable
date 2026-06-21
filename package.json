@@ -2,7 +2,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "smoke-run": "bash ./scripts/smoke-run.sh"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
