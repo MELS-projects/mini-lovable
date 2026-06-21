@@ -3653,27 +3653,140 @@ The generated app is stored in src/App.jsx.
                 { label: 'Allowed files', value: 'docs/runs/phase-8-handoff.md + src/App.jsx' },
                 { label: 'Test gate', value: 'smoke-run PASS before approval' },
                 { label: 'Approval gate', value: 'Thomas approves before commit' },
-                { label: 'Commit/push rule', value: 'commit + push only in approved flow' }
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  style={{
-                    borderTop: '1px solid rgba(148, 163, 184, 0.16)',
-                    paddingTop: '6px'
-                  }}
-                >
-                  <div style={{ color: '#67e8f9', fontSize: '9px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '2px' }}>
-                    {item.label}
-                  </div>
-                  <div style={{ color: '#e2e8f0', fontSize: '10px', lineHeight: 1.35, fontWeight: 700, overflowWrap: 'anywhere' }}>
-                    {item.value}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+                                { label: 'Commit/push rule', value: 'commit + push only in approved flow' }
+                              ].map((item) => (
+                                <div
+                                  key={item.label}
+                                  style={{
+                                    borderTop: '1px solid rgba(148, 163, 184, 0.16)',
+                                    paddingTop: '6px'
+                                  }}
+                                >
+                                  <div style={{ color: '#67e8f9', fontSize: '9px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '2px' }}>
+                                    {item.label}
+                                  </div>
+                                  <div style={{ color: '#e2e8f0', fontSize: '10px', lineHeight: 1.35, fontWeight: 700, overflowWrap: 'anywhere' }}>
+                                    {item.value}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
 
-          <div style={compactControlGridStyle}>
+                          {/* Phase 9 — Planner artifact → executor → report artifact */}
+                          <div
+                            style={{
+                              border: '1px solid #5b21b6',
+                              background: 'linear-gradient(135deg, rgba(46, 16, 101, 0.92), rgba(15, 23, 42, 0.96))',
+                              borderRadius: '12px',
+                              padding: '10px 12px',
+                              marginBottom: '8px',
+                              boxShadow: '0 14px 34px rgba(46, 16, 101, 0.18)'
+                            }}
+                          >
+                            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', alignItems: 'flex-start', flexWrap: 'wrap', marginBottom: '9px' }}>
+                              <div>
+                                <div style={{ color: '#a78bfa', fontSize: '10px', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '2px' }}>
+                                  Phase 9 artifact chain
+                                </div>
+                                <div style={{ color: '#f8fafc', fontSize: '13px', fontWeight: 800 }}>
+                                  Planner artifact → executor → report artifact
+                                </div>
+                              </div>
+                              <div style={{ color: '#c4b5fd', fontSize: '10px', lineHeight: 1.35, maxWidth: '292px' }}>
+                                Source: docs/runs/phase-9-planner-artifact.md. Live trace showing the full artifact chain before any commit/push gate.
+                              </div>
+                            </div>
+
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(132px, 1fr))', gap: '6px', marginBottom: '9px' }}>
+                              {[
+                                { label: 'Run id', value: 'kodmachine-phase-9-plan-001', tone: '#a78bfa' },
+                                { label: 'Planner artifact', value: 'docs/runs/phase-9-planner-artifact.md', tone: '#93c5fd' },
+                                { label: 'Executor result', value: 'Phase 9 artifact chain UI updated', tone: '#34d399' },
+                                { label: 'Report artifact', value: 'docs/runs/phase-9-report-artifact.md', tone: '#fbbf24' },
+                                { label: 'Approval status', value: 'Waiting for Thomas approval', tone: '#c4b5fd' }
+                              ].map((item) => (
+                                <div
+                                  key={item.label}
+                                  style={{
+                                    border: '1px solid rgba(167, 139, 250, 0.24)',
+                                    backgroundColor: 'rgba(15, 23, 42, 0.78)',
+                                    borderRadius: '9px',
+                                    padding: '8px 9px',
+                                    minHeight: '70px'
+                                  }}
+                                >
+                                  <div style={{ color: item.tone, fontSize: '9px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '3px' }}>
+                                    {item.label}
+                                  </div>
+                                  <div style={{ color: '#e2e8f0', fontSize: '10px', lineHeight: 1.35, fontWeight: 800, overflowWrap: 'anywhere' }}>
+                                    {item.value}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(104px, 1fr))', gap: '6px', marginBottom: '9px' }}>
+                              {[
+                                { step: '1', label: 'Planner artifact', detail: 'Phase 9 planner created and read' },
+                                { step: '2', label: 'Executor run', detail: 'Artifact followed, App.jsx updated' },
+                                { step: '3', label: 'Report artifact', detail: 'docs/runs/phase-9-report-artifact.md' },
+                                { step: '4', label: 'Smoke-run gate', detail: 'npm run smoke-run required' },
+                                { step: '5', label: 'Approval gate', detail: 'Thomas approves before commit' },
+                                { step: '6', label: 'Commit/push rule', detail: 'Only in approved flow' }
+                              ].map((item) => (
+                                <div
+                                  key={item.step}
+                                  style={{
+                                    border: '1px solid rgba(167, 139, 250, 0.18)',
+                                    backgroundColor: 'rgba(15, 23, 42, 0.66)',
+                                    borderRadius: '9px',
+                                    padding: '8px 9px',
+                                    minHeight: '78px'
+                                  }}
+                                >
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '5px' }}>
+                                    <div style={{ width: '20px', height: '20px', borderRadius: '999px', backgroundColor: '#7c3aed', color: '#ede9fe', fontSize: '10px', fontWeight: 900, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                      {item.step}
+                                    </div>
+                                    <div style={{ color: '#e0f2fe', fontSize: '10px', fontWeight: 800, lineHeight: 1.2 }}>
+                                      {item.label}
+                                    </div>
+                                  </div>
+                                  <div style={{ color: '#94a3b8', fontSize: '9px', lineHeight: 1.35 }}>
+                                    {item.detail}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(142px, 1fr))', gap: '6px' }}>
+                              {[
+                                { label: 'Trace id', value: 'mini-lovable-phase-9-artifact-executor-report' },
+                                { label: 'Allowed files', value: 'docs/runs/phase-9-*.md + src/App.jsx' },
+                                { label: 'Smoke-run gate', value: 'smoke-run PASS before approval' },
+                                { label: 'Approval gate', value: 'Thomas approves before commit' },
+                                { label: 'Commit/push rule', value: 'commit + push only in approved flow' }
+                              ].map((item) => (
+                                <div
+                                  key={item.label}
+                                  style={{
+                                    borderTop: '1px solid rgba(148, 163, 184, 0.16)',
+                                    paddingTop: '6px'
+                                  }}
+                                >
+                                  <div style={{ color: '#a78bfa', fontSize: '9px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '2px' }}>
+                                    {item.label}
+                                  </div>
+                                  <div style={{ color: '#e2e8f0', fontSize: '10px', lineHeight: 1.35, fontWeight: 700, overflowWrap: 'anywhere' }}>
+                                    {item.value}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div style={compactControlGridStyle}>
             <div className="input-group" style={compactInputGroupStyle}>
               <label htmlFor="api-key">DeepSeek API Key</label>
               <input
