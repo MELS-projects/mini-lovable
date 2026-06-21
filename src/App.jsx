@@ -1269,6 +1269,18 @@ const handleBookingSubmit = (event) => {
           </div>
         </div>
         <div class="next-action">Next action: pick a starter or write a prompt, click Generate / Update, inspect Preview, then run smoke-run before commit/push approval.</div>
+        <div class="status-grid" aria-label="Agent output receiver checklist">
+          <div class="status-card">
+            <div class="status-label">Generated result</div>
+            <div class="status-title">Review output</div>
+            <div class="status-copy">Treat the preview/code as agent output that needs human review before it becomes an approved change.</div>
+          </div>
+          <div class="status-card">
+            <div class="status-label">Approval gate</div>
+            <div class="status-title">Thomas decides</div>
+            <div class="status-copy">Commit and push only happen after explicit approval. No GitHub or API integration is active here.</div>
+          </div>
+        </div>
         <div class="chip-row">
           <span class="chip">Sandbox MVP</span>
           <span class="chip">Local-only preview</span>
@@ -3479,6 +3491,75 @@ The generated app is stored in src/App.jsx.
             </div>
           </div>
 
+          {/* Agent output receiver */}
+          <div
+            style={{
+              border: '1px solid #312e81',
+              background: 'linear-gradient(135deg, rgba(17, 24, 39, 0.98), rgba(30, 27, 75, 0.78))',
+              borderRadius: '12px',
+              padding: '10px 12px',
+              marginBottom: '8px'
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', alignItems: 'flex-start', flexWrap: 'wrap', marginBottom: '8px' }}>
+              <div>
+                <div style={{ color: '#c4b5fd', fontSize: '10px', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '2px' }}>
+                  Agent result summary
+                </div>
+                <div style={{ color: '#f8fafc', fontSize: '13px', fontWeight: 800 }}>
+                  Latest Kodmaskin output lands here for review
+                </div>
+              </div>
+              <div style={{ color: '#cbd5e1', fontSize: '10px', lineHeight: 1.35, maxWidth: '270px' }}>
+                Demo receiver state: review generated result, confirm smoke-run, then Thomas approves commit/push.
+              </div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(124px, 1fr))', gap: '6px', marginBottom: '8px' }}>
+              {[
+                {
+                  label: 'Generated result',
+                  value: hasRealGeneratedApp(generatedCode) ? 'App output ready' : 'Waiting for output',
+                  tone: hasRealGeneratedApp(generatedCode) ? '#10b981' : '#64748b'
+                },
+                {
+                  label: 'Files changed',
+                  value: hasRealGeneratedApp(generatedCode) ? 'Generated App.jsx' : 'Example: src/App.jsx',
+                  tone: '#60a5fa'
+                },
+                {
+                  label: 'Smoke-run',
+                  value: 'Required before approval',
+                  tone: '#fbbf24'
+                },
+                {
+                  label: 'Approval gate',
+                  value: 'Thomas decides commit/push',
+                  tone: '#c4b5fd'
+                }
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  style={{
+                    border: '1px solid #374151',
+                    backgroundColor: 'rgba(15, 23, 42, 0.88)',
+                    borderRadius: '9px',
+                    padding: '8px 9px'
+                  }}
+                >
+                  <div style={{ color: item.tone, fontSize: '9px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '3px' }}>
+                    {item.label}
+                  </div>
+                  <div style={{ color: '#e2e8f0', fontSize: '10px', fontWeight: 700, lineHeight: 1.35 }}>
+                    {item.value}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ borderTop: '1px solid rgba(148, 163, 184, 0.16)', paddingTop: '7px', color: '#ddd6fe', fontSize: '10px', lineHeight: 1.35, fontWeight: 700 }}>
+              Receiver rule: generated output is not done until review + smoke-run PASS + explicit Thomas approval.
+            </div>
+          </div>
+
           <div style={compactControlGridStyle}>
             <div className="input-group" style={compactInputGroupStyle}>
               <label htmlFor="api-key">DeepSeek API Key</label>
@@ -4544,6 +4625,58 @@ The generated app is stored in src/App.jsx.
                 {versionHistory.length > 0
                   ? `${versionHistory.length} version${versionHistory.length !== 1 ? 's' : ''} saved · ${chatHistory.filter(m => m.role === 'user').length} prompt${chatHistory.filter(m => m.role === 'user').length !== 1 ? 's' : ''}`
                   : 'No versions yet'}
+              </div>
+            </div>
+            <div
+              style={{
+                border: '1px solid #374151',
+                backgroundColor: '#0b1220',
+                borderRadius: '12px',
+                padding: '12px',
+                marginBottom: '12px'
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '10px', flexWrap: 'wrap', marginBottom: '10px' }}>
+                <div>
+                  <div style={{ color: '#c4b5fd', fontSize: '10px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '3px' }}>
+                    Agent output review panel
+                  </div>
+                  <div style={{ color: '#f8fafc', fontSize: '14px', fontWeight: 800 }}>
+                    Generated result is ready for review before commit/push
+                  </div>
+                </div>
+                <div style={{ color: '#fbbf24', fontSize: '10px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '4px 8px', border: '1px solid #92400e', borderRadius: '999px', backgroundColor: '#1f1a0a' }}>
+                  Thomas approval required
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '7px' }}>
+                {[
+                  {
+                    label: 'Generated result',
+                    value: generatedCode && generatedCode !== '// Your generated code will appear here...' && generatedCode !== '// Code panel cleared. Memory is still active.' && generatedCode !== '// Memory cleared. Start a new app.' ? 'Code panel populated' : 'No agent output yet'
+                  },
+                  {
+                    label: 'Changed files',
+                    value: 'Review src/App.jsx / exported App.jsx'
+                  },
+                  {
+                    label: 'Smoke-run',
+                    value: 'Run npm run smoke-run before approval'
+                  },
+                  {
+                    label: 'Approval status',
+                    value: 'Commit/push blocked until Thomas says yes'
+                  }
+                ].map((item) => (
+                  <div key={item.label} style={{ border: '1px solid #1f2937', borderRadius: '8px', padding: '8px 9px', backgroundColor: '#111827' }}>
+                    <div style={{ color: '#94a3b8', fontSize: '9px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '3px' }}>
+                      {item.label}
+                    </div>
+                    <div style={{ color: '#e5e7eb', fontSize: '11px', fontWeight: 700, lineHeight: 1.35 }}>
+                      {item.value}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
             <pre
